@@ -8,10 +8,15 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "lint": "eslint ."
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.2"
   }
 }
