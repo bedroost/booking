@@ -1,8 +1,15 @@
 {
-  "extends": "./index.js",
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react"
+  ],
   "rules": {
-    "comma-dangle": 0,
-    "prefer-destructuring": 0,
-    "extends": "airbnb"
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
