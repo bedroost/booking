@@ -16,31 +16,39 @@ sequelize
   });
 
 const Booking = sequelize.define('booking', {
-  reviews: Sequelize.INTEGER,
-  views: Sequelize.INTEGER,
-  nightly_price: Sequelize.INTEGER,
-  cleaning_fee: Sequelize.INTEGER,
-  service_fee: Sequelize.INTEGER,
-  occupancy_fee_taxes: Sequelize.INTEGER,
-  adult_guests: Sequelize.INTEGER,
-  children_guests: Sequelize.INTEGER,
-  max_guests: Sequelize.INTEGER,
-  max_months: Sequelize.INTEGER,
+  reviews: { type: Sequelize.INTEGER, defaultValue: 0 },
+  views: { type: Sequelize.INTEGER, defaultValue: 0 },
+  price: { type: Sequelize.INTEGER, allowNull: false },
+  cleaningFee: { type: Sequelize.INTEGER, defaultValue: 0 },
+  serviceFee: { type: Sequelize.INTEGER, defaultValue: 0 },
+  occupancyFeePlusTaxes: { type: Sequelize.INTEGER, defaultValue: 0 },
+  adultGuests: { type: Sequelize.INTEGER, defaultValue: 1 },
+  childrenGuests: { type: Sequelize.INTEGER, defaultValue: 0 },
+  maxGuests: { type: Sequelize.INTEGER, defaultValue: 5 },
+  maxMonths: { type: Sequelize.INTEGER, defaultValue: 3 },
+}, {
+  underscored: true,
 });
 
 const BookingDate = sequelize.define('booking_date', {
-  booking_id: Sequelize.INTEGER,
-  checkin_date: Sequelize.DATE,
-  checkout_date: Sequelize.DATE,
+  checkinDate: { type: Sequelize.DATEONLY, allowNull: false },
+  checkoutDate: { type: Sequelize.DATEONLY, allowNull: false },
+}, {
+  underscored: true,
 });
 
-// Booking.sync({ force: false }).then(() => {
-//   Booking.findAll({}).then((bookings) => {
-//     bookings.forEach((booking) => {
-//       console.log(booking.dataValues);
-//     });
+// will also add bookingId to BookingDate model, but field will be set to `booking_id`
+Booking.hasMany(BookingDate);
+BookingDate.belongsTo(Booking);
+
+// BookingDate.sequelize
+//   .query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true })
+//   .then(() => {
+//     Booking.sync({ force: true });
+//   })
+//   .then(() => {
+//     BookingDate.sync({ force: true });
 //   });
-// });
 
 module.exports.Booking = Booking;
 module.exports.BookingDate = BookingDate;

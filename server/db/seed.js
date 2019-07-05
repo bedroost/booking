@@ -10,7 +10,7 @@ for (let i = 0; i < 100; i += 1) {
   db.Booking.create({
     reviews: randomNumber(),
     views: randomNumber(),
-    nightly_price: randomNumber(),
+    price: randomNumber(),
   })
     .then((booking) => {
       console.log(chalk.green((`created booking ${booking.id} successfully`)));
@@ -21,9 +21,9 @@ for (let i = 0; i < 100; i += 1) {
   console.log(chalk.blue(checkinDate, checkoutDate));
 
   db.BookingDate.create({
-    booking_id: i + 1,
-    checkin_date: checkinDate,
-    checkout_date: checkoutDate,
+    bookingId: i + 1,
+    checkinDate,
+    checkoutDate,
   })
     .then((bookingDate) => {
       console.log(chalk.green((`created booking_date ${bookingDate.id} successfully`)));
