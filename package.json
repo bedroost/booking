@@ -8,15 +8,21 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
+    "start": "nodemon server/index.js",
     "build": "webpack --watch",
     "test": "jest"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "express": "^4.17.1",
     "faker": "^4.1.0",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
     "path": "^0.12.7",
+    "puppeteer": "^1.18.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sequelize": "^5.9.2"
