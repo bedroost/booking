@@ -13,7 +13,8 @@ CREATE TABLE bookings (
   adult_guests INT DEFAULT 1,
   children_guests INT DEFAULT 0,
   max_guests INT DEFAULT 5,
-  max_months INT DEFAULT 3,
+  min_nights INT DEFAULT 1,
+  max_nights INT DEFAULT 30,
   created_at DATETIME NOT NULL,
   updated_at DATETIME NOT NULL,
 );
