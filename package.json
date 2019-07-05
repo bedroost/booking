@@ -22,10 +22,12 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "path": "^0.12.7",
+    "proxyquire": "^2.1.0",
     "puppeteer": "^1.18.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "sequelize": "^5.9.2"
+    "sequelize": "^5.9.2",
+    "sequelize-mock": "^0.10.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
