@@ -25,7 +25,8 @@ const Booking = sequelize.define('booking', {
   adultGuests: { type: Sequelize.INTEGER, defaultValue: 1 },
   childrenGuests: { type: Sequelize.INTEGER, defaultValue: 0 },
   maxGuests: { type: Sequelize.INTEGER, defaultValue: 5 },
-  maxMonths: { type: Sequelize.INTEGER, defaultValue: 3 },
+  minNights: { type: Sequelize.INTEGER, defaultValue: 1 },
+  maxNights: { type: Sequelize.INTEGER, defaultValue: 30 },
 }, {
   underscored: true,
 });
@@ -41,14 +42,10 @@ const BookingDate = sequelize.define('booking_date', {
 Booking.hasMany(BookingDate);
 BookingDate.belongsTo(Booking);
 
-// BookingDate.sequelize
+// Booking.sequelize
 //   .query('SET FOREIGN_KEY_CHECKS = 0', null, { raw: true })
-//   .then(() => {
-//     Booking.sync({ force: true });
-//   })
-//   .then(() => {
-//     BookingDate.sync({ force: true });
-//   });
+Booking.sync({ force: false });
+BookingDate.sync({ force: false });
 
 module.exports.Booking = Booking;
 module.exports.BookingDate = BookingDate;

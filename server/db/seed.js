@@ -34,3 +34,5 @@ module.exports.generateData = () => {
       });
   }
 };
+
+// module.exports.generateData();

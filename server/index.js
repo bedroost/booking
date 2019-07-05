@@ -11,10 +11,11 @@ app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 app.use(express.json());
 
-app.get('/api/:listingid/booking/', (req, res) => {
+app.get('/api/:listingid/booking', async (req, res) => {
   console.log(req.params);
-  models.getBookedDates(req.params.listingid)
-    .then(bookedDates => res.send(bookedDates));
+  const listingInfo = await models.getListingInfo(req.params.listingid);
+  const bookedDates = await models.getBookedDates(req.params.listingid);
+  res.send({ listingInfo, bookedDates });
 });
 
 app.post('/api/:listingid/booking', (req, res) => {
