@@ -12,11 +12,10 @@ CREATE TABLE bookings (
   occupancy_fee_taxes INT DEFAULT 0,
   adult_guests INT DEFAULT 1,
   children_guests INT DEFAULT 0,
-  infant_guests INT DEFAULT 0,
-  max_guests INT DEFAULT 10,
+  max_guests INT DEFAULT 5,
   max_months INT DEFAULT 3,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL
+  `createdAt` DATE NOT NULL,
+  `updatedAt` DATE NOT NULL
 );
 
 DROP TABLE IF EXISTS booking_dates;
@@ -26,6 +25,6 @@ CREATE TABLE booking_dates (
   booking_id INT NOT NULL,
   checkin_date DATE NOT NULL,
   checkout_date DATE NOT NULL,
-  `createdAt` DATETIME NOT NULL,
-  `updatedAt` DATETIME NOT NULL
+  `createdAt` DATE NOT NULL,
+  `updatedAt` DATE NOT NULL
 );

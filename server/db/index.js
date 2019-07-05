@@ -24,16 +24,15 @@ const Booking = sequelize.define('booking', {
   occupancy_fee_taxes: Sequelize.INTEGER,
   adult_guests: Sequelize.INTEGER,
   children_guests: Sequelize.INTEGER,
-  infant_guests: Sequelize.INTEGER,
   max_guests: Sequelize.INTEGER,
   max_months: Sequelize.INTEGER,
-}, {});
+});
 
 const BookingDate = sequelize.define('booking_date', {
   booking_id: Sequelize.INTEGER,
   checkin_date: Sequelize.DATE,
   checkout_date: Sequelize.DATE,
-}, {});
+});
 
 // Booking.sync({ force: false }).then(() => {
 //   Booking.findAll({}).then((bookings) => {
