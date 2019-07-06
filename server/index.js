@@ -2,20 +2,20 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const db = require('./db');
+const models = require('./models');
 
 const app = express();
 const port = 3000;
 
 app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
+app.use(express.json());
 
-app.get('/api/booking/:id', (req, res) => {
+app.get('/api/:listingid/booking', async (req, res) => {
   console.log(req.params);
-  db.BookingDate.findAll({
-    attributes: ['checkin_date', 'checkout_date'],
-    where: { booking_id: req.params.id },
-  })
-    .then(bookings => res.send(bookings));
+  const listingInfo = await models.getListingInfo(req.params.listingid);
+  const bookedDates = await models.getBookedDates(req.params.listingid);
+  res.send({ listingInfo, bookedDates });
 });
 
 app.listen(port, () => {
