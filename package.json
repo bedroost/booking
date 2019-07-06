@@ -10,7 +10,8 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "build": "webpack --watch",
-    "test": "jest"
+    "test": "jest",
+    "seed": "node server/db/seed.js"
   },
   "dependencies": {
     "chalk": "^2.4.2",

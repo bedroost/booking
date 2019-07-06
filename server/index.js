@@ -18,10 +18,6 @@ app.get('/api/:listingid/booking', async (req, res) => {
   res.send({ listingInfo, bookedDates });
 });
 
-app.post('/api/:listingid/booking', (req, res) => {
-  console.log(req.body);
-});
-
 app.listen(port, () => {
   console.log(`listening on ${port}`);
 });
