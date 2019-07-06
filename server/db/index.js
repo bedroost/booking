@@ -29,6 +29,7 @@ const Listing = sequelize.define('listing', {
   maxGuests: { type: Sequelize.INTEGER },
   minNights: { type: Sequelize.INTEGER },
   maxNights: { type: Sequelize.INTEGER },
+  lastAvailableDate: { type: Sequelize.DATEONLY },
 }, {
   underscored: true,
 });

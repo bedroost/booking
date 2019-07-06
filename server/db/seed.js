@@ -15,23 +15,24 @@ for (let i = 0; i < 100; i += 1) {
     minNights: faker.random.number({ min: 1, max: 10 }),
   };
   listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
+  listingInfo.lastAvailableDate = faker.date.between('2019-09-01', '2020-05-31');
   listingInfo.maxNights = listingInfo.minNights + faker.random.number({ min: 0, max: 355 });
 
   listings.push(listingInfo);
   for (let j = 0; j < 200; j += 1) {
     const bookingInfo = {
       listingId: i + 1,
-      bookedDate: faker.date.between('2019-06-01', '2020-05-31'),
+      bookedDate: faker.date.between('2019-06-01', listingInfo.lastAvailableDate),
     };
     bookings.push(bookingInfo);
   }
 }
-// console.log(listings)
+
 Promise.all([
   db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0'),
   db.Booking.drop(),
   db.Listing.drop(),
   db.sequelize.sync({ force: false }),
-  db.Booking.bulkCreate(bookings),
   db.Listing.bulkCreate(listings),
+  db.Booking.bulkCreate(bookings),
 ]).catch(err => console.log('db error: ', err));
