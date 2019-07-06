@@ -17,6 +17,9 @@ for (let i = 0; i < 100; i += 1) {
   listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
   listingInfo.lastAvailableDate = faker.date.between('2019-09-01', '2020-05-31');
   listingInfo.maxNights = listingInfo.minNights + faker.random.number({ min: 0, max: 355 });
+  listingInfo.taxes = Math.round(
+    listingInfo.basePrice * faker.random.number({ min: 0.05, max: 0.2 }),
+  );
 
   listings.push(listingInfo);
   for (let j = 0; j < 200; j += 1) {
@@ -32,7 +35,7 @@ Promise.all([
   db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0'),
   db.Booking.drop(),
   db.Listing.drop(),
-  db.sequelize.sync({ force: false }),
-  db.Listing.bulkCreate(listings),
-  db.Booking.bulkCreate(bookings),
+  db.sequelize.sync({ force: false })
+    .then(() => db.Listing.bulkCreate(listings))
+    .then(() => db.Booking.bulkCreate(bookings)),
 ]).catch(err => console.log('db error: ', err));
