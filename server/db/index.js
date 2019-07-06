@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const chalk = require('chalk');
 
 // Option 1: Passing parameters separately
 const sequelize = new Sequelize('booking', 'root', '', {
@@ -9,38 +10,40 @@ const sequelize = new Sequelize('booking', 'root', '', {
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    console.log(chalk.green('Connection has been established successfully.'));
   })
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    console.error(chalk.red('Unable to connect to the database:', err));
   });
 
+const Listing = sequelize.define('listing', {
+  reviews: { type: Sequelize.INTEGER },
+  views: { type: Sequelize.INTEGER },
+  basePrice: { type: Sequelize.INTEGER },
+  guestFee: { type: Sequelize.INTEGER },
+  cleaningFee: { type: Sequelize.INTEGER },
+  serviceFee: { type: Sequelize.INTEGER },
+  occupancyFee: { type: Sequelize.INTEGER },
+  taxes: { type: Sequelize.INTEGER },
+  baseGuests: { type: Sequelize.INTEGER },
+  extraGuests: { type: Sequelize.INTEGER },
+  maxGuests: { type: Sequelize.INTEGER },
+  minNights: { type: Sequelize.INTEGER },
+  maxNights: { type: Sequelize.INTEGER },
+  lastAvailableDate: { type: Sequelize.DATEONLY },
+}, {
+  underscored: true,
+});
+
 const Booking = sequelize.define('booking', {
-  reviews: Sequelize.INTEGER,
-  views: Sequelize.INTEGER,
-  nightly_price: Sequelize.INTEGER,
-  cleaning_fee: Sequelize.INTEGER,
-  service_fee: Sequelize.INTEGER,
-  occupancy_fee_taxes: Sequelize.INTEGER,
-  adult_guests: Sequelize.INTEGER,
-  children_guests: Sequelize.INTEGER,
-  max_guests: Sequelize.INTEGER,
-  max_months: Sequelize.INTEGER,
+  bookedDate: { type: Sequelize.DATEONLY },
+}, {
+  underscored: true,
 });
 
-const BookingDate = sequelize.define('booking_date', {
-  booking_id: Sequelize.INTEGER,
-  checkin_date: Sequelize.DATE,
-  checkout_date: Sequelize.DATE,
-});
+Listing.hasMany(Booking);
+Booking.belongsTo(Listing);
 
-// Booking.sync({ force: false }).then(() => {
-//   Booking.findAll({}).then((bookings) => {
-//     bookings.forEach((booking) => {
-//       console.log(booking.dataValues);
-//     });
-//   });
-// });
-
+module.exports.sequelize = sequelize;
+module.exports.Listing = Listing;
 module.exports.Booking = Booking;
-module.exports.BookingDate = BookingDate;
