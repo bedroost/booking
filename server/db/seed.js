@@ -1,38 +1,37 @@
-const chalk = require('chalk');
-const moment = require('moment');
 const faker = require('faker');
 const db = require('../db');
 
-const randomNumber = () => faker.random.number();
-const randomDate = () => faker.date.future();
+const listings = [];
+const bookings = [];
 
-module.exports.generateData = () => {
-  db.Booking.drop();
-  db.BookingDate.drop();
+for (let i = 0; i < 100; i += 1) {
+  const listingInfo = {
+    reviews: faker.random.number({ min: 0, max: 1000 }),
+    views: faker.random.number({ min: 0, max: 1000 }),
+    basePrice: faker.random.number({ min: 20, max: 500 }),
+    cleaningFee: faker.random.number({ min: 20, max: 500 }),
+    baseGuests: faker.random.number({ min: 1, max: 10 }),
+    extraGuests: faker.random.number({ min: 0, max: 10 }),
+    minNights: faker.random.number({ min: 1, max: 10 }),
+  };
+  listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
+  listingInfo.maxNights = listingInfo.minNights + faker.random.number({ min: 0, max: 355 });
 
-  for (let i = 0; i < 100; i += 1) {
-    db.Booking.create({
-      reviews: randomNumber(),
-      views: randomNumber(),
-      price: randomNumber(),
-    })
-      .then((booking) => {
-        console.log(chalk.green((`created booking ${booking.id} successfully`)));
-      });
-
-    const checkinDate = randomDate();
-    const checkoutDate = moment(checkinDate).add(Math.floor(Math.random() * 10) + 1, 'day');
-    console.log(chalk.blue(checkinDate, checkoutDate));
-
-    db.BookingDate.create({
-      bookingId: i + 1,
-      checkinDate,
-      checkoutDate,
-    })
-      .then((bookingDate) => {
-        console.log(chalk.green((`created booking_date ${bookingDate.id} successfully`)));
-      });
+  listings.push(listingInfo);
+  for (let j = 0; j < 200; j += 1) {
+    const bookingInfo = {
+      listingId: i + 1,
+      bookedDate: faker.date.between('2019-06-01', '2020-05-31'),
+    };
+    bookings.push(bookingInfo);
   }
-};
-
-// module.exports.generateData();
+}
+// console.log(listings)
+Promise.all([
+  db.sequelize.query('SET FOREIGN_KEY_CHECKS = 0'),
+  db.Booking.drop(),
+  db.Listing.drop(),
+  db.sequelize.sync({ force: false }),
+  db.Booking.bulkCreate(bookings),
+  db.Listing.bulkCreate(listings),
+]).catch(err => console.log('db error: ', err));
