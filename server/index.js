@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 app.use(morgan('dev'));
-app.use(express.static(path.resolve('client', 'dist')));
+app.use(express.static(path.resolve('client')));
 app.use(express.json());
 
 app.get('/api/:listingid/booking', async (req, res) => {
