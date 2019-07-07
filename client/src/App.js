@@ -60,7 +60,7 @@ const App = (props) => {
                   <span>$49 x 2 nights</span>
                 </div>
               </div>
-              <button><span>Start Booking</span></button>
+              <button className="BookingFormButton"><span>Start Booking</span></button>
             </div>
           </form>
         </div>
