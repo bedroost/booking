@@ -82,11 +82,12 @@ body {
 .GuestRow {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 20px 1fr;
+  grid-template-rows: 44px 1fr;
+  align-items: center;
 }
 
 .textAdults, .textChildren {
-  grid-column: 1;
+  grid-column: 1 / span 3;
   grid-row: 1;
 }
 

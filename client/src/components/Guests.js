@@ -13,7 +13,7 @@ const Guests = (props) => {
   return (
     <div className="GuestModal">
       <div className="GuestRow">
-        <div className="textAdults">adults</div>
+        <div className="textAdults">Adults</div>
         <input
           type="button"
           className="decrementAdults"
@@ -29,7 +29,11 @@ const Guests = (props) => {
         />
       </div>
       <div className="GuestRow">
-        <div className="textChildren">children</div>
+        <div className="textChildren">
+          <span>Children</span>
+          <br />
+          <span>Ages 2–12</span>
+        </div>
         <input
           type="button"
           className="decrementChildren"
@@ -44,6 +48,7 @@ const Guests = (props) => {
           value="+"
         />
       </div>
+      <span>2 guests maximum. Infants don’t count toward the number of guests.</span>
     </div>
   );
 };
