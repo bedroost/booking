@@ -61,13 +61,13 @@ body {
   color: #ffff;
 }
 
-.Button span {
+.BookingFormButton span {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
   line-height: 24px;
   padding: 22px 10px;
   height: 22px;
-  /* font-weight: 800; */
+  /* font-weight: 500; */
   color: #ffffff;  
 }
 
