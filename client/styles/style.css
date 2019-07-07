@@ -50,7 +50,7 @@ body {
   height: 38px;
 }
 
-button {
+.BookingForm button {
   width: 278px;
   padding: 10px 22px;
   border-radius: 4px;
@@ -61,12 +61,47 @@ button {
   color: #ffff;
 }
 
-.Button span {
+.BookingFormButton span {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
   font-size: 16px;
   line-height: 24px;
   padding: 22px 10px;
   height: 22px;
-  /* font-weight: 800; */
+  /* font-weight: 500; */
   color: #ffffff;  
+}
+
+.GuestModal {
+  width: 294px;
+  height: 300px;
+  padding: 0 16px;
+  border: 1px solid #e4e4e4;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+}
+
+.GuestRow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 20px 1fr;
+}
+
+.textAdults, .textChildren {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.incrementAdults, .incrementChildren {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.countAdults, .countChildren {
+  grid-column: 5;
+  grid-row: 1;
+  text-align: center;
+}
+
+.decrementAdults, .decrementChildren {
+  grid-column: 6;
+  grid-row: 1;
 }

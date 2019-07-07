@@ -12,6 +12,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "no-console": "off",
-    "prefer-arrow-callback": "error"
+    "prefer-arrow-callback": "error",
+    "react/prop-types": 0
   }
 }
