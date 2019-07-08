@@ -10,10 +10,14 @@ const Guests = (props) => {
     countChildren,
     incrementChildren,
     decrementChildren,
+    countInfants,
+    incrementInfants,
+    decrementInfants,
   } = props;
 
   const allowDecrementAdults = countAdults === 1;
   const allowDecrementChildren = countChildren === 0;
+  const allowDecrementInfants = countInfants === 0;
 
   const allowIncrementAdults = countAdults + countChildren === listingInfo.maxGuests;
   const allowIncrementChildren = allowIncrementAdults;
@@ -57,6 +61,27 @@ const Guests = (props) => {
           className="incrementChildren"
           onClick={incrementChildren}
           disabled={allowIncrementChildren}
+          value="+"
+        />
+      </div>
+      <div className="GuestRow">
+        <div className="textInfants">
+          <span>Infants</span>
+          <br />
+          <span>Ages 0–2</span>
+        </div>
+        <input
+          type="button"
+          className="decrementInfants"
+          onClick={decrementInfants}
+          disabled={allowDecrementInfants}
+          value="-"
+        />
+        <span className="countInfants">{countInfants}</span>
+        <input
+          type="button"
+          className="incrementInfants"
+          onClick={incrementInfants}
           value="+"
         />
       </div>

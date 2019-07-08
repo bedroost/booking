@@ -33,6 +33,8 @@ class App extends React.Component {
       countChildren,
       incrementChildren,
       decrementChildren,
+      incrementInfants,
+      decrementInfants,
     } = this.props;
 
     const { bookedDates, listingInfo } = this.state;
@@ -48,6 +50,8 @@ class App extends React.Component {
           countChildren={countChildren}
           incrementChildren={incrementChildren}
           decrementChildren={decrementChildren}
+          incrementInfants={incrementInfants}
+          decrementInfants={decrementInfants}
         />
         <div className="BookingFormOutline">
           <div className="BookingFormInnerOutline">

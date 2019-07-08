@@ -14,6 +14,14 @@ const decrementChildren = () => ({
   type: 'DECREMENT_CHILDREN',
 });
 
+const incrementInfants = () => ({
+  type: 'INCREMENT_INFANTS',
+});
+
+const decrementInfants = () => ({
+  type: 'DECREMENT_INFANTS',
+});
+
 export {
-  incrementAdults, decrementAdults, incrementChildren, decrementChildren,
+  incrementAdults, decrementAdults, incrementChildren, decrementChildren, incrementInfants, decrementInfants,
 };
