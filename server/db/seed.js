@@ -11,11 +11,13 @@ for (let i = 0; i < 100; i += 1) {
     views: faker.random.number({ min: 0, max: 1000 }),
     basePrice: faker.random.number({ min: 20, max: 500 }),
     cleaningFee: faker.random.number({ min: 20, max: 500 }),
-    baseGuests: faker.random.number({ min: 1, max: 10 }),
-    extraGuests: faker.random.number({ min: 0, max: 10 }),
+    baseGuests: faker.random.number({ min: 1, max: 5 }) * 2,
     minNights: faker.random.number({ min: 1, max: 10 }),
   };
   listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
+  listingInfo.extraGuests = Math.round(
+    listingInfo.baseGuests * faker.random.number({ min: 0, max: 0.5, precision: 0.1 }),
+  );
   listingInfo.maxGuests = listingInfo.baseGuests + listingInfo.extraGuests;
   listingInfo.lastAvailableDate = faker.date.between('2019-09-01', '2020-05-31');
   listingInfo.maxNights = Math.max(listingInfo.minNights,
@@ -25,6 +27,7 @@ for (let i = 0; i < 100; i += 1) {
   );
 
   listings.push(listingInfo);
+
   for (let j = 0; j < 200; j += 1) {
     const bookingInfo = {
       listingId: i + 1,
