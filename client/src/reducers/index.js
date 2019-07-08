@@ -1,5 +1,5 @@
 const initialState = {
-  countAdults: 0,
+  countAdults: 1,
   countChildren: 0,
   countInfants: 0,
 };

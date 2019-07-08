@@ -2,6 +2,8 @@ import React from 'react';
 
 const Guests = (props) => {
   const {
+    bookedDates,
+    listingInfo,
     countAdults,
     incrementAdults,
     decrementAdults,
@@ -9,6 +11,12 @@ const Guests = (props) => {
     incrementChildren,
     decrementChildren,
   } = props;
+
+  const allowDecrementAdults = countAdults === 1;
+  const allowDecrementChildren = countChildren === 0;
+
+  const allowIncrementAdults = countAdults + countChildren === listingInfo.maxGuests;
+  const allowIncrementChildren = allowIncrementAdults;
 
   return (
     <div className="GuestModal">
@@ -18,6 +26,7 @@ const Guests = (props) => {
           type="button"
           className="decrementAdults"
           onClick={decrementAdults}
+          disabled={allowDecrementAdults}
           value="-"
         />
         <span className="countAdults">{countAdults}</span>
@@ -25,6 +34,7 @@ const Guests = (props) => {
           type="button"
           className="incrementAdults"
           onClick={incrementAdults}
+          disabled={allowIncrementAdults}
           value="+"
         />
       </div>
@@ -38,6 +48,7 @@ const Guests = (props) => {
           type="button"
           className="decrementChildren"
           onClick={decrementChildren}
+          disabled={allowDecrementChildren}
           value="-"
         />
         <span className="countChildren">{countChildren}</span>
@@ -45,10 +56,14 @@ const Guests = (props) => {
           type="button"
           className="incrementChildren"
           onClick={incrementChildren}
+          disabled={allowIncrementChildren}
           value="+"
         />
       </div>
-      <span>2 guests maximum. Infants don’t count toward the number of guests.</span>
+      <span>
+        {`${listingInfo.maxGuests} `}
+        guests maximum. Infants don’t count toward the number of guests.
+      </span>
     </div>
   );
 };
