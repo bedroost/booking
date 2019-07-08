@@ -1,0 +1,100 @@
+.CalendarModal {
+  width: 333px;
+  height: 376px;
+  border: 1px solid #e4e4e4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  font-size: 16px;
+}
+
+.Calendar {
+  height: 308px;
+}
+
+.CalendarHeader {
+  margin: 0 auto;
+  padding: 22px 0 37px 0;
+  width: 288px;
+  height: 25px;
+}
+
+.CalendarMonth {
+  position: relative;
+  z-index: 2;
+  height: 0px;
+  display: block;
+}
+
+.CalendarMonthBackward {
+  position: absolute;
+  line-height: 0.78;
+  left: 22px;
+  top: 18px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid rgb(228, 231, 231);
+  padding: 6px 9px;
+}
+
+.CalendarMonthBackward svg {
+  height: 19px;
+  width: 19px;
+  fill: rgb(130, 136, 138);
+  display: block
+}
+
+.CalendarMonthForward {
+  position: absolute;
+  line-height: 0.78;
+  right: 22px;
+  top: 18px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid rgb(228, 231, 231);
+  padding: 6px 9px;
+}
+
+.CalendarMonthForward svg {
+  height: 19px;
+  width: 19px;
+  fill: rgb(130, 136, 138);
+  display: block
+}
+
+.CalendarHeaderMonth {
+  color: rgb(72, 72, 72);
+  font-size: 18px;
+  text-align: center;
+}
+
+.CalendarHeaderDays {
+  color: rgb(117, 117, 117);
+  position: absolute;
+  top: 62px;
+  z-index: 2;
+  display: grid;
+  width: 287px;
+  padding: 0 13px;
+  margin-left: 9px;
+  text-align: center;
+  font-size: 11.6667px;
+  font-weight: 600;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.Calendar table {
+  margin: 0 auto;
+  width: 288px;
+  height: 206px;
+  color: rgb(72, 72, 72);
+  font-weight: 700;
+}
+
+.Calendar tr {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 14px;
+  text-align: center;
+}
+
+.Calendar td {
+}
