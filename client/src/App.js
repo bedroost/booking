@@ -1,9 +1,30 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+import axios from 'axios';
 import GuestsContainers from './containers';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bookedDates: [],
+      listingInfo: { maxGuests: 2 },
+    };
+  }
+
+  componentDidMount() {
+    axios.get(`/api/${window.location.pathname.split('/')[2]}/booking`)
+      .then(({ data }) => {
+        console.log(data);
+        const { bookedDates, listingInfo } = data;
+        this.setState({
+          bookedDates,
+          listingInfo,
+        });
+      });
+  }
+
   render() {
     const {
       countAdults,
@@ -14,9 +35,13 @@ class App extends React.Component {
       decrementChildren,
     } = this.props;
 
+    const { bookedDates, listingInfo } = this.state;
+
     return (
       <div className="App">
         <GuestsContainers
+          bookedDates={bookedDates}
+          listingInfo={listingInfo}
           countAdults={countAdults}
           incrementAdults={incrementAdults}
           decrementAdults={decrementAdults}
