@@ -12,9 +12,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
-          'css-loader',
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
         ],
+        query: {
+          modules: true,
+        },
       },
       {
         test: /\.(js|jsx)?$/,
