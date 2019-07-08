@@ -46,7 +46,7 @@ const Guests = (props) => {
         <div className="textChildren">
           <span>Children</span>
           <br />
-          <span>Ages 2–12</span>
+          <span className="age">Ages 2–12</span>
         </div>
         <input
           type="button"
@@ -68,7 +68,7 @@ const Guests = (props) => {
         <div className="textInfants">
           <span>Infants</span>
           <br />
-          <span>Ages 0–2</span>
+          <span className="age">Ages 0–2</span>
         </div>
         <input
           type="button"
@@ -85,10 +85,19 @@ const Guests = (props) => {
           value="+"
         />
       </div>
-      <span>
-        {`${listingInfo.maxGuests} `}
-        guests maximum. Infants don’t count toward the number of guests.
-      </span>
+      <div className="MaxGuestsTextRow">
+        <span className="MaxGuestsText">
+          {`${listingInfo.maxGuests} `}
+          guests maximum. Infants don’t count toward the number of guests.
+        </span>
+      </div>
+      <div className="CloseButtonRow">
+        <input
+          type="button"
+          className="CloseButton"
+          value="Close"
+        />
+      </div>
     </div>
   );
 };
