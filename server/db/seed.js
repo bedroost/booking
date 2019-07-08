@@ -1,4 +1,5 @@
 const faker = require('faker');
+const chalk = require('chalk');
 const db = require('../db');
 
 const listings = [];
@@ -15,10 +16,13 @@ for (let i = 0; i < 100; i += 1) {
     minNights: faker.random.number({ min: 1, max: 10 }),
   };
   listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
+  listingInfo.maxGuests = Math.max(listingInfo.baseGuests,
+    faker.random.number({ min: 2, max: 10 }));
   listingInfo.lastAvailableDate = faker.date.between('2019-09-01', '2020-05-31');
-  listingInfo.maxNights = listingInfo.minNights + faker.random.number({ min: 0, max: 355 });
+  listingInfo.maxNights = Math.max(listingInfo.minNights,
+    faker.random.number({ min: 1, max: 355 }));
   listingInfo.taxes = Math.round(
-    listingInfo.basePrice * faker.random.number({ min: 0.05, max: 0.2 }),
+    listingInfo.basePrice * faker.random.number({ min: 0.05, max: 0.2, precision: 0.01 }),
   );
 
   listings.push(listingInfo);
@@ -37,5 +41,7 @@ Promise.all([
   db.Listing.drop(),
   db.sequelize.sync({ force: false })
     .then(() => db.Listing.bulkCreate(listings))
-    .then(() => db.Booking.bulkCreate(bookings)),
+    .then(() => db.Booking.bulkCreate(bookings))
+    .then(() => db.sequelize.connectionManager.close())
+    .then(() => console.log(chalk.green('shut down gracefully'))),
 ]).catch(err => console.log('db error: ', err));
