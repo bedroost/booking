@@ -16,8 +16,7 @@ for (let i = 0; i < 100; i += 1) {
     minNights: faker.random.number({ min: 1, max: 10 }),
   };
   listingInfo.guestFee = faker.random.number({ min: 0, max: listingInfo.basePrice });
-  listingInfo.maxGuests = Math.max(listingInfo.baseGuests,
-    faker.random.number({ min: 2, max: 10 }));
+  listingInfo.maxGuests = listingInfo.baseGuests + listingInfo.extraGuests;
   listingInfo.lastAvailableDate = faker.date.between('2019-09-01', '2020-05-31');
   listingInfo.maxNights = Math.max(listingInfo.minNights,
     faker.random.number({ min: 1, max: 355 }));
