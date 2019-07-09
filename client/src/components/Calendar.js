@@ -1,7 +1,23 @@
 import React from 'react';
+import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 
 const Calendar = () => {
+  const firstDay = moment().date(1).day();
+  const lastDay = moment().daysInMonth();
+  const month = [[], [], [], [], []];
+  for (let i = 0; i < 7; i += 1) {
+    for (let j = 0; j < 5; j += 1) {
+      if (i < firstDay && j === 0) {
+        month[j].push(null);
+      } else if (j * 7 + i > lastDay) {
+        month[j].push(null);
+      } else {
+        month[j].push(j * 7 + i);
+      }
+    }
+  }
+  console.log(month);
   return (
     <div className="CalendarModal">
       <div className="Calendar">
@@ -28,20 +44,18 @@ const Calendar = () => {
         </div>
         <div className="CalendarHeader">
           <div className="CalendarHeaderMonth">
-            <strong>July 2019</strong>
+            <strong>
+              {moment().format('MMMM YYYY')}
+            </strong>
           </div>
         </div>
         <table>
           <tbody>
-            <tr>
-              <td className="CalendarDayEmpty">1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
+            {month.map(week => (
+              <tr>
+                {week.map(day => <td className="CalendarDay">{day}</td>)}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
