@@ -3,10 +3,10 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 
 const CalendarDay = (props) => {
-  const { day, getDay, checkinDay, listingInfo, addMonth, bookedDates } = props;
+  const { day, getDay, checkinDay, listingInfo, momentAddedMonth, bookedDates } = props;
   let calendarClass = 'CalendarDay Empty';
   if (day) {
-    const formattedDay = `${moment().add(addMonth, 'M').year()}-${moment().add(addMonth, 'M').month()}-${day}`;
+    const formattedDay = `${momentAddedMonth.year()}-${momentAddedMonth.month()}-${day}`;
     // console.log(moment(formattedDay).format('YYYY-MM-DD'));
     if (moment(formattedDay).isAfter(moment(listingInfo.lastAvailableDate)) || bookedDates[moment(formattedDay).format('YYYY-MM-DD')]) {
       calendarClass = 'CalendarDay Booked';
