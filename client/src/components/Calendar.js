@@ -4,7 +4,13 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 
 const Calendar = (props) => {
-  const { addMonth, nextMonth, lastMonth, getDay } = props;
+  const {
+    bookedDates,
+    addMonth,
+    nextMonth,
+    lastMonth,
+    getDay,
+  } = props;
 
   const firstDayofTheWeek = moment().add(addMonth, 'M').date(1).day();
   const lastDay = moment().add(addMonth, 'M').daysInMonth();
@@ -63,10 +69,16 @@ const Calendar = (props) => {
             {month.map(week => (
               <tr className="CalenderWeek">
                 {week.map((day) => {
+                  let calendarClass = 'CalendarDay Empty';
+                  if (day) {
+                    const formattedDay = `${moment().year()}-${moment().month()}-${day}`;
+                    // console.log(moment(formattedDay).format('YYYY-MM-DD'));
+                    calendarClass = bookedDates[moment(formattedDay).format('YYYY-MM-DD')] ? 'CalendarDay Booked' : 'CalendarDay';
+                  }
                   return (
                     <td>
                       <input
-                        className={day ? 'CalendarDay' : 'CalendarDay Empty'}
+                        className={calendarClass}
                         type="button"
                         onClick={getDay}
                         value={day} />

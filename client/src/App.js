@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookedDates: [],
+      bookedDates: {},
       listingInfo: { maxGuests: 2 },
     };
   }
@@ -17,8 +17,12 @@ class App extends React.Component {
       .then(({ data }) => {
         console.log(data);
         const { bookedDates, listingInfo } = data;
+        const bookedDatesObj = {};
+        bookedDates.forEach((el) => {
+          bookedDatesObj[el.bookedDate] = true;
+        });
         this.setState({
-          bookedDates,
+          bookedDates: bookedDatesObj,
           listingInfo,
         });
       });
@@ -45,13 +49,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <CalendarContainer
+          bookedDates={bookedDates}
           addMonth={addMonth}
           nextMonth={nextMonth}
           lastMonth={lastMonth}
           getDay={getDay}
         />
         <GuestsContainer
-          bookedDates={bookedDates}
           listingInfo={listingInfo}
           countAdults={countAdults}
           incrementAdults={incrementAdults}
