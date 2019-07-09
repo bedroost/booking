@@ -7,7 +7,7 @@ import {
   decrementChildren,
   incrementInfants,
   decrementInfants,
-} from '../actions';
+} from '../actions/guests';
 
 const mapStateToProps = state => ({
   countAdults: state.countAdults,
