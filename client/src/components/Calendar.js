@@ -52,15 +52,24 @@ const Calendar = () => {
         <table>
           <tbody>
             {month.map(week => (
-              <tr>
+              <tr className="CalenderWeek">
                 {week.map(day => <td className="CalendarDay">{day}</td>)}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <div className="CalendarFooter">
+        <div className="UpdatedToday">Updated today</div>
+        <div className="CalenderWeek ClearDates">
+          <span>Clear dates</span>
+        </div>
+      </div>
+      <button className="KeyboardShortcuts">
+        <span>?</span>
+      </button>
     </div>
   );
-}
+};
 
 export default Calendar;

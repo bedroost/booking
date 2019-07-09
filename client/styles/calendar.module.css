@@ -4,6 +4,7 @@
   border: 1px solid #e4e4e4;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
   font-size: 16px;
+  position: relative;
 }
 
 .Calendar {
@@ -99,22 +100,27 @@
   background-color: rgb(216, 216, 216);
 }
 
-.Calendar tr {
+.CalenderWeek {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   font-size: 14px;
   align-items: center;
   text-align: center;
   grid-column-gap: 1px;
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(228, 231, 231);
 }
 
-.Calendar td {
+.CalendarDay {
   line-height: 41px;
   vertical-align: middle;
   background-color: #fff;
   height: 41px;
   width: 41px;
+  cursor: pointer;
+}
+
+.CalendarDay:hover {
+  background-color: rgb(216, 216, 216);
 }
 
 .Empty {
@@ -124,4 +130,58 @@
 .Booked {
   color: rgb(216, 216, 216);
   text-decoration: line-through;
+}
+
+.CalendarFooter {
+  bottom: 0px;
+  padding: 0px 24px 24px;
+}
+
+.UpdatedToday {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2857142857142858em;
+  color: #484848;
+}
+
+.ClearDates {
+  background-color: #fff;
+  align-items: center;
+}
+
+.ClearDates span {
+  color: #008489;
+  font-weight: 500;
+  grid-column: 6 / span 7;
+  display: block;
+  cursor: pointer;
+}
+
+.ClearDates:hover {
+  color: #008489;
+  text-decoration: underline;
+}
+
+.KeyboardShortcuts {
+  position: absolute;
+  color: #fff;
+  background-color: rgb(0, 166, 153);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  border: none;
+  width: 33px;
+  height: 26px;
+  bottom: 0;
+  right: 0;
+}
+
+.KeyboardShortcuts span {
+  position: absolute;
+  font-size: 16px;
+  bottom: 0;
+  right: 5px;
+}
+
+.KeyboardShortcuts:hover {
+  background-color: rgb(0, 132, 137);
+  cursor: pointer;
 }
