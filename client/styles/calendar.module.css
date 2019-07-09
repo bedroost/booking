@@ -26,6 +26,7 @@
 }
 
 .CalendarMonthBackward {
+  all: unset;
   position: absolute;
   line-height: 0.78;
   left: 22px;
@@ -46,6 +47,7 @@
 }
 
 .CalendarMonthForward {
+  all: unset;
   position: absolute;
   line-height: 0.78;
   right: 22px;
@@ -97,8 +99,8 @@
   color: rgb(72, 72, 72);
   font-weight: 700;
   border: solid 1px rgb(216, 216, 216);
-  border-collapse: collapse;
-  border-spacing: 0px;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .Calendar tbody {
@@ -119,6 +121,7 @@
 }
 
 .CalendarDay {
+  all: unset;
   line-height: 41px;
   vertical-align: middle;
   background-color: #fff;
@@ -132,11 +135,11 @@
 }
 
 .Empty {
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .Booked {
-  color: rgb(216, 216, 216);
+  /* border: 1px solid rgb(216, 216, 216); */
   text-decoration: line-through;
 }
 

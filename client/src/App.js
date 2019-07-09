@@ -37,6 +37,7 @@ class App extends React.Component {
       addMonth,
       nextMonth,
       lastMonth,
+      getDay,
     } = this.props;
 
     const { bookedDates, listingInfo } = this.state;
@@ -47,6 +48,7 @@ class App extends React.Component {
           addMonth={addMonth}
           nextMonth={nextMonth}
           lastMonth={lastMonth}
+          getDay={getDay}
         />
         <GuestsContainer
           bookedDates={bookedDates}
