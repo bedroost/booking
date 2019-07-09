@@ -165,6 +165,7 @@
 .ClearDates {
   background-color: #fff;
   align-items: center;
+  justify-items: center;
 }
 
 .ClearDates span {
