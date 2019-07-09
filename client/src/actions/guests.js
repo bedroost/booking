@@ -23,5 +23,10 @@ const decrementInfants = () => ({
 });
 
 export {
-  incrementAdults, decrementAdults, incrementChildren, decrementChildren, incrementInfants, decrementInfants,
+  incrementAdults,
+  decrementAdults,
+  incrementChildren,
+  decrementChildren,
+  incrementInfants,
+  decrementInfants,
 };
