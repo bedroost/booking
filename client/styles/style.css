@@ -140,6 +140,7 @@ body {
 }
 
 .CloseButton {
+  all: unset;
   grid-column: 6;
   color: #008489;
   border:none; 
