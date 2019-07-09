@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import GuestsContainers from './containers';
-import Calendar from './components/Calendar';
+import GuestsContainer from './containers/guests';
+import CalendarContainer from './containers/calendar';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,14 +34,21 @@ class App extends React.Component {
       decrementChildren,
       incrementInfants,
       decrementInfants,
+      addMonth,
+      nextMonth,
+      lastMonth,
     } = this.props;
 
     const { bookedDates, listingInfo } = this.state;
 
     return (
       <div className="App">
-        <Calendar />
-        <GuestsContainers
+        <CalendarContainer
+          addMonth={addMonth}
+          nextMonth={nextMonth}
+          lastMonth={lastMonth}
+        />
+        <GuestsContainer
           bookedDates={bookedDates}
           listingInfo={listingInfo}
           countAdults={countAdults}
