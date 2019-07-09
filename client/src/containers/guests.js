@@ -10,9 +10,9 @@ import {
 } from '../actions/guests';
 
 const mapStateToProps = state => ({
-  countAdults: state.countAdults,
-  countChildren: state.countChildren,
-  countInfants: state.countInfants,
+  countAdults: state.guestsReducer.countAdults,
+  countChildren: state.guestsReducer.countChildren,
+  countInfants: state.guestsReducer.countInfants,
 });
 
 const mapDispatchToProps = dispatch => ({

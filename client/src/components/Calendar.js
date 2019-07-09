@@ -1,37 +1,59 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 import React from 'react';
 import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
+import CalendarDay from './CalendarDay';
 
-const Calendar = () => {
-  const firstDay = moment().date(1).day();
-  const lastDay = moment().daysInMonth();
-  const month = [[], [], [], [], []];
+const Calendar = (props) => {
+  const {
+    listingInfo,
+    bookedDates,
+    addMonth,
+    nextMonth,
+    lastMonth,
+    getDay,
+    checkinDay,
+  } = props;
+
+  const momentAddedMonth = moment().add(addMonth, 'M');
+  const firstDayofTheWeek = momentAddedMonth.date(1).day();
+  const lastDay = momentAddedMonth.daysInMonth();
+  const calendarMonth = [[], [], [], [], []];
   for (let i = 0; i < 7; i += 1) {
     for (let j = 0; j < 5; j += 1) {
-      if (i < firstDay && j === 0) {
-        month[j].push(null);
-      } else if (j * 7 + i > lastDay) {
-        month[j].push(null);
+      if (i < firstDayofTheWeek && j === 0) {
+        calendarMonth[j].push('');
+      } else if (j * 7 + i - firstDayofTheWeek + 1 > lastDay) {
+        calendarMonth[j].push('');
       } else {
-        month[j].push(j * 7 + i);
+        calendarMonth[j].push(j * 7 + i - firstDayofTheWeek + 1);
       }
     }
   }
-  console.log(month);
+
+  // console.log('firstDayofTheWeek', firstDayofTheWeek);
+  // console.log('lastDay', lastDay);
+  // console.log('calendarMonth', calendarMonth);
   return (
     <div className="CalendarModal">
       <div className="Calendar">
         <div className="CalendarMonth">
-          <div className="CalendarMonthBackward" role="button">
+          <button
+            className="CalendarMonthBackward"
+            type="button"
+            onClick={lastMonth}>
             <svg viewBox="0 0 1000 1000">
               <path d="M 336 275 L 126 485 h 806 c 13 0 23 10 23 23 s -10 23 -23 23 H 126 l 210 210 c 11 11 11 21 0 32 c -5 5 -10 7 -16 7 s -11 -2 -16 -7 L 55 524 c -11 -11 -11 -21 0 -32 l 249 -249 c 21 -22 53 10 32 32 Z" />
             </svg>
-          </div>
-          <div className="CalendarMonthForward" role="button">
+          </button>
+          <button
+            className="CalendarMonthForward"
+            type="button"
+            onClick={nextMonth}>
             <svg viewBox="0 0 1000 1000">
               <path d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z" />
             </svg>
-          </div>
+          </button>
           <div className="CalendarHeaderDays">
             <div className="CalendarHeaderDay">Su</div>
             <div className="CalendarHeaderDay">Mo</div>
@@ -45,15 +67,24 @@ const Calendar = () => {
         <div className="CalendarHeader">
           <div className="CalendarHeaderMonth">
             <strong>
-              {moment().format('MMMM YYYY')}
+              {momentAddedMonth.format('MMMM YYYY')}
             </strong>
           </div>
         </div>
         <table>
           <tbody>
-            {month.map(week => (
+            {calendarMonth.map(week => (
               <tr className="CalenderWeek">
-                {week.map(day => <td className="CalendarDay">{day}</td>)}
+                {week.map(day => (
+                  <CalendarDay
+                    day={day}
+                    getDay={getDay}
+                    checkinDay={checkinDay}
+                    listingInfo={listingInfo}
+                    addMonth={addMonth}
+                    momentAddedMonth={momentAddedMonth}
+                    bookedDates={bookedDates} />
+                ))}
               </tr>
             ))}
           </tbody>
