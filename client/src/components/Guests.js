@@ -31,7 +31,7 @@ const Guests = (props) => {
           className="decrementAdults"
           onClick={decrementAdults}
           disabled={allowDecrementAdults}
-          value="-"
+          value="&#8211;"
         />
         <span className="countAdults">{countAdults}</span>
         <input
@@ -53,7 +53,7 @@ const Guests = (props) => {
           className="decrementChildren"
           onClick={decrementChildren}
           disabled={allowDecrementChildren}
-          value="-"
+          value="&#8211;"
         />
         <span className="countChildren">{countChildren}</span>
         <input
@@ -75,7 +75,7 @@ const Guests = (props) => {
           className="decrementInfants"
           onClick={decrementInfants}
           disabled={allowDecrementInfants}
-          value="-"
+          value="&#8211;"
         />
         <span className="countInfants">{countInfants}</span>
         <input
