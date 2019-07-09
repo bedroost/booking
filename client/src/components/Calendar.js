@@ -71,9 +71,9 @@ const Calendar = (props) => {
                 {week.map((day) => {
                   let calendarClass = 'CalendarDay Empty';
                   if (day) {
-                    const formattedDay = `${moment().year()}-${moment().month()}-${day}`;
+                    const formattedDay = `${moment().add(addMonth, 'M').year()}-${moment().add(addMonth, 'M').month()}-${day}`;
                     // console.log(moment(formattedDay).format('YYYY-MM-DD'));
-                    calendarClass = bookedDates[moment(formattedDay).format('YYYY-MM-DD')] ? 'CalendarDay Booked' : 'CalendarDay';
+                    calendarClass = bookedDates[moment(formattedDay).format('YYYY-MM-DD')] ? 'CalendarDay Booked' : 'CalendarDay Available';
                   }
                   return (
                     <td>
