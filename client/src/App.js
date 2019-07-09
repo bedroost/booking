@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import GuestsContainers from './containers';
-import Calendar from './components/Calendar';
+import GuestsContainer from './containers/guests';
+import CalendarContainer from './containers/calendar';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookedDates: [],
+      bookedDates: {},
       listingInfo: { maxGuests: 2 },
     };
   }
@@ -17,8 +17,12 @@ class App extends React.Component {
       .then(({ data }) => {
         console.log(data);
         const { bookedDates, listingInfo } = data;
+        const bookedDatesObj = {};
+        bookedDates.forEach((el) => {
+          bookedDatesObj[el.bookedDate] = true;
+        });
         this.setState({
-          bookedDates,
+          bookedDates: bookedDatesObj,
           listingInfo,
         });
       });
@@ -34,15 +38,27 @@ class App extends React.Component {
       decrementChildren,
       incrementInfants,
       decrementInfants,
+      addMonth,
+      nextMonth,
+      lastMonth,
+      getDay,
+      checkinDay,
     } = this.props;
 
     const { bookedDates, listingInfo } = this.state;
 
     return (
       <div className="App">
-        <Calendar />
-        <GuestsContainers
+        <CalendarContainer
+          listingInfo={listingInfo}
           bookedDates={bookedDates}
+          addMonth={addMonth}
+          nextMonth={nextMonth}
+          lastMonth={lastMonth}
+          getDay={getDay}
+          checkinDay={checkinDay}
+        />
+        <GuestsContainer
           listingInfo={listingInfo}
           countAdults={countAdults}
           incrementAdults={incrementAdults}
