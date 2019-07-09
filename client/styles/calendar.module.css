@@ -1,0 +1,195 @@
+.CalendarModal {
+  width: 333px;
+  height: 376px;
+  border: 1px solid #e4e4e4;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  font-size: 16px;
+  position: relative;
+}
+
+.Calendar {
+  height: 308px;
+}
+
+.CalendarHeader {
+  margin: 0 auto;
+  padding: 22px 0 37px 0;
+  width: 288px;
+  height: 25px;
+}
+
+.CalendarMonth {
+  position: relative;
+  z-index: 2;
+  height: 0px;
+  display: block;
+}
+
+.CalendarMonthBackward {
+  position: absolute;
+  line-height: 0.78;
+  left: 22px;
+  top: 18px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid rgb(228, 231, 231);
+  padding: 6px 9px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.CalendarMonthBackward svg {
+  height: 19px;
+  width: 19px;
+  fill: rgb(130, 136, 138);
+  display: block
+}
+
+.CalendarMonthForward {
+  position: absolute;
+  line-height: 0.78;
+  right: 22px;
+  top: 18px;
+  width: 19px;
+  height: 19px;
+  border: 1px solid rgb(228, 231, 231);
+  padding: 6px 9px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.CalendarMonthForward svg {
+  height: 19px;
+  width: 19px;
+  fill: rgb(130, 136, 138);
+  display: block
+}
+
+.CalendarMonthBackward:hover, .CalendarMonthForward:hover {
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.CalendarHeaderMonth {
+  color: rgb(72, 72, 72);
+  font-size: 18px;
+  text-align: center;
+}
+
+.CalendarHeaderDays {
+  color: rgb(117, 117, 117);
+  position: absolute;
+  top: 62px;
+  z-index: 2;
+  display: grid;
+  width: 287px;
+  padding: 0 13px;
+  margin-left: 9px;
+  text-align: center;
+  font-size: 11.6667px;
+  font-weight: 600;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.Calendar table {
+  margin: 0 auto;
+  width: 288px;
+  height: 206px;
+  color: rgb(72, 72, 72);
+  font-weight: 700;
+  border: solid 1px rgb(216, 216, 216);
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+.Calendar tbody {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-row-gap: 1px;
+  background-color: rgb(216, 216, 216);
+}
+
+.CalenderWeek {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 14px;
+  align-items: center;
+  text-align: center;
+  grid-column-gap: 1px;
+  background-color: rgb(228, 231, 231);
+}
+
+.CalendarDay {
+  line-height: 41px;
+  vertical-align: middle;
+  background-color: #fff;
+  height: 41px;
+  width: 41px;
+  cursor: pointer;
+}
+
+.CalendarDay:hover {
+  background-color: rgb(216, 216, 216);
+}
+
+.Empty {
+  border: 1px solid white;
+}
+
+.Booked {
+  color: rgb(216, 216, 216);
+  text-decoration: line-through;
+}
+
+.CalendarFooter {
+  bottom: 0px;
+  padding: 0px 24px 24px;
+}
+
+.UpdatedToday {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.2857142857142858em;
+  color: #484848;
+}
+
+.ClearDates {
+  background-color: #fff;
+  align-items: center;
+}
+
+.ClearDates span {
+  color: #008489;
+  font-weight: 500;
+  grid-column: 6 / span 7;
+  display: block;
+  cursor: pointer;
+}
+
+.ClearDates:hover {
+  color: #008489;
+  text-decoration: underline;
+}
+
+.KeyboardShortcuts {
+  position: absolute;
+  color: #fff;
+  background-color: rgb(0, 166, 153);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  border: none;
+  width: 33px;
+  height: 26px;
+  bottom: 0;
+  right: 0;
+}
+
+.KeyboardShortcuts span {
+  position: absolute;
+  font-size: 16px;
+  bottom: 0;
+  right: 5px;
+}
+
+.KeyboardShortcuts:hover {
+  background-color: rgb(0, 132, 137);
+  cursor: pointer;
+}

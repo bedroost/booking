@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import axios from 'axios';
 import GuestsContainers from './containers';
+import Calendar from './components/Calendar';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,6 +40,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <Calendar />
         <GuestsContainers
           bookedDates={bookedDates}
           listingInfo={listingInfo}
