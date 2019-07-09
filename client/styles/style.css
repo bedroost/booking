@@ -100,7 +100,7 @@ body {
 }
 
 .incrementAdults, .incrementChildren, .incrementInfants {
-  grid-column: 4;
+  grid-column: 6;
   grid-row: 1;
 }
 
@@ -111,7 +111,7 @@ body {
 }
 
 .decrementAdults, .decrementChildren, .decrementInfants {
-  grid-column: 6;
+  grid-column: 4;
   grid-row: 1;
 }
 
