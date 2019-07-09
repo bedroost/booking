@@ -2,6 +2,7 @@
 import React from 'react';
 import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
+import CalendarDay from './CalendarDay';
 
 const Calendar = (props) => {
   const {
@@ -11,6 +12,7 @@ const Calendar = (props) => {
     nextMonth,
     lastMonth,
     getDay,
+    checkinDay,
   } = props;
 
   const firstDayofTheWeek = moment().add(addMonth, 'M').date(1).day();
@@ -72,27 +74,15 @@ const Calendar = (props) => {
           <tbody>
             {calendarMonth.map(week => (
               <tr className="CalenderWeek">
-                {week.map((day) => {
-                  let calendarClass = 'CalendarDay Empty';
-                  if (day) {
-                    const formattedDay = `${moment().add(addMonth, 'M').year()}-${moment().add(addMonth, 'M').month()}-${day}`;
-                    // console.log(moment(formattedDay).format('YYYY-MM-DD'));
-                    if (moment(formattedDay).isAfter(moment(listingInfo.lastAvailableDate)) || bookedDates[moment(formattedDay).format('YYYY-MM-DD')]) {
-                      calendarClass = 'CalendarDay Booked';
-                    } else {
-                      calendarClass = 'CalendarDay Available';
-                    }
-                  }
-                  return (
-                    <td>
-                      <input
-                        className={calendarClass}
-                        type="button"
-                        onClick={getDay}
-                        value={day} />
-                    </td>
-                  );
-                })}
+                {week.map(day => (
+                  <CalendarDay
+                    day={day}
+                    getDay={getDay}
+                    checkinDay={checkinDay}
+                    listingInfo={listingInfo}
+                    addMonth={addMonth}
+                    bookedDates={bookedDates} />
+                ))}
               </tr>
             ))}
           </tbody>

@@ -1,6 +1,6 @@
 const initialState = {
   addMonth: 0,
-  day: null,
+  checkinDay: null,
 };
 
 const calendarReducer = (state = initialState, action) => {
@@ -10,7 +10,10 @@ const calendarReducer = (state = initialState, action) => {
     case 'LAST_MONTH':
       return { ...state, addMonth: state.addMonth - 1 };
     case 'GET_DAY':
-      return { ...state, day: action.payload };
+      if (!state.day) {
+        return { ...state, checkinDay: action.payload };
+      }
+      return state;
     default:
       return state;
   }
