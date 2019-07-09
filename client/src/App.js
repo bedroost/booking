@@ -49,6 +49,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <CalendarContainer
+          listingInfo={listingInfo}
           bookedDates={bookedDates}
           addMonth={addMonth}
           nextMonth={nextMonth}

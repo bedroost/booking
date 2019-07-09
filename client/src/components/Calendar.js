@@ -5,6 +5,7 @@ import styles from '../../styles/calendar.module.css';
 
 const Calendar = (props) => {
   const {
+    listingInfo,
     bookedDates,
     addMonth,
     nextMonth,
@@ -14,19 +15,22 @@ const Calendar = (props) => {
 
   const firstDayofTheWeek = moment().add(addMonth, 'M').date(1).day();
   const lastDay = moment().add(addMonth, 'M').daysInMonth();
-  const month = [[], [], [], [], []];
+  const calendarMonth = [[], [], [], [], []];
   for (let i = 0; i < 7; i += 1) {
     for (let j = 0; j < 5; j += 1) {
       if (i < firstDayofTheWeek && j === 0) {
-        month[j].push(null);
-      } else if (j * 7 + i > lastDay) {
-        month[j].push(null);
+        calendarMonth[j].push('');
+      } else if (j * 7 + i - firstDayofTheWeek + 1 > lastDay) {
+        calendarMonth[j].push('');
       } else {
-        month[j].push(j * 7 + i - firstDayofTheWeek + 1);
+        calendarMonth[j].push(j * 7 + i - firstDayofTheWeek + 1);
       }
     }
   }
 
+  console.log('firstDayofTheWeek', firstDayofTheWeek);
+  console.log('lastDay', lastDay);
+  console.log('calendarMonth', calendarMonth);
   return (
     <div className="CalendarModal">
       <div className="Calendar">
@@ -66,14 +70,18 @@ const Calendar = (props) => {
         </div>
         <table>
           <tbody>
-            {month.map(week => (
+            {calendarMonth.map(week => (
               <tr className="CalenderWeek">
                 {week.map((day) => {
                   let calendarClass = 'CalendarDay Empty';
                   if (day) {
                     const formattedDay = `${moment().add(addMonth, 'M').year()}-${moment().add(addMonth, 'M').month()}-${day}`;
                     // console.log(moment(formattedDay).format('YYYY-MM-DD'));
-                    calendarClass = bookedDates[moment(formattedDay).format('YYYY-MM-DD')] ? 'CalendarDay Booked' : 'CalendarDay Available';
+                    if (moment(formattedDay).isAfter(moment(listingInfo.lastAvailableDate)) || bookedDates[moment(formattedDay).format('YYYY-MM-DD')]) {
+                      calendarClass = 'CalendarDay Booked';
+                    } else {
+                      calendarClass = 'CalendarDay Available';
+                    }
                   }
                   return (
                     <td>
