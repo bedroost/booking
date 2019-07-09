@@ -99,9 +99,26 @@ body {
   font-size: 14px;
 }
 
+.incrementAdults, .incrementChildren, .incrementInfants, .decrementAdults, .decrementChildren, .decrementInfants {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: rgb(0, 132, 137);
+  background: transparent;
+  border-width: 1px;
+  height: 32px;
+  width: 32px;
+  color: rgb(0, 132, 137);
+}
+
 .incrementAdults, .incrementChildren, .incrementInfants {
   grid-column: 4;
   grid-row: 1;
+}
+
+.incrementAdults:disabled, .incrementChildren:disabled, .incrementInfants:disabled, 
+.decrementAdults:disabled, .decrementChildren:disabled, .decrementInfants:disabled {
+  border-color: rgba(0, 132, 137, 0.3);
+  color: rgba(0, 132, 137, 0.3);
 }
 
 .countAdults, .countChildren, .countInfants {
