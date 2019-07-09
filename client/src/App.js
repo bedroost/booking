@@ -42,6 +42,7 @@ class App extends React.Component {
       nextMonth,
       lastMonth,
       getDay,
+      checkinDay,
     } = this.props;
 
     const { bookedDates, listingInfo } = this.state;
@@ -55,6 +56,7 @@ class App extends React.Component {
           nextMonth={nextMonth}
           lastMonth={lastMonth}
           getDay={getDay}
+          checkinDay={checkinDay}
         />
         <GuestsContainer
           listingInfo={listingInfo}

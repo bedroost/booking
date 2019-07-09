@@ -4,6 +4,7 @@ import { nextMonth, lastMonth, getDay } from '../actions/calendar';
 
 const mapStateToProps = state => ({
   addMonth: state.calendarReducer.addMonth,
+  checkinDay: state.calendarReducer.checkinDay,
 });
 
 const mapDispatchToProps = dispatch => ({

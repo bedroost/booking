@@ -145,6 +145,10 @@
   text-decoration: line-through;
 }
 
+.Checkin {
+  color: red;
+}
+
 .CalendarFooter {
   bottom: 0px;
   padding: 0px 24px 24px;
