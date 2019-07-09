@@ -15,8 +15,9 @@ const Calendar = (props) => {
     checkinDay,
   } = props;
 
-  const firstDayofTheWeek = moment().add(addMonth, 'M').date(1).day();
-  const lastDay = moment().add(addMonth, 'M').daysInMonth();
+  const momentAddedMonth = moment().add(addMonth, 'M');
+  const firstDayofTheWeek = momentAddedMonth.date(1).day();
+  const lastDay = momentAddedMonth.daysInMonth();
   const calendarMonth = [[], [], [], [], []];
   for (let i = 0; i < 7; i += 1) {
     for (let j = 0; j < 5; j += 1) {
@@ -66,7 +67,7 @@ const Calendar = (props) => {
         <div className="CalendarHeader">
           <div className="CalendarHeaderMonth">
             <strong>
-              {moment().add(addMonth, 'M').format('MMMM YYYY')}
+              {momentAddedMonth.format('MMMM YYYY')}
             </strong>
           </div>
         </div>
@@ -81,6 +82,7 @@ const Calendar = (props) => {
                     checkinDay={checkinDay}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
+                    momentAddedMonth={momentAddedMonth}
                     bookedDates={bookedDates} />
                 ))}
               </tr>
