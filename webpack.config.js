@@ -10,14 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /module.css$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
         ],
-        query: {
-          modules: true,
-        },
       },
       {
         test: /\.(js|jsx)?$/,
