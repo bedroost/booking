@@ -98,6 +98,7 @@
   height: 206px;
   color: rgb(72, 72, 72);
   font-weight: 700;
+  font-size: 14px;
   border: solid 1px rgb(216, 216, 216);
   border-collapse: separate;
   border-spacing: 0;
@@ -127,11 +128,11 @@
   background-color: #fff;
   height: 41px;
   width: 41px;
-  cursor: pointer;
 }
 
-.CalendarDay:hover {
+.Available:hover {
   background-color: rgb(216, 216, 216);
+  cursor: pointer;
 }
 
 .Empty {
