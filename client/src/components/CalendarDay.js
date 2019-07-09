@@ -6,9 +6,12 @@ const CalendarDay = (props) => {
   const { day, getDay, checkinDay, listingInfo, momentAddedMonth, bookedDates } = props;
   let calendarClass = 'CalendarDay Empty';
   if (day) {
-    const formattedDay = `${momentAddedMonth.year()}-${momentAddedMonth.month()}-${day}`;
+    const formattedDay = `${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${day}`;
     // console.log(moment(formattedDay).format('YYYY-MM-DD'));
-    if (moment(formattedDay).isAfter(moment(listingInfo.lastAvailableDate)) || bookedDates[moment(formattedDay).format('YYYY-MM-DD')]) {
+    // console.log(moment(momentAddedMonth), moment());
+    if (moment(formattedDay).isAfter(moment(listingInfo.lastAvailableDate))
+      || moment(formattedDay).isBefore(moment())
+      || bookedDates[moment(formattedDay).format('YYYY-MM-DD')]) {
       calendarClass = 'CalendarDay Booked';
     } else if (day === Number(checkinDay)) {
       calendarClass = 'CalendarDay Checkin';
