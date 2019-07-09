@@ -28,9 +28,9 @@ const Calendar = (props) => {
     }
   }
 
-  console.log('firstDayofTheWeek', firstDayofTheWeek);
-  console.log('lastDay', lastDay);
-  console.log('calendarMonth', calendarMonth);
+  // console.log('firstDayofTheWeek', firstDayofTheWeek);
+  // console.log('lastDay', lastDay);
+  // console.log('calendarMonth', calendarMonth);
   return (
     <div className="CalendarModal">
       <div className="Calendar">
