@@ -9,6 +9,7 @@
   position: absolute;
   top: 51px;
   left: -2px;
+  font-weight: 600;
 }
 
 .Calendar {
@@ -161,7 +162,7 @@
 
 .UpdatedToday {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2857142857142858em;
   color: #484848;
 }
@@ -174,7 +175,6 @@
 
 .ClearDates span {
   color: #008489;
-  font-weight: 500;
   grid-column: 6 / span 7;
   display: block;
   cursor: pointer;
