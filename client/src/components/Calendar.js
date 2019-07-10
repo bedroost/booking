@@ -11,7 +11,7 @@ const Calendar = (props) => {
     addMonth,
     nextMonth,
     lastMonth,
-    getDay,
+    onCheckin,
     checkinDay,
     checkinDayRow,
     checkinDayCol,
@@ -91,7 +91,7 @@ const Calendar = (props) => {
                     calendarCol={calendarCol}
                     calendarMonth={calendarMonth}
                     calendarDay={calendarDay}
-                    getDay={getDay}
+                    onCheckin={onCheckin}
                     checkinDay={checkinDay}
                     listingInfo={listingInfo}
                     addMonth={addMonth}

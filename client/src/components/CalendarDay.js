@@ -9,7 +9,7 @@ const CalendarDay = (props) => {
     calendarCol,
     calendarMonth,
     calendarDay,
-    getDay,
+    onCheckin,
     checkinDay,
     listingInfo,
     momentAddedMonth,
@@ -52,7 +52,7 @@ const CalendarDay = (props) => {
       <input
         className={calendarDayClassName}
         type="button"
-        onClick={e => getDay(e, calendarRow, calendarCol, bookedCalendarMonth)}
+        onClick={e => onCheckin(e, calendarRow, calendarCol, bookedCalendarMonth)}
         value={calendarDay}
       />
     </td>
