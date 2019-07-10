@@ -9,9 +9,9 @@ const initialState = {
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'NEXT_MONTH':
-      return { ...state, addMonth: state.addMonth + 1, checkinDay: null };
+      return { ...state, addMonth: state.addMonth + 1 };
     case 'LAST_MONTH':
-      return { ...state, addMonth: state.addMonth - 1, checkinDay: null };
+      return { ...state, addMonth: state.addMonth - 1 };
     case 'GET_DAY':
       if (!state.checkinDay) {
         return {
