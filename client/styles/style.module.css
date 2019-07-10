@@ -4,6 +4,8 @@
 }
 body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: normal;
   font-size: 16px;
   line-height: 1.43;
   color: #484848;
@@ -42,6 +44,8 @@ body {
   display: inline-flex;
   align-items: center;
   position: relative;
+  width: 326px;
+  height: 40px;
 }
 
 #arrow {
@@ -52,22 +56,18 @@ body {
 }
 
 #checkin, #checkout {
-  /* all:unset; */
+  all:unset;
   cursor: text;
   border: none;
-  padding-left: 15px;
-  width: 138px;
-  height: 38px;
+  margin: 0 15px;
+  width: 118px;
+  height: 24px;
+  font-size: 16px;
+  color: rgb(117, 117, 117);
 }
 
 #checkin:focus, #checkout:focus {
   background-color: rgb(153, 237, 230);
-}
-
-#checkin::placeholder, #checkout::placeholder {
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
-  font-weight: 200px;
 }
 
 .BookingFormButton {
