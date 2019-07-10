@@ -13,6 +13,7 @@ const Calendar = ({
   onCheckin,
   onHover,
   checkinDate,
+  hoveredDate,
 }) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
@@ -43,7 +44,7 @@ const Calendar = ({
     firstAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD');
     // set last available calendar date to be last possible check out date
     sortedBookedDatesArr = Object.keys(bookedDatesObj).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
-    console.log(sortedBookedDatesArr);
+    // console.log(sortedBookedDatesArr);
     for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
       if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
         lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
@@ -104,6 +105,7 @@ const Calendar = ({
                     onCheckin={onCheckin}
                     onHover={onHover}
                     checkinDate={checkinDate}
+                    hoveredDate={hoveredDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
                     momentAddedMonth={momentAddedMonth}

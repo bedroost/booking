@@ -11,6 +11,7 @@ const CalendarDay = ({
   onCheckin,
   onHover,
   checkinDate,
+  hoveredDate,
   bookedDatesObj,
   momentAddedMonth,
   firstAvailableCalendarDate,
@@ -28,12 +29,13 @@ const CalendarDay = ({
   // if calendar day exists
   if (calendarDay) {
     // format calendar date to moment obj
-    calendarDate = moment(`${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`, 'YYYY-MM-DD');
+    const momentCalendarDate = moment(`${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`, 'YYYY-MM-DD');
+    calendarDate = momentCalendarDate.format('YYYY-MM-DD');
 
     // check booked dates which are before today, after last available date, or in booked dates obj
-    if (calendarDate.isAfter(lastAvailableCalendarDate)
-      || calendarDate.isBefore(firstAvailableCalendarDate)
-      || bookedDatesObj[calendarDate.format('YYYY-MM-DD')]) {
+    if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
+      || momentCalendarDate.isBefore(firstAvailableCalendarDate)
+      || bookedDatesObj[calendarDate]) {
 
       calendarDayClassName = 'CalendarDay Booked';
 
@@ -41,14 +43,15 @@ const CalendarDay = ({
       bookedCalendarMonth[calendarRow][calendarCol] = 'x';
 
     // if calendar day matches checkin day
-    } else if (calendarDate.format('YYYY-MM-DD') === checkinDate) {
+    } else if (calendarDate === checkinDate) {
 
       // make calendar day background green
       calendarDayClassName = 'CalendarDay Checkin';
 
     } else {
       calendarDayClassName = 'CalendarDay Available';
-      if (checkinDate) {
+      if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
+        console.log('hovered', hoveredDate);
         calendarDayClassName = 'CalendarDay AvailableForCheckout';
       }
     }
@@ -59,8 +62,14 @@ const CalendarDay = ({
       <input
         className={calendarDayClassName}
         type="button"
-        onMouseOver={e => onHover(e)}
-        onClick={e => onCheckin(calendarDate.format('YYYY-MM-DD'), calendarRow, calendarCol, bookedCalendarMonth)}
+        onMouseEnter={(e) => {
+          if (checkinDate) {
+            if (calendarDayClassName === 'CalendarDay Available' || calendarDayClassName === 'CalendarDay AvailableForCheckout') {
+              onHover(calendarDate);
+            }
+          }
+        }}
+        onClick={e => onCheckin(calendarDate, calendarRow, calendarCol, bookedCalendarMonth)}
         value={calendarDay}
       />
     </td>

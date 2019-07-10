@@ -5,14 +5,14 @@ import { nextMonth, lastMonth, onCheckin, onHover } from '../actions/calendar';
 const mapStateToProps = state => ({
   addMonth: state.calendarReducer.addMonth,
   checkinDate: state.calendarReducer.checkinDate,
-  hoveredDate: state.hoveredDate,
+  hoveredDate: state.calendarReducer.hoveredDate,
 });
 
 const mapDispatchToProps = dispatch => ({
   nextMonth: () => dispatch(nextMonth()),
   lastMonth: () => dispatch(lastMonth()),
   onCheckin: calendarDate => dispatch(onCheckin(calendarDate)),
-  onHover: e => dispatch(onHover()),
+  onHover: calendarDate => dispatch(onHover(calendarDate)),
 });
 
 const CalendarContainer = connect(mapStateToProps, mapDispatchToProps)(Calendar);
