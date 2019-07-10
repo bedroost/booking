@@ -21,10 +21,15 @@ const onHover = calendarDate => ({
   payload: calendarDate,
 });
 
+const onClearDates = () => ({
+  type: 'CLEAR_DATES',
+});
+
 export {
   nextMonth,
   lastMonth,
   onCheckin,
   onCheckout,
   onHover,
+  onClearDates,
 };

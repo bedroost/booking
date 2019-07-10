@@ -16,6 +16,7 @@ const Calendar = ({
   checkinDate,
   checkoutDate,
   hoveredDate,
+  onClearDates,
 }) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
@@ -125,7 +126,7 @@ const Calendar = ({
       <div className="CalendarFooter">
         <div className="UpdatedToday">Updated today</div>
         <div className="CalenderWeek ClearDates">
-          <span>Clear dates</span>
+          <input type="button" onClick={() => onClearDates()} value="Clear dates" />
         </div>
       </div>
       <button className="KeyboardShortcuts">
