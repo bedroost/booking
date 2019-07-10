@@ -13,7 +13,7 @@ body {
 }
 
 .App {
-  margin: 24px;
+  margin: 0;
 }
 
 .BookingFormOutline {
@@ -21,6 +21,7 @@ body {
   padding: 0 24px;
   width: 326px;
   height: 543px;
+  margin: 0 auto;
 }
 
 .BookingFormInnerOutline {
