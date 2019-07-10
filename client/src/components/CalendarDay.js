@@ -10,7 +10,7 @@ const CalendarDay = (props) => {
     calendarMonth,
     calendarDay,
     onCheckin,
-    checkinDay,
+    checkinDate,
     listingInfo,
     momentAddedMonth,
     bookedDates
@@ -22,11 +22,12 @@ const CalendarDay = (props) => {
   // if calendar day does not exist, calendar day classname should be empty
   let calendarDayClassName = 'CalendarDay Empty';
 
+  let calendarDate = null;
+
   // if calendar day exists
   if (calendarDay) {
-
     // check booked dates which are before today, after last available date, or in booked dates obj
-    const calendarDate = `${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`;
+    calendarDate = `${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`;
     if (moment(calendarDate, 'YYYY-M-D').isAfter(moment(listingInfo.lastAvailableDate))
       || moment(calendarDate, 'YYYY-M-D').isBefore(moment())
       || bookedDates[moment(calendarDate, 'YYYY-M-D').format('YYYY-MM-DD')]) {
@@ -37,7 +38,7 @@ const CalendarDay = (props) => {
       bookedCalendarMonth[calendarRow][calendarCol] = 'x';
 
     // if calendar day matches checkin day
-    } else if (calendarDay === Number(checkinDay)) {
+    } else if (calendarDate === checkinDate) {
 
       // make calendar day background green
       calendarDayClassName = 'CalendarDay Checkin';
@@ -52,7 +53,7 @@ const CalendarDay = (props) => {
       <input
         className={calendarDayClassName}
         type="button"
-        onClick={e => onCheckin(e, calendarRow, calendarCol, bookedCalendarMonth)}
+        onClick={e => onCheckin(calendarDate, calendarRow, calendarCol, bookedCalendarMonth)}
         value={calendarDay}
       />
     </td>
