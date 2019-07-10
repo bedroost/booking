@@ -26,10 +26,10 @@ const CalendarDay = (props) => {
   if (calendarDay) {
 
     // check booked dates which are before today, after last available date, or in booked dates obj
-    const formattedDay = `${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`;
-    if (moment(formattedDay, 'YYYY-M-D').isAfter(moment(listingInfo.lastAvailableDate))
-      || moment(formattedDay, 'YYYY-M-D').isBefore(moment())
-      || bookedDates[moment(formattedDay, 'YYYY-M-D').format('YYYY-MM-DD')]) {
+    const calendarDate = `${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`;
+    if (moment(calendarDate, 'YYYY-M-D').isAfter(moment(listingInfo.lastAvailableDate))
+      || moment(calendarDate, 'YYYY-M-D').isBefore(moment())
+      || bookedDates[moment(calendarDate, 'YYYY-M-D').format('YYYY-MM-DD')]) {
 
       calendarDayClassName = 'CalendarDay Booked';
 
