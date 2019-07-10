@@ -45,11 +45,17 @@ const CalendarDay = ({
       bookedCalendarMonth[calendarRow][calendarCol] = 'x';
 
     // if calendar day matches checkin day
-    } else if (calendarDate === checkinDate || checkoutDate) {
+    } else if (calendarDate === checkinDate) {
 
       // make calendar day background green
       calendarDayClassName = 'CalendarDay Checkin';
 
+    } else if (checkoutDate) {
+      if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
+        calendarDayClassName = 'CalendarDay Checkin';
+      } else {
+        calendarDayClassName = 'CalendarDay Booked';
+      }
     } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
       // console.log('hovered', hoveredDate);
       calendarDayClassName = 'CalendarDay AvailableForCheckout';
