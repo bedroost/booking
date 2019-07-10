@@ -60,12 +60,7 @@ class App extends React.Component {
                     <input id="checkout" placeholder="Checkout" disabled></input>
                     <CalendarContainer
                       listingInfo={listingInfo}
-                      bookedDates={bookedDates}
-                      addMonth={addMonth}
-                      nextMonth={nextMonth}
-                      lastMonth={lastMonth}
-                      getDay={getDay}
-                      checkinDay={checkinDay}
+                      bookedDatesObj={bookedDatesObj}
                     />
                   </div>
                 </div>
