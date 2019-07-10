@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookedDates: {},
+      bookedDatesObj: {},
       listingInfo: { maxGuests: 2 },
     };
   }
@@ -24,43 +24,19 @@ class App extends React.Component {
           bookedDatesObj[el.bookedDate] = true;
         });
         this.setState({
-          bookedDates: bookedDatesObj,
+          bookedDatesObj,
           listingInfo,
         });
       });
   }
 
   render() {
-    const {
-      countAdults,
-      incrementAdults,
-      decrementAdults,
-      countChildren,
-      incrementChildren,
-      decrementChildren,
-      incrementInfants,
-      decrementInfants,
-      addMonth,
-      nextMonth,
-      lastMonth,
-      getDay,
-      checkinDay,
-    } = this.props;
-
-    const { bookedDates, listingInfo } = this.state;
+    const { bookedDatesObj, listingInfo } = this.state;
 
     return (
       <div className="App">
         <GuestsContainer
           listingInfo={listingInfo}
-          countAdults={countAdults}
-          incrementAdults={incrementAdults}
-          decrementAdults={decrementAdults}
-          countChildren={countChildren}
-          incrementChildren={incrementChildren}
-          decrementChildren={decrementChildren}
-          incrementInfants={incrementInfants}
-          decrementInfants={decrementInfants}
         />
         <div className="BookingFormOutline">
           <div className="BookingFormInnerOutline">
