@@ -19,9 +19,7 @@ const calendarReducer = (state = initialState, action) => {
       }
       return state;
     case 'HOVER':
-      return { ...state
-        // , hoveredDate: action.payload 
-      };
+      return { ...state, hoveredDate: action.payload };
     default:
       return state;
   }

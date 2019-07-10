@@ -11,9 +11,9 @@ const onCheckin = calendarDate => ({
   payload: calendarDate,
 });
 
-const onHover = e => ({
+const onHover = calendarDate => ({
   type: 'HOVER',
-  // payload: e.target,
+  payload: calendarDate,
 });
 
 export {
