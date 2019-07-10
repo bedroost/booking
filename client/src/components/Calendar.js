@@ -17,6 +17,7 @@ const Calendar = ({
   checkoutDate,
   hoveredDate,
   onClearDates,
+  isCalendarToggled,
 }) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
@@ -58,7 +59,7 @@ const Calendar = ({
   }
 
   return (
-    <div className="CalendarModal">
+    <div className="CalendarModal" style={isCalendarToggled ? { visibility: 'visible' } : { visibility: 'hidden' }}>
       <div className="Calendar">
         <div className="CalendarMonth">
           <button
