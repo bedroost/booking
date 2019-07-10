@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Calendar from '../components/Calendar';
-import { nextMonth, lastMonth, getDay } from '../actions/calendar';
+import { nextMonth, lastMonth, onCheckin } from '../actions/calendar';
 
 const mapStateToProps = state => ({
   addMonth: state.calendarReducer.addMonth,
@@ -13,8 +13,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   nextMonth: () => dispatch(nextMonth()),
   lastMonth: () => dispatch(lastMonth()),
-  getDay: (e, calendarRow, calendarCol, bookedCalendarMonth) => (
-    dispatch(getDay(e, calendarRow, calendarCol, bookedCalendarMonth))
+  onCheckin: (e, calendarRow, calendarCol, bookedCalendarMonth) => (
+    dispatch(onCheckin(e, calendarRow, calendarCol, bookedCalendarMonth))
   ),
 });
 

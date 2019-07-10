@@ -43,7 +43,7 @@ class App extends React.Component {
       addMonth,
       nextMonth,
       lastMonth,
-      getDay,
+      onCheckin,
       checkinDay,
     } = this.props;
 
