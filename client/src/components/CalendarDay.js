@@ -9,8 +9,10 @@ const CalendarDay = ({
   calendarMonth,
   calendarDay,
   onCheckin,
+  onCheckout,
   onHover,
   checkinDate,
+  checkoutDate,
   hoveredDate,
   bookedDatesObj,
   momentAddedMonth,
@@ -51,7 +53,7 @@ const CalendarDay = ({
     } else {
       calendarDayClassName = 'CalendarDay Available';
       if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
-        console.log('hovered', hoveredDate);
+        // console.log('hovered', hoveredDate);
         calendarDayClassName = 'CalendarDay AvailableForCheckout';
       }
     }
@@ -62,19 +64,19 @@ const CalendarDay = ({
       <input
         className={calendarDayClassName}
         type="button"
-        onMouseEnter={(e) => {
+        onMouseEnter={() => {
           if (checkinDate) {
             if (calendarDayClassName === 'CalendarDay Available' || calendarDayClassName === 'CalendarDay AvailableForCheckout') {
               onHover(calendarDate);
             }
           }
         }}
-        onMouseLeave={(e) => {
-          if (hoveredDate) {
+        onMouseLeave={() => {
+          if (hoveredDate && !checkoutDate) {
             onHover(null);
           }
         }}
-        onClick={e => onCheckin(calendarDate, calendarRow, calendarCol, bookedCalendarMonth)}
+        onClick={checkinDate ? e => onCheckout(calendarDate) : e => onCheckin(calendarDate)}
         value={calendarDay}
       />
     </td>

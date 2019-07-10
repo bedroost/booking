@@ -11,8 +11,10 @@ const Calendar = ({
   nextMonth,
   lastMonth,
   onCheckin,
+  onCheckout,
   onHover,
   checkinDate,
+  checkoutDate,
   hoveredDate,
 }) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
@@ -103,8 +105,10 @@ const Calendar = ({
                     calendarMonth={calendarMonth}
                     calendarDay={calendarDay}
                     onCheckin={onCheckin}
+                    onCheckout={onCheckout}
                     onHover={onHover}
                     checkinDate={checkinDate}
+                    checkoutDate={checkoutDate}
                     hoveredDate={hoveredDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
