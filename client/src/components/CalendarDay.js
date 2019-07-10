@@ -69,6 +69,11 @@ const CalendarDay = ({
             }
           }
         }}
+        onMouseLeave={(e) => {
+          if (hoveredDate) {
+            onHover(null);
+          }
+        }}
         onClick={e => onCheckin(calendarDate, calendarRow, calendarCol, bookedCalendarMonth)}
         value={calendarDay}
       />
