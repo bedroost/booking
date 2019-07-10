@@ -38,19 +38,39 @@ body {
   border: 1px solid #e4e4e4;
 }
 
+.Checking {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
 #arrow {
+  height: 24px;
   width: 24px;
-  height: 40px;
+  display: inline-block;
+  fill: currentcolor;
 }
 
 #checkin, #checkout {
+  /* all:unset; */
+  cursor: text;
   border: none;
-  padding: 1px;
-  width: 148px;
+  padding-left: 15px;
+  width: 138px;
   height: 38px;
 }
 
-.BookingForm button {
+#checkin:focus, #checkout:focus {
+  background-color: rgb(153, 237, 230);
+}
+
+#checkin::placeholder, #checkout::placeholder {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 200px;
+}
+
+.BookingFormButton {
   width: 278px;
   padding: 10px 22px;
   border-radius: 4px;
@@ -71,6 +91,20 @@ body {
   color: #ffffff;  
 }
 
+.BookingFormHeaderPrice {
+  line-height: 10px;
+  height: 28px;
+}
+
+.BookingFormHeaderStars {
+  height: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.33333em;
+  display: inline-flex;
+  align-items: center;
+}
+
 .Price {
   overflow-wrap: break-word;
   font-size: 22px;
@@ -80,8 +114,22 @@ body {
 }
 
 .Stars {
-  display: block !important;
-  /* background-size: 9px 9px !important;
-  height: 10px !important; */
+  display: inline-block;
+  width: 50px;
+  height: 10px;
   background-image: url(../images/stars.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Dates, .Guests {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.DatesText, .GuestsText {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3333333333333333em;
+  color: #484848;
 }
