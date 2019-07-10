@@ -1,6 +1,7 @@
 const initialState = {
   addMonth: 0,
   checkinDate: null,
+  checkoutDate: null,
   hoveredDate: null,
 };
 
@@ -22,6 +23,13 @@ const calendarReducer = (state = initialState, action) => {
       return { ...state, checkoutDate: action.payload };
     case 'HOVER':
       return { ...state, hoveredDate: action.payload };
+    case 'CLEAR_DATES':
+      return {
+        ...state,
+        checkinDate: null,
+        hoveredDate: null,
+        checkoutDate: null,
+      };
     default:
       return state;
   }

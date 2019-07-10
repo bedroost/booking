@@ -45,17 +45,16 @@ const CalendarDay = ({
       bookedCalendarMonth[calendarRow][calendarCol] = 'x';
 
     // if calendar day matches checkin day
-    } else if (calendarDate === checkinDate) {
+    } else if (calendarDate === checkinDate || checkoutDate) {
 
       // make calendar day background green
       calendarDayClassName = 'CalendarDay Checkin';
 
+    } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
+      // console.log('hovered', hoveredDate);
+      calendarDayClassName = 'CalendarDay AvailableForCheckout';
     } else {
       calendarDayClassName = 'CalendarDay Available';
-      if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
-        // console.log('hovered', hoveredDate);
-        calendarDayClassName = 'CalendarDay AvailableForCheckout';
-      }
     }
   }
 
@@ -65,7 +64,7 @@ const CalendarDay = ({
         className={calendarDayClassName}
         type="button"
         onMouseEnter={() => {
-          if (checkinDate) {
+          if (checkinDate && !checkoutDate) {
             if (calendarDayClassName === 'CalendarDay Available' || calendarDayClassName === 'CalendarDay AvailableForCheckout') {
               onHover(calendarDate);
             }

@@ -31,6 +31,8 @@
 }
 
 .incrementAdults, .incrementChildren, .incrementInfants, .decrementAdults, .decrementChildren, .decrementInfants {
+  all: unset;
+  cursor: pointer;
   border-radius: 50%;
   border-style: solid;
   border-color: rgb(0, 132, 137);
@@ -40,9 +42,9 @@
   width: 32px;
   color: rgb(0, 132, 137);
   justify-self: center;
-  /* text-align: center;
+  text-align: center;
   vertical-align: middle;
-  line-height: 32px; */
+  line-height: 32px;
   font-size: 14px;
 }
 

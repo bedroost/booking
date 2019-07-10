@@ -179,7 +179,8 @@
   justify-items: center;
 }
 
-.ClearDates span {
+.ClearDates input {
+  all: unset;
   color: #008489;
   grid-column: 6 / span 7;
   display: block;
