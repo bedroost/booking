@@ -4,6 +4,7 @@
   padding: 10px 16px 0 16px;
   border: 1px solid #e4e4e4;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+  font-weight: 600;
   font-size: 16px;
 }
 
@@ -18,15 +19,20 @@
 .textAdults, .textChildren, .textInfants {
   grid-column: 1 / span 3;
   grid-row: 1;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;
 }
 
-.age {
-  font-weight: 200;
+.age, .MaxGuestsText {
   font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2857142857142858em;
 }
 
 .incrementAdults, .incrementChildren, .incrementInfants, .decrementAdults, .decrementChildren, .decrementInfants {
+  all: unset;
+  cursor: pointer;
   border-radius: 50%;
   border-style: solid;
   border-color: rgb(0, 132, 137);
@@ -36,9 +42,9 @@
   width: 32px;
   color: rgb(0, 132, 137);
   justify-self: center;
-  /* text-align: center;
+  text-align: center;
   vertical-align: middle;
-  line-height: 32px; */
+  line-height: 32px;
   font-size: 14px;
 }
 
@@ -57,6 +63,9 @@
   grid-column: 5;
   grid-row: 1;
   text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.375em;  
 }
 
 .decrementAdults, .decrementChildren, .decrementInfants {
@@ -78,11 +87,11 @@
   border:none; 
   padding:0;
   font: inherit;
-  font-weight: 500;
   display: block;
   cursor: pointer;
   text-decoration: none;
   justify-self: center;
+  line-height: 22px;
 }
 
 .CloseButton:hover {
@@ -91,9 +100,4 @@
 
 .MaxGuestsTextRow {
   margin-top: 10px;
-}
-
-.MaxGuestsText {
-  font-weight: 200;
-  font-size: 14px;
 }

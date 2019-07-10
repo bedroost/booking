@@ -4,17 +4,20 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 import CalendarDay from './CalendarDay';
 
-const Calendar = (props) => {
-  const {
-    listingInfo,
-    bookedDates,
-    addMonth,
-    nextMonth,
-    lastMonth,
-    getDay,
-    checkinDay,
-  } = props;
-
+const Calendar = ({
+  listingInfo,
+  bookedDatesObj,
+  addMonth,
+  nextMonth,
+  lastMonth,
+  onCheckin,
+  onCheckout,
+  onHover,
+  checkinDate,
+  checkoutDate,
+  hoveredDate,
+  onClearDates,
+}) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
   const lastDay = momentAddedMonth.daysInMonth();
@@ -34,6 +37,26 @@ const Calendar = (props) => {
   // console.log('firstDayofTheWeek', firstDayofTheWeek);
   // console.log('lastDay', lastDay);
   // console.log('calendarMonth', calendarMonth);
+  // console.log(bookedDatesObj);
+
+  let firstAvailableCalendarDate = moment();
+  let lastAvailableCalendarDate = listingInfo.lastAvailableDate;
+  let sortedBookedDatesArr = null;
+  if (checkinDate) {
+    // set first available calendar date to be checkindate
+    firstAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD');
+    // set last available calendar date to be last possible check out date
+    sortedBookedDatesArr = Object.keys(bookedDatesObj).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
+    // console.log(sortedBookedDatesArr);
+    for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
+      if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
+        lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
+        bookedDatesObj[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
+        break;
+      }
+    }
+  }
+
   return (
     <div className="CalendarModal">
       <div className="Calendar">
@@ -73,17 +96,27 @@ const Calendar = (props) => {
         </div>
         <table>
           <tbody>
-            {calendarMonth.map(week => (
+            {calendarMonth.map((calendarWeek, calendarRow) => (
               <tr className="CalenderWeek">
-                {week.map(day => (
+                {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
-                    day={day}
-                    getDay={getDay}
-                    checkinDay={checkinDay}
+                    bookedDatesObj={bookedDatesObj}
+                    calendarRow={calendarRow}
+                    calendarCol={calendarCol}
+                    calendarMonth={calendarMonth}
+                    calendarDay={calendarDay}
+                    onCheckin={onCheckin}
+                    onCheckout={onCheckout}
+                    onHover={onHover}
+                    checkinDate={checkinDate}
+                    checkoutDate={checkoutDate}
+                    hoveredDate={hoveredDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
                     momentAddedMonth={momentAddedMonth}
-                    bookedDates={bookedDates} />
+                    firstAvailableCalendarDate={firstAvailableCalendarDate}
+                    lastAvailableCalendarDate={lastAvailableCalendarDate}
+                    />
                 ))}
               </tr>
             ))}
@@ -93,7 +126,7 @@ const Calendar = (props) => {
       <div className="CalendarFooter">
         <div className="UpdatedToday">Updated today</div>
         <div className="CalenderWeek ClearDates">
-          <span>Clear dates</span>
+          <input type="button" onClick={() => onClearDates()} value="Clear dates" />
         </div>
       </div>
       <button className="KeyboardShortcuts">
