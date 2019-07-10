@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import axios from 'axios';
 import GuestsContainer from '../containers/guests';
@@ -35,11 +37,15 @@ class BookingForm extends React.Component {
     const { onToggleCalendar, isCalendarToggled } = this.props;
 
     return (
-      <div className="BookingForm">
+      <div>
         <GuestsContainer
           listingInfo={listingInfo}
         />
-        <div className="BookingFormOutline">
+        <div
+          className="BookingFormOutline"
+          role="button"
+          onClick={isCalendarToggled ? () => onToggleCalendar() : null}
+        >
           <div className="BookingFormInnerOutline">
             <div className="BookingFormHeader">
               <div className="BookingFormHeaderPrice">
@@ -60,13 +66,19 @@ class BookingForm extends React.Component {
                       type="button"
                       id="checkin"
                       value="Check-in"
-                      onClick={() => {console.log(onToggleCalendar)}}
+                      onClick={isCalendarToggled ? null : () => onToggleCalendar()}
                     />
-                      <svg id="arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" ><path d="m0 12.5a.5.5 0 0 0 .5.5h21.79l-6.15 6.15a.5.5 0 1 0 .71.71l7-7v-.01a.5.5 0 0 0 .14-.35.5.5 0 0 0 -.14-.35v-.01l-7-7a .5.5 0 0 0 -.71.71l6.15 6.15h-21.79a.5.5 0 0 0 -.5.5z"></path></svg>
-                    <input type="button" id="checkout" value="Checkout"></input>
+                    <svg id="arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" ><path d="m0 12.5a.5.5 0 0 0 .5.5h21.79l-6.15 6.15a.5.5 0 1 0 .71.71l7-7v-.01a.5.5 0 0 0 .14-.35.5.5 0 0 0 -.14-.35v-.01l-7-7a .5.5 0 0 0 -.71.71l6.15 6.15h-21.79a.5.5 0 0 0 -.5.5z"></path></svg>
+                    <input
+                      type="button"
+                      id="checkout"
+                      value="Checkout"
+                      onClick={isCalendarToggled ? null : () => onToggleCalendar()}
+                    />
                     <CalendarContainer
                       listingInfo={listingInfo}
                       bookedDatesObj={bookedDatesObj}
+                      isCalendarToggled={isCalendarToggled}
                     />
                   </div>
                 </div>

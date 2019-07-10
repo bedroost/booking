@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
+import BookingForm from '../components/BookingForm';
 
 import {
   onToggleCalendar,
-} from '../actions/bookingform';
+} from '../actions/bookingForm';
 
 const mapStateToProps = state => ({
-  isCalendarToggled: state.calendarReducer.isCalendarToggled,
+  isCalendarToggled: state.bookingFormReducer.isCalendarToggled,
 });
 
 const mapDispatchToProps = dispatch => ({
   onToggleCalendar: () => dispatch(onToggleCalendar()),
-})
+});
 
 const BookingFormContainer = connect(mapStateToProps, mapDispatchToProps)(BookingForm);
 
