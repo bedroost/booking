@@ -4,20 +4,16 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 import CalendarDay from './CalendarDay';
 
-const Calendar = (props) => {
-  const {
-    listingInfo,
-    bookedDates,
-    addMonth,
-    nextMonth,
-    lastMonth,
-    onCheckin,
-    checkinDate,
-    checkinDayRow,
-    checkinDayCol,
-    checkinCalendarMonth,
-  } = props;
-
+const Calendar = ({
+  listingInfo,
+  bookedDatesObj,
+  addMonth,
+  nextMonth,
+  lastMonth,
+  onCheckin,
+  onHover,
+  checkinDate,
+}) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
   const lastDay = momentAddedMonth.daysInMonth();
@@ -36,14 +32,27 @@ const Calendar = (props) => {
 
   // console.log('firstDayofTheWeek', firstDayofTheWeek);
   // console.log('lastDay', lastDay);
-  console.log('calendarMonth', calendarMonth);
+  // console.log('calendarMonth', calendarMonth);
+  // console.log(bookedDatesObj);
 
-  // if checkinDate exists
+  let firstAvailableCalendarDate = moment();
+  let lastAvailableCalendarDate = listingInfo.lastAvailableDate;
+  let sortedBookedDatesArr = null;
   if (checkinDate) {
-    console.log('checkin calendarMonth', checkinCalendarMonth);
-    // make contiguous days available for checkout
-    // block non-contiguous days for checkout
+    // set first available calendar date to be checkindate
+    firstAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD');
+    // set last available calendar date to be last possible check out date
+    sortedBookedDatesArr = Object.keys(bookedDatesObj).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
+    console.log(sortedBookedDatesArr);
+    for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
+      if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
+        lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
+        bookedDatesObj[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
+        break;
+      }
+    }
   }
+
   return (
     <div className="CalendarModal">
       <div className="Calendar">
@@ -87,16 +96,20 @@ const Calendar = (props) => {
               <tr className="CalenderWeek">
                 {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
+                    bookedDatesObj={bookedDatesObj}
                     calendarRow={calendarRow}
                     calendarCol={calendarCol}
                     calendarMonth={calendarMonth}
                     calendarDay={calendarDay}
                     onCheckin={onCheckin}
+                    onHover={onHover}
                     checkinDate={checkinDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
                     momentAddedMonth={momentAddedMonth}
-                    bookedDates={bookedDates} />
+                    firstAvailableCalendarDate={firstAvailableCalendarDate}
+                    lastAvailableCalendarDate={lastAvailableCalendarDate}
+                    />
                 ))}
               </tr>
             ))}

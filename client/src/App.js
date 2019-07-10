@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bookedDates: {},
+      bookedDatesObj: {},
       listingInfo: { maxGuests: 2 },
     };
   }
@@ -24,7 +24,7 @@ class App extends React.Component {
           bookedDatesObj[el.bookedDate] = true;
         });
         this.setState({
-          bookedDates: bookedDatesObj,
+          bookedDatesObj,
           listingInfo,
         });
       });
@@ -47,7 +47,7 @@ class App extends React.Component {
       checkinDay,
     } = this.props;
 
-    const { bookedDates, listingInfo } = this.state;
+    const { bookedDatesObj, listingInfo } = this.state;
 
     return (
       <div className="App">

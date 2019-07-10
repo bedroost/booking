@@ -1,9 +1,7 @@
 const initialState = {
   addMonth: 0,
   checkinDate: null,
-  checkinDayRow: null,
-  checkinDayCol: null,
-  checkinCalendarMonth: [],
+  hoveredDate: null,
 };
 
 const calendarReducer = (state = initialState, action) => {
@@ -16,13 +14,14 @@ const calendarReducer = (state = initialState, action) => {
       if (!state.checkinDate) {
         return {
           ...state,
-          checkinDate: action.payload[0],
-          checkinDayRow: action.payload[1],
-          checkinDayCol: action.payload[2],
-          checkinCalendarMonth: action.payload[3],
+          checkinDate: action.payload,
         };
       }
       return state;
+    case 'HOVER':
+      return { ...state
+        // , hoveredDate: action.payload 
+      };
     default:
       return state;
   }

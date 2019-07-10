@@ -6,13 +6,19 @@ const lastMonth = () => ({
   type: 'LAST_MONTH',
 });
 
-const onCheckin = (calendarDate, calendarRow, calendarCol, bookedCalendarMonth) => ({
+const onCheckin = calendarDate => ({
   type: 'CHECK_IN',
-  payload: [calendarDate, calendarRow, calendarCol, bookedCalendarMonth],
+  payload: calendarDate,
+});
+
+const onHover = e => ({
+  type: 'HOVER',
+  // payload: e.target,
 });
 
 export {
   nextMonth,
   lastMonth,
   onCheckin,
+  onHover,
 };
