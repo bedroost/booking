@@ -12,7 +12,7 @@ const Calendar = (props) => {
     nextMonth,
     lastMonth,
     onCheckin,
-    checkinDay,
+    checkinDate,
     checkinDayRow,
     checkinDayCol,
     checkinCalendarMonth,
@@ -38,8 +38,8 @@ const Calendar = (props) => {
   // console.log('lastDay', lastDay);
   console.log('calendarMonth', calendarMonth);
 
-  // if checkinday exists
-  if (checkinDay) {
+  // if checkinDate exists
+  if (checkinDate) {
     console.log('checkin calendarMonth', checkinCalendarMonth);
     // make contiguous days available for checkout
     // block non-contiguous days for checkout
@@ -92,7 +92,7 @@ const Calendar = (props) => {
                     calendarMonth={calendarMonth}
                     calendarDay={calendarDay}
                     onCheckin={onCheckin}
-                    checkinDay={checkinDay}
+                    checkinDate={checkinDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
                     momentAddedMonth={momentAddedMonth}

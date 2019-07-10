@@ -4,7 +4,7 @@ import { nextMonth, lastMonth, onCheckin } from '../actions/calendar';
 
 const mapStateToProps = state => ({
   addMonth: state.calendarReducer.addMonth,
-  checkinDay: state.calendarReducer.checkinDay,
+  checkinDate: state.calendarReducer.checkinDate,
   checkinDayRow: state.calendarReducer.checkinDayRow,
   checkinDayCol: state.calendarReducer.checkinDayRow,
   checkinCalendarMonth: state.calendarReducer.checkinCalendarMonth,
@@ -13,8 +13,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   nextMonth: () => dispatch(nextMonth()),
   lastMonth: () => dispatch(lastMonth()),
-  onCheckin: (e, calendarRow, calendarCol, bookedCalendarMonth) => (
-    dispatch(onCheckin(e, calendarRow, calendarCol, bookedCalendarMonth))
+  onCheckin: (calendarDate, calendarRow, calendarCol, bookedCalendarMonth) => (
+    dispatch(onCheckin(calendarDate, calendarRow, calendarCol, bookedCalendarMonth))
   ),
 });
 
