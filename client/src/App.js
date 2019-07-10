@@ -3,6 +3,7 @@ import axios from 'axios';
 import GuestsContainer from './containers/guests';
 import CalendarContainer from './containers/calendar';
 import styles from '../styles/style.module.css';
+import stars from '../images/stars.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class App extends React.Component {
               <span className="Price">$49 </span>
               <span className="PriceDesc">per night</span>
               <div>
-                <span>***** 144</span>
+                <span className="Stars">***** 144</span>
               </div>
             </div>
             <form>

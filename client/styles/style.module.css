@@ -70,3 +70,18 @@ body {
   /* font-weight: 500; */
   color: #ffffff;  
 }
+
+.Price {
+  overflow-wrap: break-word;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.44444em;
+  color: rgb(72, 72, 72);
+}
+
+.Stars {
+  display: block !important;
+  /* background-size: 9px 9px !important;
+  height: 10px !important; */
+  background-image: url(../images/stars.png);
+}
