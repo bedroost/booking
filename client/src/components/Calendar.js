@@ -13,6 +13,9 @@ const Calendar = (props) => {
     lastMonth,
     getDay,
     checkinDay,
+    checkinDayRow,
+    checkinDayCol,
+    checkinCalendarMonth,
   } = props;
 
   const momentAddedMonth = moment().add(addMonth, 'M');
@@ -33,7 +36,14 @@ const Calendar = (props) => {
 
   // console.log('firstDayofTheWeek', firstDayofTheWeek);
   // console.log('lastDay', lastDay);
-  // console.log('calendarMonth', calendarMonth);
+  console.log('calendarMonth', calendarMonth);
+
+  // if checkinday exists
+  if (checkinDay) {
+    console.log('checkin calendarMonth', checkinCalendarMonth);
+    // make contiguous days available for checkout
+    // block non-contiguous days for checkout
+  }
   return (
     <div className="CalendarModal">
       <div className="Calendar">
@@ -73,11 +83,14 @@ const Calendar = (props) => {
         </div>
         <table>
           <tbody>
-            {calendarMonth.map(week => (
+            {calendarMonth.map((calendarWeek, calendarRow) => (
               <tr className="CalenderWeek">
-                {week.map(day => (
+                {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
-                    day={day}
+                    calendarRow={calendarRow}
+                    calendarCol={calendarCol}
+                    calendarMonth={calendarMonth}
+                    calendarDay={calendarDay}
                     getDay={getDay}
                     checkinDay={checkinDay}
                     listingInfo={listingInfo}
