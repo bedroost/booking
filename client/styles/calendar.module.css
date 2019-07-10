@@ -140,6 +140,12 @@
   cursor: pointer;
 }
 
+.AvailableForCheckout {
+  background-color: rgb(153, 237, 230);
+  color: #fff;
+  cursor: pointer;
+}
+
 .Empty {
   /* border: 1px solid white; */
 }
