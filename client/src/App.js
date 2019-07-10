@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import GuestsContainer from './containers/guests';
 import CalendarContainer from './containers/calendar';
+import styles from '../styles/style.module.css';
 
 class App extends React.Component {
   constructor(props) {
