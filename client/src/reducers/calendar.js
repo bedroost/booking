@@ -18,6 +18,8 @@ const calendarReducer = (state = initialState, action) => {
         };
       }
       return state;
+    case 'CHECK_OUT':
+      return { ...state, checkoutDate: action.payload };
     case 'HOVER':
       return { ...state, hoveredDate: action.payload };
     default:

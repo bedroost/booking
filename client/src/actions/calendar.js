@@ -11,6 +11,11 @@ const onCheckin = calendarDate => ({
   payload: calendarDate,
 });
 
+const onCheckout = calendarDate => ({
+  type: 'CHECK_OUT',
+  payload: calendarDate,
+});
+
 const onHover = calendarDate => ({
   type: 'HOVER',
   payload: calendarDate,
@@ -20,5 +25,6 @@ export {
   nextMonth,
   lastMonth,
   onCheckin,
+  onCheckout,
   onHover,
 };

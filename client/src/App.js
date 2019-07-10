@@ -31,36 +31,12 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      countAdults,
-      incrementAdults,
-      decrementAdults,
-      countChildren,
-      incrementChildren,
-      decrementChildren,
-      incrementInfants,
-      decrementInfants,
-      addMonth,
-      nextMonth,
-      lastMonth,
-      onCheckin,
-      checkinDay,
-    } = this.props;
-
     const { bookedDatesObj, listingInfo } = this.state;
 
     return (
       <div className="App">
         <GuestsContainer
           listingInfo={listingInfo}
-          countAdults={countAdults}
-          incrementAdults={incrementAdults}
-          decrementAdults={decrementAdults}
-          countChildren={countChildren}
-          incrementChildren={incrementChildren}
-          decrementChildren={decrementChildren}
-          incrementInfants={incrementInfants}
-          decrementInfants={decrementInfants}
         />
         <div className="BookingFormOutline">
           <div className="BookingFormInnerOutline">
