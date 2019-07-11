@@ -14,6 +14,7 @@ const Guests = (props) => {
     countInfants,
     incrementInfants,
     decrementInfants,
+    isGuestsToggled,
   } = props;
 
   const allowDecrementAdults = countAdults === 1;
@@ -24,7 +25,7 @@ const Guests = (props) => {
   const allowIncrementChildren = allowIncrementAdults;
 
   return (
-    <div className="GuestModal">
+    <div className="GuestModal" style={isGuestsToggled ? { visibility: 'visible' } : { visibility: 'hidden' }}>
       <div className="GuestRow">
         <div className="textAdults">Adults</div>
         <input

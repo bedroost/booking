@@ -85,11 +85,17 @@ class BookingForm extends React.Component {
                     </div>
                   </div>
                   <span className="GuestsText">Guests</span>
-                  <input
+                  <div
                     className="Guests"
-                    type="button"
-                    onClick={() => onToggleGuests()}
-                  />
+                    role="button"
+                    onClick={isGuestsToggled ? null : () => onToggleGuests()}
+                  >
+                    <input id="guests" value="1 guest" type="button"></input>
+                    {isGuestsToggled
+                      ? <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{ height: '16px', width: '16px', display: 'block', fill: 'currentcolor' }}><path d="m1.71 13.71a1 1 0 1 1 -1.42-1.42l8-8a1 1 0 0 1 1.41 0l8 8a1 1 0 1 1 -1.41 1.42l-7.29-7.29z" fillRule="evenodd"></path></svg>
+                      : <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{ height: '16px', width: '16px', display: 'block', fill: 'currentcolor' }}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"></path></svg>
+                    }
+                  </div>
                   <div className="Details">
                     {/* <div>
                       <span>$49 x 2 nights</span>
@@ -126,9 +132,10 @@ class BookingForm extends React.Component {
           bookedDatesObj={bookedDatesObj}
           isCalendarToggled={isCalendarToggled}
         />
-        {/* <GuestsContainer
+        <GuestsContainer
           listingInfo={listingInfo}
-        /> */}
+          isGuestsToggled={isGuestsToggled}
+        />
       </div>
     );
   }
