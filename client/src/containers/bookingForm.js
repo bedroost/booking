@@ -12,6 +12,9 @@ const mapStateToProps = state => ({
   eventTargetName: state.bookingFormReducer.eventTargetName,
   checkinDate: state.calendarReducer.checkinDate,
   checkoutDate: state.calendarReducer.checkoutDate,
+  countAdults: state.guestsReducer.countAdults,
+  countChildren: state.guestsReducer.countChildren,
+  countInfants: state.guestsReducer.countInfants,
 });
 
 const mapDispatchToProps = dispatch => ({
