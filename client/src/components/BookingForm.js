@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import GuestsContainer from '../containers/guests';
 import CalendarContainer from '../containers/calendar';
 import styles from '../../styles/style.module.css';
@@ -40,7 +41,12 @@ class BookingForm extends React.Component {
       isCalendarToggled,
       isGuestsToggled,
       eventTargetName,
+      checkinDate,
+      checkoutDate,
     } = this.props;
+
+    console.log('checkin', checkinDate);
+    console.log('checkout', checkoutDate);
 
     return (
       <div className="Booking">
@@ -60,7 +66,7 @@ class BookingForm extends React.Component {
             <div className="BookingFormInnerOutline">
               <div className="BookingFormHeader">
                 <div className="BookingFormHeaderPrice">
-                  <span className="Price">$49 </span>
+                  <span className="Price">${listingInfo.basePrice} </span>
                   <span className="PriceDesc">per night</span>
                 </div>
                 <div className="BookingFormHeaderStars">
@@ -76,7 +82,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkin"
-                        value="Check-in"
+                        value={checkinDate ? moment(checkinDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Check-in'}
                         name="Checkin"
                         onClick={e => onToggleCalendar(e)}
                       />
@@ -84,7 +90,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkout"
-                        value="Checkout"
+                        value={checkoutDate ? moment(checkoutDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Checkout'}
                         name="Checkout"
                         onClick={e => onToggleCalendar(e)}
                       />
@@ -119,14 +125,15 @@ class BookingForm extends React.Component {
                   <button className="BookingFormButton" type="button">
                     <span>Start Booking</span>
                   </button>
-                  <div className="BookingFormMessage">
-                    You won't be charged yet
-                  </div>
-                  <div className="BookingFormAttention">
-                    This place is getting a lot of attention.
-                  </div>
-                  <div className="BookingFormViewed">
-                    It’s been viewed 500+ times in the past week.
+                  <div className="BookingFormMessage">You won't be charged yet</div>
+                  <div className="BookingFormFooter">
+                    <div className="BookingFormAttention">
+                      This place is getting a lot of attention.
+                    </div>
+                    <div className="BookingFormViewed">
+                      It’s been viewed 500+ times in the past week.
+                    </div>
+                    <div className="Lightbulb" />
                   </div>
                 </div>
               </form>
