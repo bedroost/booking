@@ -81,7 +81,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkin"
-                        value={checkinDate ? moment(checkinDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Check-in'}
+                        value={checkinDate ? moment(checkinDate, 'YYYY-MM-DD').format('MM/DD/YYYY') : 'Check-in'}
                         name="Checkin"
                         onClick={e => onToggleCalendar(e)}
                       />
@@ -89,7 +89,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkout"
-                        value={checkoutDate ? moment(checkoutDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Checkout'}
+                        value={checkoutDate ? moment(checkoutDate, 'YYYY-MM-DD').format('MM/DD/YYYY') : 'Checkout'}
                         name="Checkout"
                         onClick={e => onToggleCalendar(e)}
                       />
