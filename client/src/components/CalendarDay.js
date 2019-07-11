@@ -18,6 +18,7 @@ const CalendarDay = ({
   momentAddedMonth,
   firstAvailableCalendarDate,
   lastAvailableCalendarDate,
+  onToggleCalendar,
 }) => {
 
   // keep track of booked dates
@@ -50,6 +51,7 @@ const CalendarDay = ({
       // make calendar day background green
       calendarDayClassName = 'CalendarDay Checkin';
 
+    // if checkout date exists
     } else if (checkoutDate) {
       if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
         calendarDayClassName = 'CalendarDay Checkin';
@@ -81,7 +83,15 @@ const CalendarDay = ({
             onHover(null);
           }
         }}
-        onClick={checkinDate ? e => onCheckout(calendarDate) : e => onCheckin(calendarDate)}
+        onClick={(e) => {
+          if (checkinDate) {
+            // console.log('checkout');
+            onCheckout(calendarDate);
+            onToggleCalendar(e);
+          } else {
+            onCheckin(calendarDate);
+          }
+        }}
         value={calendarDay}
       />
     </td>

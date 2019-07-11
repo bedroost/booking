@@ -15,6 +15,7 @@ const Guests = (props) => {
     incrementInfants,
     decrementInfants,
     isGuestsToggled,
+    onToggleGuests,
   } = props;
 
   const allowDecrementAdults = countAdults === 1;
@@ -25,7 +26,7 @@ const Guests = (props) => {
   const allowIncrementChildren = allowIncrementAdults;
 
   return (
-    <div className="GuestModal" style={isGuestsToggled ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+    <div className={isGuestsToggled ? 'GuestModal Show' : 'GuestModal Hide'}>
       <div className="GuestRow">
         <div className="textAdults">Adults</div>
         <input
@@ -98,6 +99,7 @@ const Guests = (props) => {
           type="button"
           className="CloseButton"
           value="Close"
+          onClick={() => onToggleGuests()}
         />
       </div>
     </div>
