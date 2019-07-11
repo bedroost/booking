@@ -2,7 +2,7 @@ import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import App from '../src';
+import App from '../src/components/App';
 import BookingForm from '../src/components/BookingForm';
 import BookingFormContainer from '../src/containers/bookingForm';
 import GuestsContainer from '../src/containers/guests';
@@ -16,9 +16,11 @@ describe('<App />', () => {
 });
 
 describe('<BookingForm />', () => {
-  it('renders <GuestsContainer /> and <CalendarContainer /> components', () => {
-    const wrapper = shallow(<BookingForm />);
-    expect(wrapper.find(GuestsContainer).to.have.lengthOf(1));
-    expect(wrapper.find(CalendarContainer).to.have.lengthOf(1));
+  const wrapper = shallow(<BookingForm />);
+  it('renders <GuestsContainer /> component', () => {
+    expect(wrapper.find(GuestsContainer)).to.have.lengthOf(1);
+  });
+  it('renders <CalendarContainer /> component', () => {
+    expect(wrapper.find(CalendarContainer)).to.have.lengthOf(1);
   });
 });
