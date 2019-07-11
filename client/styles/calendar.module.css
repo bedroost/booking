@@ -166,8 +166,8 @@
 
 .Booked {
   /* border: 1px solid rgb(216, 216, 216); */
-  color: rgb(216, 216, 216);
   text-decoration: line-through;
+  color: #D8D8D8 !important;
 }
 
 .Checkin {
