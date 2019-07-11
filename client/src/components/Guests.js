@@ -24,6 +24,7 @@ const Guests = (props) => {
 
   const allowIncrementAdults = countAdults + countChildren === listingInfo.maxGuests;
   const allowIncrementChildren = allowIncrementAdults;
+  const allowIncrementInfants = countInfants === 5;
 
   return (
     <div className={isGuestsToggled ? 'GuestModal Show' : 'GuestModal Hide'}>
@@ -85,6 +86,7 @@ const Guests = (props) => {
           type="button"
           className="incrementInfants"
           onClick={incrementInfants}
+          disabled={allowIncrementInfants}
           value="+"
         />
       </div>

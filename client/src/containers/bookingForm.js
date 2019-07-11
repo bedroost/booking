@@ -10,6 +10,8 @@ const mapStateToProps = state => ({
   isCalendarToggled: state.bookingFormReducer.isCalendarToggled,
   isGuestsToggled: state.bookingFormReducer.isGuestsToggled,
   eventTargetName: state.bookingFormReducer.eventTargetName,
+  checkinDate: state.calendarReducer.checkinDate,
+  checkoutDate: state.calendarReducer.checkoutDate,
 });
 
 const mapDispatchToProps = dispatch => ({
