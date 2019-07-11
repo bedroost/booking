@@ -17,6 +17,8 @@ const Calendar = ({
   checkoutDate,
   hoveredDate,
   onClearDates,
+  isCalendarToggled,
+  onToggleCalendar,
 }) => {
   const momentAddedMonth = moment().add(addMonth, 'M');
   const firstDayofTheWeek = momentAddedMonth.date(1).day();
@@ -58,7 +60,7 @@ const Calendar = ({
   }
 
   return (
-    <div className="CalendarModal">
+    <div className={isCalendarToggled ? 'CalendarModal Show' : 'CalendarModal Hide'}>
       <div className="Calendar">
         <div className="CalendarMonth">
           <button
@@ -100,6 +102,7 @@ const Calendar = ({
               <tr className="CalenderWeek">
                 {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
+                    onToggleCalendar={onToggleCalendar}
                     bookedDatesObj={bookedDatesObj}
                     calendarRow={calendarRow}
                     calendarCol={calendarCol}
