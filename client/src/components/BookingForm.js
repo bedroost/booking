@@ -34,14 +34,21 @@ class BookingForm extends React.Component {
 
   render() {
     const { bookedDatesObj, listingInfo } = this.state;
-    const { onToggleCalendar, isCalendarToggled, eventTargetName } = this.props;
+    const { onToggleCalendar, onToggleGuests, isCalendarToggled, isGuestsToggled, eventTargetName } = this.props;
 
     return (
       <div className="Booking">
         <div
           className="BookingForm"
           role="button"
-          onClick={isCalendarToggled ? e => onToggleCalendar(e) : null}
+          onClick={(e) => {
+            if (isCalendarToggled) {
+              onToggleCalendar(e);
+            }
+            if (isGuestsToggled) {
+              onToggleGuests();
+            }
+          }}
         >
           <div className="BookingFormOutline">
             <div className="BookingFormInnerOutline">
@@ -78,11 +85,13 @@ class BookingForm extends React.Component {
                     </div>
                   </div>
                   <span className="GuestsText">Guests</span>
-                  <div className="Guests">
-                    
-                  </div>
+                  <input
+                    className="Guests"
+                    type="button"
+                    onClick={() => onToggleGuests()}
+                  />
                   <div className="Details">
-                    <div>
+                    {/* <div>
                       <span>$49 x 2 nights</span>
                     </div>
                     <div>
@@ -93,9 +102,20 @@ class BookingForm extends React.Component {
                     </div>
                     <div>
                       <span>$49 x 2 nights</span>
-                    </div>
+                    </div> */}
                   </div>
-                  <button className="BookingFormButton"><span>Start Booking</span></button>
+                  <button className="BookingFormButton" type="button">
+                    <span>Start Booking</span>
+                  </button>
+                  <div className="BookingFormMessage">
+                    You won't be charged yet
+                  </div>
+                  <div className="BookingFormAttention">
+                    This place is getting a lot of attention.
+                  </div>
+                  <div className="BookingFormViewed">
+                    It’s been viewed 500+ times in the past week.
+                  </div>
                 </div>
               </form>
             </div>

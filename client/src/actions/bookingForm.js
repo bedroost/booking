@@ -3,6 +3,11 @@ const onToggleCalendar = item => ({
   payload: item,
 });
 
+const onToggleGuests = () => ({
+  type: 'TOGGLE_GUESTS',
+});
+
 export {
   onToggleCalendar,
+  onToggleGuests,
 };
