@@ -34,7 +34,13 @@ class BookingForm extends React.Component {
 
   render() {
     const { bookedDatesObj, listingInfo } = this.state;
-    const { onToggleCalendar, onToggleGuests, isCalendarToggled, isGuestsToggled, eventTargetName } = this.props;
+    const {
+      onToggleCalendar,
+      onToggleGuests,
+      isCalendarToggled,
+      isGuestsToggled,
+      eventTargetName,
+    } = this.props;
 
     return (
       <div className="Booking">
@@ -131,10 +137,12 @@ class BookingForm extends React.Component {
           listingInfo={listingInfo}
           bookedDatesObj={bookedDatesObj}
           isCalendarToggled={isCalendarToggled}
+          onToggleCalendar={onToggleCalendar}
         />
         <GuestsContainer
           listingInfo={listingInfo}
           isGuestsToggled={isGuestsToggled}
+          onToggleGuests={onToggleGuests}
         />
       </div>
     );

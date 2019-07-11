@@ -16,6 +16,18 @@
   border-top: 2px solid rgb(0, 132, 137) !important;
 }
 
+.Show {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.Hide {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 500ms, opacity 300ms;
+}
+
 .GuestRow {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
