@@ -34,77 +34,81 @@ class BookingForm extends React.Component {
 
   render() {
     const { bookedDatesObj, listingInfo } = this.state;
-    const { onToggleCalendar, isCalendarToggled } = this.props;
+    const { onToggleCalendar, isCalendarToggled, eventTargetName } = this.props;
 
     return (
-      <div>
-        <GuestsContainer
-          listingInfo={listingInfo}
-        />
+      <div className="Booking">
         <div
-          className="BookingFormOutline"
+          className="BookingForm"
           role="button"
-          onClick={isCalendarToggled ? () => onToggleCalendar() : null}
+          onClick={isCalendarToggled ? e => onToggleCalendar(e) : null}
         >
-          <div className="BookingFormInnerOutline">
-            <div className="BookingFormHeader">
-              <div className="BookingFormHeaderPrice">
-                <span className="Price">$49 </span>
-                <span className="PriceDesc">per night</span>
+          <div className="BookingFormOutline">
+            <div className="BookingFormInnerOutline">
+              <div className="BookingFormHeader">
+                <div className="BookingFormHeaderPrice">
+                  <span className="Price">$49 </span>
+                  <span className="PriceDesc">per night</span>
+                </div>
+                <div className="BookingFormHeaderStars">
+                  <span className="Stars" />
+                  <span>465</span>
+                </div>
               </div>
-              <div className="BookingFormHeaderStars">
-                <span className="Stars" />
-                <span>465</span>
-              </div>
+              <form>
+                <div className="BookingFormBody">
+                  <div className="Dates">
+                    <span className="DatesText">Dates</span>
+                    <div className="Checking">
+                      <input
+                        type="button"
+                        id="checkin"
+                        value="Check-in"
+                        name="Checkin"
+                        onClick={e => onToggleCalendar(e)}
+                      />
+                      <svg id="arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" ><path d="m0 12.5a.5.5 0 0 0 .5.5h21.79l-6.15 6.15a.5.5 0 1 0 .71.71l7-7v-.01a.5.5 0 0 0 .14-.35.5.5 0 0 0 -.14-.35v-.01l-7-7a .5.5 0 0 0 -.71.71l6.15 6.15h-21.79a.5.5 0 0 0 -.5.5z"></path></svg>
+                      <input
+                        type="button"
+                        id="checkout"
+                        value="Checkout"
+                        name="Checkout"
+                        onClick={e => onToggleCalendar(e)}
+                      />
+                    </div>
+                  </div>
+                  <span className="GuestsText">Guests</span>
+                  <div className="Guests">
+                    
+                  </div>
+                  <div className="Details">
+                    <div>
+                      <span>$49 x 2 nights</span>
+                    </div>
+                    <div>
+                      <span>$49 x 2 nights</span>
+                    </div>
+                    <div>
+                      <span>$49 x 2 nights</span>
+                    </div>
+                    <div>
+                      <span>$49 x 2 nights</span>
+                    </div>
+                  </div>
+                  <button className="BookingFormButton"><span>Start Booking</span></button>
+                </div>
+              </form>
             </div>
-            <form>
-              <div className="BookingForm">
-                <div className="Dates">
-                  <span className="DatesText">Dates</span>
-                  <div className="Checking">
-                    <input
-                      type="button"
-                      id="checkin"
-                      value="Check-in"
-                      onClick={isCalendarToggled ? null : () => onToggleCalendar()}
-                    />
-                    <svg id="arrow" viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" ><path d="m0 12.5a.5.5 0 0 0 .5.5h21.79l-6.15 6.15a.5.5 0 1 0 .71.71l7-7v-.01a.5.5 0 0 0 .14-.35.5.5 0 0 0 -.14-.35v-.01l-7-7a .5.5 0 0 0 -.71.71l6.15 6.15h-21.79a.5.5 0 0 0 -.5.5z"></path></svg>
-                    <input
-                      type="button"
-                      id="checkout"
-                      value="Checkout"
-                      onClick={isCalendarToggled ? null : () => onToggleCalendar()}
-                    />
-                    <CalendarContainer
-                      listingInfo={listingInfo}
-                      bookedDatesObj={bookedDatesObj}
-                      isCalendarToggled={isCalendarToggled}
-                    />
-                  </div>
-                </div>
-                <span className="GuestsText">Guests</span>
-                <div className="Guests">
-                  
-                </div>
-                <div className="Details">
-                  <div>
-                    <span>$49 x 2 nights</span>
-                  </div>
-                  <div>
-                    <span>$49 x 2 nights</span>
-                  </div>
-                  <div>
-                    <span>$49 x 2 nights</span>
-                  </div>
-                  <div>
-                    <span>$49 x 2 nights</span>
-                  </div>
-                </div>
-                <button className="BookingFormButton"><span>Start Booking</span></button>
-              </div>
-            </form>
           </div>
         </div>
+        <CalendarContainer
+          listingInfo={listingInfo}
+          bookedDatesObj={bookedDatesObj}
+          isCalendarToggled={isCalendarToggled}
+        />
+        {/* <GuestsContainer
+          listingInfo={listingInfo}
+        /> */}
       </div>
     );
   }

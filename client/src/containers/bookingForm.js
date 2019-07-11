@@ -7,10 +7,11 @@ import {
 
 const mapStateToProps = state => ({
   isCalendarToggled: state.bookingFormReducer.isCalendarToggled,
+  eventTargetName: state.bookingFormReducer.eventTargetName,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onToggleCalendar: () => dispatch(onToggleCalendar()),
+  onToggleCalendar: e => dispatch(onToggleCalendar(e.target.name)),
 });
 
 const BookingFormContainer = connect(mapStateToProps, mapDispatchToProps)(BookingForm);
