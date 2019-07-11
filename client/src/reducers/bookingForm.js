@@ -1,5 +1,6 @@
 const initialState = {
   isCalendarToggled: false,
+  isGuestsToggled: false,
   eventTargetName: null,
 };
 
@@ -15,6 +16,11 @@ const bookingFormReducer = (state = initialState, action) => {
         ...state,
         isCalendarToggled: !state.isCalendarToggled,
         eventTargetName: action.payload,
+      };
+    case 'TOGGLE_GUESTS':
+      return {
+        ...state,
+        isGuestsToggled: !state.isGuestsToggled,
       };
     default:
       return state;
