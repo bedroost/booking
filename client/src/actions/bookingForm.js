@@ -1,5 +1,6 @@
-const onToggleCalendar = () => ({
+const onToggleCalendar = item => ({
   type: 'TOGGLE_CALENDAR',
+  payload: item,
 });
 
 export {

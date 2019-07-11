@@ -12,11 +12,21 @@ body {
   background-color: #fff;
 }
 
+.BookingForm {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
 .BookingFormOutline {
   border: 1px solid #e4e4e4;
   padding: 0 24px;
   width: 326px;
   height: 543px;
+  position: absolute;
+  top: 0;
+  left:0;
+  right:0;
   margin: 0 auto;
 }
 
@@ -40,7 +50,7 @@ body {
 .Checking {
   display: inline-flex;
   align-items: center;
-  position: relative;
+  /* position: relative; */
   width: 326px;
   height: 40px;
 }
