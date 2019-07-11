@@ -14,6 +14,8 @@ const Guests = (props) => {
     countInfants,
     incrementInfants,
     decrementInfants,
+    isGuestsToggled,
+    onToggleGuests,
   } = props;
 
   const allowDecrementAdults = countAdults === 1;
@@ -22,9 +24,10 @@ const Guests = (props) => {
 
   const allowIncrementAdults = countAdults + countChildren === listingInfo.maxGuests;
   const allowIncrementChildren = allowIncrementAdults;
+  const allowIncrementInfants = countInfants === 5;
 
   return (
-    <div className="GuestModal">
+    <div className={isGuestsToggled ? 'GuestModal Show' : 'GuestModal Hide'}>
       <div className="GuestRow">
         <div className="textAdults">Adults</div>
         <input
@@ -83,6 +86,7 @@ const Guests = (props) => {
           type="button"
           className="incrementInfants"
           onClick={incrementInfants}
+          disabled={allowIncrementInfants}
           value="+"
         />
       </div>
@@ -97,6 +101,7 @@ const Guests = (props) => {
           type="button"
           className="CloseButton"
           value="Close"
+          onClick={() => onToggleGuests()}
         />
       </div>
     </div>
