@@ -21,7 +21,11 @@ input, button {
   font: inherit;
   color: inherit;
   background: none;
-  box-sizing: unset;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  box-sizing: content-box;
 }
 
 .Show {
