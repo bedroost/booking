@@ -14,6 +14,16 @@
   margin: 0 auto;
 }
 
+input, button {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  box-sizing: unset;
+}
+
 .Show {
   visibility: visible;
   opacity: 1;
@@ -45,7 +55,6 @@
 }
 
 .CalendarMonthBackward {
-  all: unset;
   position: absolute;
   line-height: 0.78;
   left: 22px;
@@ -66,7 +75,6 @@
 }
 
 .CalendarMonthForward {
-  all: unset;
   position: absolute;
   line-height: 0.78;
   right: 22px;
@@ -141,7 +149,6 @@
 }
 
 .CalendarDay {
-  all: unset;
   line-height: 41px;
   vertical-align: middle;
   background-color: #fff;
@@ -162,7 +169,7 @@
 
 .Empty {
   /* border: 1px solid white; */
-  color: white;
+  color: rgba(0, 0, 0, 0);
 }
 
 .Booked {
@@ -195,7 +202,6 @@
 }
 
 .ClearDates input {
-  all: unset;
   color: #008489;
   grid-column: 6 / span 7;
   display: block;
