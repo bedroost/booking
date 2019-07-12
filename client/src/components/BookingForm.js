@@ -40,7 +40,6 @@ class BookingForm extends React.Component {
       onToggleGuests,
       isCalendarToggled,
       isGuestsToggled,
-      eventTargetName,
       checkinDate,
       checkoutDate,
       countAdults,

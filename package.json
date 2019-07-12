@@ -11,6 +11,7 @@
     "start": "nodemon server/index.js",
     "build": "webpack --watch",
     "test": "jest",
+    "coverage": "jest --collect-coverage",
     "seed": "node server/db/seed.js"
   },
   "dependencies": {
@@ -31,7 +32,8 @@
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^5.9.2"
+    "sequelize": "^5.9.2",
+    "sinon": "^7.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
