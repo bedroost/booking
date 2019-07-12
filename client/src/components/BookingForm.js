@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -67,8 +66,8 @@ class BookingForm extends React.Component {
 
     return (
       <div className="Booking">
-        <div
-          className="BookingForm"
+        <div className="BookingForm"
+          tabIndex="0"
           role="button"
           onClick={() => {
             if (isCalendarToggled) {
@@ -121,6 +120,7 @@ class BookingForm extends React.Component {
                   </div>
                   <span className="GuestsText">Guests</span>
                   <div
+                    tabIndex="-1"
                     className="Guests"
                     role="button"
                     onClick={isGuestsToggled ? null : () => onToggleGuests()}
@@ -135,19 +135,17 @@ class BookingForm extends React.Component {
                       : <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{ height: '16px', width: '16px', display: 'block', fill: 'currentcolor' }}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"></path></svg>
                     }
                   </div>
-                  <div className="Details">
-                    {/* <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div> */}
+                  <div className={checkoutDate ? 'DetailsShow' : 'DetailsHide'}>
+                    <span className="DetailsItem">${listingInfo.basePrice} x {moment(checkoutDate).diff(moment(checkinDate), 'days')} nights</span>
+                    <span className="DetailsPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days')}</span>
+                    <span className="DetailsItem">Cleaning fee</span>
+                    <span className="DetailsPrice">${Number(listingInfo.cleaningFee)}</span>
+                    <span className="DetailsItem">Service fee</span>
+                    <span className="DetailsPrice">${Number(listingInfo.serviceFee)}</span>
+                    <span className="DetailsItem">Occupancy fee and taxes</span>
+                    <span className="DetailsPrice">${Number(listingInfo.taxes) + Number(listingInfo.occupancyFee)}</span>
+                    <span className="DetailsTotal">Total: </span>
+                    <span className="DetailsTotalPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days') + listingInfo.cleaningFee + listingInfo.serviceFee + listingInfo.taxes + listingInfo.occupancyFee}</span>
                   </div>
                   <div className="BookingFormButtonDiv">
                     <button className="BookingFormButton" type="button">
