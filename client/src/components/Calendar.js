@@ -31,7 +31,7 @@ const Calendar = ({
 
   // console.log('firstDayofTheWeek', firstDayofTheWeek);
   // console.log('lastDay', lastDay);
-  console.log('calendarMonth', calendarMonth);
+  // console.log('calendarMonth', calendarMonth);
   // console.log(bookedDatesObj);
 
   let firstAvailableCalendarDate = moment();
@@ -92,7 +92,7 @@ const Calendar = ({
         <table>
           <tbody>
             {calendarMonth.map((calendarWeek, calendarRow) => (
-              <tr className="CalenderWeek">
+              <tr className="CalenderWeek" key={calendarWeek}>
                 {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
                     key={calendarDay}
