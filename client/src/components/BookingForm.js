@@ -139,13 +139,13 @@ class BookingForm extends React.Component {
                     <span className="DetailsItem">${listingInfo.basePrice} x {moment(checkoutDate).diff(moment(checkinDate), 'days')} nights</span>
                     <span className="DetailsPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days')}</span>
                     <span className="DetailsItem">Cleaning fee</span>
-                    <span className="DetailsPrice">${Number(listingInfo.cleaningFee)}</span>
+                    <span className="DetailsPrice">${listingInfo.cleaningFee}</span>
                     <span className="DetailsItem">Service fee</span>
-                    <span className="DetailsPrice">${Number(listingInfo.serviceFee)}</span>
+                    <span className="DetailsPrice">${listingInfo.serviceFee}</span>
                     <span className="DetailsItem">Occupancy fee and taxes</span>
-                    <span className="DetailsPrice">${Number(listingInfo.taxes) + Number(listingInfo.occupancyFee)}</span>
+                    <span className="DetailsPrice">${listingInfo.taxes}</span>
                     <span className="DetailsTotal">Total: </span>
-                    <span className="DetailsTotalPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days') + listingInfo.cleaningFee + listingInfo.serviceFee + listingInfo.taxes + listingInfo.occupancyFee}</span>
+                    <span className="DetailsTotalPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days') + listingInfo.cleaningFee + listingInfo.serviceFee + listingInfo.taxes}</span>
                   </div>
                   <div className="BookingFormButtonDiv">
                     <button className="BookingFormButton" type="button">
