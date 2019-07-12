@@ -104,7 +104,7 @@ xdescribe('<BookingForm />', () => {
   });
 });
 
-describe('<Calendar />', () => {
+xdescribe('<Calendar />', () => {
   const listingInfo = {
     basePrice: 10,
   };
@@ -113,6 +113,7 @@ describe('<Calendar />', () => {
       listingInfo={listingInfo}
       isCalendarToggled={false}
       addMonth={0}
+      checkinDate={null}
       lastMonth={() => {
         wrapper.setProps({
           addMonth: wrapper.props().addMonth - 1,
@@ -123,10 +124,15 @@ describe('<Calendar />', () => {
           addMonth: wrapper.props().addMonth + 1,
         });
       }}
+      onClearDates={() => {
+        wrapper.setProps({
+          checkinDate: null,
+        });
+      }}
     />,
   );
 
-  console.log(wrapper.props().addMonth);
+  console.log(wrapper.props());
 
   test('renders 1 table', () => {
     expect(wrapper.find('table')).toHaveLength(1);
@@ -162,6 +168,14 @@ describe('<Calendar />', () => {
   test('calendar forward button increments month', () => {
     wrapper.setProps({ addMonth: 0 });
     wrapper.find('.CalendarMonthForward').simulate('click');
-    expect(wrapper.prop('addMonth')).toBe(1);
+    expect(wrapper.props().addMonth).toBe(1);
   });
+
+  test('calendar clears dates', () => {
+    expect(wrapper.props().checkinDate).toBe(null);
+  });
+});
+
+describe('<CalendarDay />', () => {
+  
 });
