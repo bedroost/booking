@@ -33,6 +33,17 @@ class BookingForm extends React.Component {
       });
   }
 
+  getGuestsText() {
+    const { countAdults, countChildren, countInfants } = this.props;
+    if (countInfants > 0) {
+      return `${countAdults + countChildren} guests, ${countInfants} infants`;
+    }
+    if (countAdults + countChildren > 1) {
+      return `${countAdults + countChildren} guests`;
+    }
+    return '1 guest';
+  }
+
   render() {
     const { bookedDatesObj, listingInfo } = this.state;
     const {
@@ -64,7 +75,10 @@ class BookingForm extends React.Component {
             <div className="BookingFormInnerOutline">
               <div className="BookingFormHeader">
                 <div className="BookingFormHeaderPrice">
-                  <span className="Price">${listingInfo.basePrice}</span>
+                  <span className="Price">
+                    $
+                    {listingInfo.basePrice}
+                  </span>
                   <span className="PriceDesc"> per night</span>
                 </div>
                 <div className="BookingFormHeaderStars">
@@ -102,9 +116,7 @@ class BookingForm extends React.Component {
                   >
                     <input
                       id="guests"
-                      value={countAdults + countChildren > 1
-                        ? `${countAdults + countChildren} guests`
-                        : '1 guest'}
+                      value={this.getGuestsText()}
                       type="button"
                     />
                     {isGuestsToggled
