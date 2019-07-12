@@ -23,7 +23,6 @@ const Listing = sequelize.define('listing', {
   guestFee: { type: Sequelize.INTEGER },
   cleaningFee: { type: Sequelize.INTEGER },
   serviceFee: { type: Sequelize.INTEGER },
-  occupancyFee: { type: Sequelize.INTEGER },
   taxes: { type: Sequelize.INTEGER },
   baseGuests: { type: Sequelize.INTEGER },
   extraGuests: { type: Sequelize.INTEGER },
