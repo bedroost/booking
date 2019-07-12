@@ -23,7 +23,6 @@ button:focus {
 }
 
 .BookingFormOutline {
-  border: 1px solid #e4e4e4;
   padding: 0 24px;
   width: 326px;
   height: 462px;
@@ -32,6 +31,19 @@ button:focus {
   left:0;
   right:0;
   margin: 0 auto;
+}
+
+.BookingFormCloseButton {
+  visibility: visible;
+}
+
+@media (min-width: 480px) {
+  .BookingFormOutline {
+    border: 1px solid #e4e4e4;
+  }
+  .BookingFormCloseButton {
+    visibility: hidden;
+  }
 }
 
 .BookingFormInnerOutline {
