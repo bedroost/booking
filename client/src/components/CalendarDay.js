@@ -28,8 +28,6 @@ const CalendarDay = ({
   let calendarDate = null;
   const lastDay = momentUpdatedMonth.daysInMonth();
 
-  console.log(calendarDay, lastDay);
-
   // format calendar date to moment obj
   const momentCalendarDate = moment(`${momentUpdatedMonth.year()}-${momentUpdatedMonth.month() + 1}-${calendarDay}`, 'YYYY-MM-DD');
   calendarDate = momentCalendarDate.format('YYYY-MM-DD');

@@ -102,7 +102,7 @@ describe('<Calendar />', () => {
       listingInfo={listingInfo}
     />
   );
-  test('renders <CalendarDay /> component', () => {
-    expect(wrapper.find(CalendarDay)).toHaveLength(1);
+  test('renders 35 <CalendarDay /> components', () => {
+    expect(wrapper.find(CalendarDay)).toHaveLength(35);
   });
 });
