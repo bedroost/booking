@@ -8,18 +8,18 @@ import BookingForm from '../src/components/BookingForm';
 import BookingFormContainer from '../src/containers/bookingForm';
 import GuestsContainer from '../src/containers/guests';
 import CalendarContainer from '../src/containers/calendar';
+import Calendar from '../src/components/Calendar';
+import CalendarDay from '../src/components/CalendarDay';
 
 describe('<App />', () => {
-  it('renders <BookingFormContainer /> component', () => {
+  test('renders <BookingFormContainer /> component', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find(BookingFormContainer)).toHaveLength(1);
   });
 });
 
-let wrapper;
-
-beforeAll(() => {
-  wrapper = shallow(
+describe('<BookingForm />', () => {
+  const wrapper = shallow(
     <BookingForm
       onToggleCalendar={() => {
         wrapper.setProps({
@@ -40,65 +40,69 @@ beforeAll(() => {
       basePrice: 10,
     },
   });
-});
 
-describe('<BookingForm />', () => {
   describe('Calendar', () => {
-    it('renders <CalendarContainer /> component', () => {
+    test('renders <CalendarContainer /> component', () => {
       expect(wrapper.find(CalendarContainer)).toHaveLength(1);
     });
 
-    it('should open calendar modal on button click in checkin field', () => {
+    test('should open calendar modal on button click in checkin field', () => {
       wrapper.find('#checkin').simulate('click');
       expect(wrapper.props().isCalendarToggled).toBe.true;
     });
 
-    it('should open calendar modal on button click in checkout field', () => {
+    test('should open calendar modal on button click in checkout field', () => {
       wrapper.find('#checkout').simulate('click');
       expect(wrapper.props().isCalendarToggled).toBe.true;
     });
 
-    it('should close calendar modal on button click in booking form', () => {
+    test('should close calendar modal on button click in booking form', () => {
       wrapper.props({ isCalendarToggled: true });
       wrapper.find('.BookingForm').simulate('click');
       expect(wrapper.props().isCalendarToggled).toBe.false;
     });
 
-    it('should show initial checkin date as check-in', () => {
+    test('should show initial checkin date as check-in', () => {
       expect(wrapper.find('#checkin').props().value).toBe('Check-in');
     });
 
-    it('should show initial checkout date as checkout', () => {
+    test('should show initial checkout date as checkout', () => {
       expect(wrapper.find('#checkout').props().value).toBe('Checkout');
-    });
-
-    it('should show checkin date as clicked date', () => {
-      console.log(wrapper.find(CalendarContainer).dive().debug());
     });
   });
 
   describe('Guests', () => {
-    it('renders <GuestsContainer /> component', () => {
+    test('renders <GuestsContainer /> component', () => {
       expect(wrapper.find(GuestsContainer)).toHaveLength(1);
     });
 
-    it('should open guests modal on button click in guests field', () => {
+    test('should open guests modal on button click in guests field', () => {
       wrapper.find('.Guests').simulate('click');
       expect(wrapper.props().isGuestsToggled).toBe.true;
     });
 
-    it('should close guests modal on button click in booking form', () => {
+    test('should close guests modal on button click in booking form', () => {
       wrapper.props({ isGuestsToggled: true });
       wrapper.find('.BookingForm').simulate('click');
       expect(wrapper.props().isGuestsToggled).toBe.false;
     });
   });
 
-  it('should show price from listinginfo state', () => {
+  test('should show price from listinginfo state', () => {
     expect(wrapper.find('.Price').text()).toBe('$10');
   });
 });
 
-xdescribe('<Calendar />', () => {
-
+describe('<Calendar />', () => {
+  const listingInfo = {
+    basePrice: 10,
+  };
+  const wrapper = shallow(
+    <Calendar
+      listingInfo={listingInfo}
+    />
+  );
+  test('renders <CalendarDay /> component', () => {
+    expect(wrapper.find(CalendarDay)).toHaveLength(1);
+  });
 });

@@ -15,7 +15,7 @@ const CalendarDay = ({
   checkoutDate,
   hoveredDate,
   bookedDatesObj,
-  momentAddedMonth,
+  momentUpdatedMonth,
   firstAvailableCalendarDate,
   lastAvailableCalendarDate,
   onToggleCalendar,
@@ -24,47 +24,51 @@ const CalendarDay = ({
   // keep track of booked dates
   const bookedCalendarMonth = [...calendarMonth];
 
-  // if calendar day does not exist, calendar day classname should be empty
-  let calendarDayClassName = 'CalendarDay Empty';
-
+  let calendarDayClassName = null;
   let calendarDate = null;
+  const lastDay = momentUpdatedMonth.daysInMonth();
 
-  // if calendar day exists
-  if (calendarDay) {
-    // format calendar date to moment obj
-    const momentCalendarDate = moment(`${momentAddedMonth.year()}-${momentAddedMonth.month() + 1}-${calendarDay}`, 'YYYY-MM-DD');
-    calendarDate = momentCalendarDate.format('YYYY-MM-DD');
+  console.log(calendarDay, lastDay);
 
-    // check booked dates which are before today, after last available date, or in booked dates obj
-    if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
-      || momentCalendarDate.isBefore(firstAvailableCalendarDate)
-      || bookedDatesObj[calendarDate]) {
+  // format calendar date to moment obj
+  const momentCalendarDate = moment(`${momentUpdatedMonth.year()}-${momentUpdatedMonth.month() + 1}-${calendarDay}`, 'YYYY-MM-DD');
+  calendarDate = momentCalendarDate.format('YYYY-MM-DD');
 
-      calendarDayClassName = 'CalendarDay Booked';
+  // if calendar day does not exist, calendar day classname should be empty
+  if (calendarDay < 1 || calendarDay > lastDay) {
+    calendarDayClassName = 'CalendarDay Empty';
 
-      // mark booked dates with x
-      bookedCalendarMonth[calendarRow][calendarCol] = 'x';
+  } else if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
 
-    // if calendar day matches checkin day
-    } else if (calendarDate === checkinDate) {
+  // check booked dates which are before today, after last available date, or in booked dates obj
+    || momentCalendarDate.isBefore(firstAvailableCalendarDate)
+    || bookedDatesObj[calendarDate]) {
 
-      // make calendar day background green
+    calendarDayClassName = 'CalendarDay Booked';
+
+    // mark booked dates with x
+    bookedCalendarMonth[calendarRow][calendarCol] = 'x';
+
+  // if calendar day matches checkin day
+  } else if (calendarDate === checkinDate) {
+
+    // make calendar day background green
+    calendarDayClassName = 'CalendarDay Checkin';
+
+  // if checkout date exists
+  } else if (checkoutDate) {
+    if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
       calendarDayClassName = 'CalendarDay Checkin';
-
-    // if checkout date exists
-    } else if (checkoutDate) {
-      if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
-        calendarDayClassName = 'CalendarDay Checkin';
-      } else {
-        calendarDayClassName = 'CalendarDay Available';
-      }
-    } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
-      // console.log('hovered', hoveredDate);
-      calendarDayClassName = 'CalendarDay AvailableForCheckout';
     } else {
       calendarDayClassName = 'CalendarDay Available';
     }
+  } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
+    // console.log('hovered', hoveredDate);
+    calendarDayClassName = 'CalendarDay AvailableForCheckout';
+  } else {
+    calendarDayClassName = 'CalendarDay Available';
   }
+
 
   return (
     <td>
