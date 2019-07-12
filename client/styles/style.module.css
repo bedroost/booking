@@ -12,6 +12,10 @@ body {
   background-color: #fff;
 }
 
+button:focus {
+  outline:0;
+}
+
 .BookingForm {
   position: relative;
   width: 100vw;

@@ -40,7 +40,6 @@ class BookingForm extends React.Component {
       onToggleGuests,
       isCalendarToggled,
       isGuestsToggled,
-      eventTargetName,
       checkinDate,
       checkoutDate,
       countAdults,
@@ -52,9 +51,9 @@ class BookingForm extends React.Component {
         <div
           className="BookingForm"
           role="button"
-          onClick={(e) => {
+          onClick={() => {
             if (isCalendarToggled) {
-              onToggleCalendar(e);
+              onToggleCalendar();
             }
             if (isGuestsToggled) {
               onToggleGuests();
@@ -65,8 +64,8 @@ class BookingForm extends React.Component {
             <div className="BookingFormInnerOutline">
               <div className="BookingFormHeader">
                 <div className="BookingFormHeaderPrice">
-                  <span className="Price">${listingInfo.basePrice} </span>
-                  <span className="PriceDesc">per night</span>
+                  <span className="Price">${listingInfo.basePrice}</span>
+                  <span className="PriceDesc"> per night</span>
                 </div>
                 <div className="BookingFormHeaderStars">
                   <span className="Stars" />
@@ -81,7 +80,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkin"
-                        value={checkinDate ? moment(checkinDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Check-in'}
+                        value={checkinDate ? moment(checkinDate, 'YYYY-MM-DD').format('MM/DD/YYYY') : 'Check-in'}
                         name="Checkin"
                         onClick={e => onToggleCalendar(e)}
                       />
@@ -89,7 +88,7 @@ class BookingForm extends React.Component {
                       <input
                         type="button"
                         id="checkout"
-                        value={checkoutDate ? moment(checkoutDate, 'YYYY-MM-DD').format('DD/MM/YYYY') : 'Checkout'}
+                        value={checkoutDate ? moment(checkoutDate, 'YYYY-MM-DD').format('MM/DD/YYYY') : 'Checkout'}
                         name="Checkout"
                         onClick={e => onToggleCalendar(e)}
                       />
@@ -103,7 +102,9 @@ class BookingForm extends React.Component {
                   >
                     <input
                       id="guests"
-                      value={`${countAdults + countChildren} guests` || '1 guest'}
+                      value={countAdults + countChildren > 1
+                        ? `${countAdults + countChildren} guests`
+                        : '1 guest'}
                       type="button"
                     />
                     {isGuestsToggled

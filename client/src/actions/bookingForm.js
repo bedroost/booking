@@ -1,6 +1,5 @@
-const onToggleCalendar = item => ({
+const onToggleCalendar = () => ({
   type: 'TOGGLE_CALENDAR',
-  payload: item,
 });
 
 const onToggleGuests = () => ({
