@@ -64,8 +64,8 @@ class BookingForm extends React.Component {
             <div className="BookingFormInnerOutline">
               <div className="BookingFormHeader">
                 <div className="BookingFormHeaderPrice">
-                  <span className="Price">${listingInfo.basePrice} </span>
-                  <span className="PriceDesc">per night</span>
+                  <span className="Price">${listingInfo.basePrice}</span>
+                  <span className="PriceDesc"> per night</span>
                 </div>
                 <div className="BookingFormHeaderStars">
                   <span className="Stars" />
