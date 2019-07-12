@@ -102,7 +102,9 @@ class BookingForm extends React.Component {
                   >
                     <input
                       id="guests"
-                      value={`${countAdults + countChildren} guests` || '1 guest'}
+                      value={countAdults + countChildren > 1
+                        ? `${countAdults + countChildren} guests`
+                        : '1 guest'}
                       type="button"
                     />
                     {isGuestsToggled

@@ -86,6 +86,10 @@ describe('<BookingForm />', () => {
       wrapper.find('.BookingForm').simulate('click');
       expect(wrapper.props().isGuestsToggled).toBe.false;
     });
+
+    test('should show initial guests as 1 guest', () => {
+      expect(wrapper.find('#guests').props().value).toBe('1 guest');
+    });
   });
 
   test('should show price from listinginfo state', () => {
@@ -100,7 +104,7 @@ describe('<Calendar />', () => {
   const wrapper = shallow(
     <Calendar
       listingInfo={listingInfo}
-    />
+    />,
   );
   test('renders 35 <CalendarDay /> components', () => {
     expect(wrapper.find(CalendarDay)).toHaveLength(35);
