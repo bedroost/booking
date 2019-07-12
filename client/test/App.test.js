@@ -2,6 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
+import moment from 'moment';
 
 import App from '../src/components/App';
 import BookingForm from '../src/components/BookingForm';
@@ -106,6 +107,19 @@ describe('<Calendar />', () => {
       listingInfo={listingInfo}
     />,
   );
+
+  test('renders 1 table', () => {
+    expect(wrapper.find('table')).toHaveLength(1);
+  });
+
+  test('renders 5 rows', () => {
+    expect(wrapper.find('tr')).toHaveLength(5);
+  });
+
+  test('header shows current calendar month', () => {
+    expect(wrapper.find('.CalendarHeaderMonth').text()).toEqual(moment().format('MMMM YYYY'));
+  });
+
   test('renders 35 <CalendarDay /> components', () => {
     expect(wrapper.find(CalendarDay)).toHaveLength(35);
   });
