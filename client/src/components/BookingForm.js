@@ -35,13 +35,21 @@ class BookingForm extends React.Component {
 
   getGuestsText() {
     const { countAdults, countChildren, countInfants } = this.props;
-    if (countInfants > 0) {
-      return `${countAdults + countChildren} guests, ${countInfants} infants`;
+    let guestsText = '';
+    let infantsText = '';
+
+    if (countInfants === 1) {
+      infantsText = ', 1 infant';
+    } else if (countInfants > 0) {
+      infantsText = `, ${countInfants} infants`;
     }
-    if (countAdults + countChildren > 1) {
-      return `${countAdults + countChildren} guests`;
+
+    if (countAdults + countChildren === 1) {
+      guestsText = '1 guest';
+    } else if (countAdults + countChildren > 1) {
+      guestsText = `${countAdults + countChildren} guests`;
     }
-    return '1 guest';
+    return guestsText + infantsText;
   }
 
   render() {
