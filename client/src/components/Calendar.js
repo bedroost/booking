@@ -20,25 +20,18 @@ const Calendar = ({
   isCalendarToggled,
   onToggleCalendar,
 }) => {
-  const momentAddedMonth = moment().add(addMonth, 'M');
-  const firstDayofTheWeek = momentAddedMonth.date(1).day();
-  const lastDay = momentAddedMonth.daysInMonth();
+  const momentUpdatedMonth = moment().add(addMonth, 'M');
+  const firstDayofTheWeek = momentUpdatedMonth.date(1).day();
   const calendarMonth = [[], [], [], [], []];
   for (let i = 0; i < 7; i += 1) {
     for (let j = 0; j < 5; j += 1) {
-      if (i < firstDayofTheWeek && j === 0) {
-        calendarMonth[j].push('');
-      } else if (j * 7 + i - firstDayofTheWeek + 1 > lastDay) {
-        calendarMonth[j].push('');
-      } else {
-        calendarMonth[j].push(j * 7 + i - firstDayofTheWeek + 1);
-      }
+      calendarMonth[j].push(j * 7 + i - firstDayofTheWeek + 1);
     }
   }
 
   // console.log('firstDayofTheWeek', firstDayofTheWeek);
   // console.log('lastDay', lastDay);
-  // console.log('calendarMonth', calendarMonth);
+  console.log('calendarMonth', calendarMonth);
   // console.log(bookedDatesObj);
 
   let firstAvailableCalendarDate = moment();
@@ -92,7 +85,7 @@ const Calendar = ({
         <div className="CalendarHeader">
           <div className="CalendarHeaderMonth">
             <strong>
-              {momentAddedMonth.format('MMMM YYYY')}
+              {momentUpdatedMonth.format('MMMM YYYY')}
             </strong>
           </div>
         </div>
@@ -102,6 +95,7 @@ const Calendar = ({
               <tr className="CalenderWeek">
                 {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
+                    key={calendarDay}
                     onToggleCalendar={onToggleCalendar}
                     bookedDatesObj={bookedDatesObj}
                     calendarRow={calendarRow}
@@ -116,10 +110,10 @@ const Calendar = ({
                     hoveredDate={hoveredDate}
                     listingInfo={listingInfo}
                     addMonth={addMonth}
-                    momentAddedMonth={momentAddedMonth}
+                    momentUpdatedMonth={momentUpdatedMonth}
                     firstAvailableCalendarDate={firstAvailableCalendarDate}
                     lastAvailableCalendarDate={lastAvailableCalendarDate}
-                    />
+                  />
                 ))}
               </tr>
             ))}
