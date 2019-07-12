@@ -138,9 +138,11 @@ class BookingForm extends React.Component {
                       <span>$49 x 2 nights</span>
                     </div> */}
                   </div>
-                  <button className="BookingFormButton" type="button">
-                    <span>Start Booking</span>
-                  </button>
+                  <div className="BookingFormButtonDiv">
+                    <button className="BookingFormButton" type="button">
+                      <span>Start Booking</span>
+                    </button>
+                  </div>
                   <div className="BookingFormMessage">You won't be charged yet</div>
                   <div className="BookingFormFooter">
                     <div className="BookingFormAttention">

@@ -51,7 +51,6 @@
 }
 
 .incrementAdults, .incrementChildren, .incrementInfants, .decrementAdults, .decrementChildren, .decrementInfants {
-  all: unset;
   cursor: pointer;
   border-radius: 50%;
   border-style: solid;
@@ -101,7 +100,6 @@
 }
 
 .CloseButton {
-  all: unset;
   grid-column: 6;
   color: #008489;
   border:none; 
