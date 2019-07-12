@@ -51,9 +51,9 @@ class BookingForm extends React.Component {
         <div
           className="BookingForm"
           role="button"
-          onClick={(e) => {
+          onClick={() => {
             if (isCalendarToggled) {
-              onToggleCalendar(e);
+              onToggleCalendar();
             }
             if (isGuestsToggled) {
               onToggleGuests();

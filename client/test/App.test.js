@@ -19,7 +19,7 @@ describe('<App />', () => {
 
 let isCalendarToggled;
 let isGuestsToggled;
-const onToggleCalendar = (e) => {
+const onToggleCalendar = () => {
   isCalendarToggled = !isCalendarToggled;
 };
 const onToggleGuests = () => {

@@ -83,11 +83,11 @@ const CalendarDay = ({
             onHover(null);
           }
         }}
-        onClick={(e) => {
+        onClick={() => {
           if (checkinDate) {
             // console.log('checkout');
             onCheckout(calendarDate);
-            onToggleCalendar(e);
+            onToggleCalendar();
           } else {
             onCheckin(calendarDate);
           }

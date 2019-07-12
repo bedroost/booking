@@ -9,7 +9,6 @@ import {
 const mapStateToProps = state => ({
   isCalendarToggled: state.bookingFormReducer.isCalendarToggled,
   isGuestsToggled: state.bookingFormReducer.isGuestsToggled,
-  eventTargetName: state.bookingFormReducer.eventTargetName,
   checkinDate: state.calendarReducer.checkinDate,
   checkoutDate: state.calendarReducer.checkoutDate,
   countAdults: state.guestsReducer.countAdults,
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onToggleCalendar: e => dispatch(onToggleCalendar(e.target.name)),
+  onToggleCalendar: () => dispatch(onToggleCalendar()),
   onToggleGuests: () => dispatch(onToggleGuests()),
 });
 
