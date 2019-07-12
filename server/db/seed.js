@@ -25,6 +25,9 @@ for (let i = 0; i < 100; i += 1) {
   listingInfo.taxes = Math.round(
     listingInfo.basePrice * faker.random.number({ min: 0.05, max: 0.2, precision: 0.01 }),
   );
+  listingInfo.serviceFee = Math.round(
+    listingInfo.basePrice * 0.12,
+  );
 
   listings.push(listingInfo);
 

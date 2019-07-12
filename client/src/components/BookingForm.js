@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -35,13 +34,21 @@ class BookingForm extends React.Component {
 
   getGuestsText() {
     const { countAdults, countChildren, countInfants } = this.props;
-    if (countInfants > 0) {
-      return `${countAdults + countChildren} guests, ${countInfants} infants`;
+    let guestsText = '';
+    let infantsText = '';
+
+    if (countInfants === 1) {
+      infantsText = ', 1 infant';
+    } else if (countInfants > 0) {
+      infantsText = `, ${countInfants} infants`;
     }
-    if (countAdults + countChildren > 1) {
-      return `${countAdults + countChildren} guests`;
+
+    if (countAdults + countChildren === 1) {
+      guestsText = '1 guest';
+    } else if (countAdults + countChildren > 1) {
+      guestsText = `${countAdults + countChildren} guests`;
     }
-    return '1 guest';
+    return guestsText + infantsText;
   }
 
   render() {
@@ -59,8 +66,8 @@ class BookingForm extends React.Component {
 
     return (
       <div className="Booking">
-        <div
-          className="BookingForm"
+        <div className="BookingForm"
+          tabIndex="0"
           role="button"
           onClick={() => {
             if (isCalendarToggled) {
@@ -73,6 +80,9 @@ class BookingForm extends React.Component {
         >
           <div className="BookingFormOutline">
             <div className="BookingFormInnerOutline">
+              {/* <button className="BookingFormCloseButton">
+                <svg viewBox="0 0 24 24" role="img" aria-label="Close" focusable="false" style={{height: '16px', width: '16px', display: 'block', fill: 'rgb(118, 118, 118)'}}><path d="m23.25 24c-.19 0-.38-.07-.53-.22l-10.72-10.72-10.72 10.72c-.29.29-.77.29-1.06 0s-.29-.77 0-1.06l10.72-10.72-10.72-10.72c-.29-.29-.29-.77 0-1.06s.77-.29 1.06 0l10.72 10.72 10.72-10.72c.29-.29.77-.29 1.06 0s .29.77 0 1.06l-10.72 10.72 10.72 10.72c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22" fillRule="evenodd"></path></svg>
+              </button> */}
               <div className="BookingFormHeader">
                 <div className="BookingFormHeaderPrice">
                   <span className="Price">
@@ -110,6 +120,7 @@ class BookingForm extends React.Component {
                   </div>
                   <span className="GuestsText">Guests</span>
                   <div
+                    tabIndex="-1"
                     className="Guests"
                     role="button"
                     onClick={isGuestsToggled ? null : () => onToggleGuests()}
@@ -124,23 +135,23 @@ class BookingForm extends React.Component {
                       : <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{ height: '16px', width: '16px', display: 'block', fill: 'currentcolor' }}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd"></path></svg>
                     }
                   </div>
-                  <div className="Details">
-                    {/* <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div>
-                    <div>
-                      <span>$49 x 2 nights</span>
-                    </div> */}
+                  <div className={checkoutDate ? 'DetailsShow' : 'DetailsHide'}>
+                    <span className="DetailsItem">${listingInfo.basePrice} x {moment(checkoutDate).diff(moment(checkinDate), 'days')} nights</span>
+                    <span className="DetailsPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days')}</span>
+                    <span className="DetailsItem">Cleaning fee</span>
+                    <span className="DetailsPrice">${listingInfo.cleaningFee}</span>
+                    <span className="DetailsItem">Service fee</span>
+                    <span className="DetailsPrice">${listingInfo.serviceFee}</span>
+                    <span className="DetailsItem">Occupancy fee and taxes</span>
+                    <span className="DetailsPrice">${listingInfo.taxes}</span>
+                    <span className="DetailsTotal">Total: </span>
+                    <span className="DetailsTotalPrice">${listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days') + listingInfo.cleaningFee + listingInfo.serviceFee + listingInfo.taxes}</span>
                   </div>
-                  <button className="BookingFormButton" type="button">
-                    <span>Start Booking</span>
-                  </button>
+                  <div className="BookingFormButtonDiv">
+                    <button className="BookingFormButton" type="button">
+                      <span>Start Booking</span>
+                    </button>
+                  </div>
                   <div className="BookingFormMessage">You won't be charged yet</div>
                   <div className="BookingFormFooter">
                     <div className="BookingFormAttention">
