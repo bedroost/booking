@@ -14,7 +14,7 @@ const CalendarDay = ({
   checkinDate,
   checkoutDate,
   hoveredDate,
-  bookedDatesObj,
+  changedBookedDates,
   momentUpdatedMonth,
   firstAvailableCalendarDate,
   lastAvailableCalendarDate,
@@ -36,11 +36,11 @@ const CalendarDay = ({
   if (calendarDay < 1 || calendarDay > lastDay) {
     calendarDayClassName = `${styles.CalendarDay} ${styles.Empty}`;
 
-  } else if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
-
-  // check booked dates which are before today, after last available date, or in booked dates obj
+  } else if (
+    // check booked dates which are before today, after last available date, or in booked dates obj
+    momentCalendarDate.isAfter(lastAvailableCalendarDate)
     || momentCalendarDate.isBefore(firstAvailableCalendarDate)
-    || bookedDatesObj[calendarDate]) {
+    || changedBookedDates[calendarDate]) {
 
     calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
 
