@@ -60,8 +60,6 @@ class BookingForm extends React.Component {
       isGuestsToggled,
       checkinDate,
       checkoutDate,
-      countAdults,
-      countChildren,
     } = this.props;
 
     return (
