@@ -49,7 +49,7 @@ const CalendarDay = ({
     if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
       calendarDayClassName = `${styles.CalendarDay} ${styles.Checkin}`;
     } else {
-      calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
+      calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
     }
   } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
     calendarDayClassName = `${styles.CalendarDay} ${styles.AvailableForCheckout}`;
