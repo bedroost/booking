@@ -92,7 +92,7 @@ class BookingForm extends React.Component {
                 </div>
                 <div className={styles.BookingFormHeaderStars}>
                   <span className={styles.Stars} />
-                  <span>465</span>
+                  <span>{listingInfo.views}</span>
                 </div>
               </div>
               <form>
