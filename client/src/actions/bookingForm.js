@@ -11,9 +11,9 @@ const onToggleInfo = e => ({
   payload: e.target.name,
 });
 
-const onToggleOff = item => ({
+const onToggleOff = e => ({
   type: 'TOGGLE_OFF',
-  payload: item,
+  payload: e.target.name,
 });
 
 export {
