@@ -216,8 +216,17 @@ describe('<Guests />', () => {
           wrapper.setProps({ countChildren: wrapper.props().countChildren - 1 });
         }
       }}
+      incrementInfants={() => {
+        wrapper.setProps({ countInfants: wrapper.props().countInfants + 1 });
+      }}
+      decrementInfants={() => {
+        if (wrapper.props().countInfants > 0) {
+          wrapper.setProps({ countInfants: wrapper.props().countInfants - 1 });
+        }
+      }}
       countAdults={0}
       countChildren={0}
+      countInfants={0}
     />,
   );
 
@@ -225,20 +234,29 @@ describe('<Guests />', () => {
     wrapper.find('.incrementAdults').simulate('click');
     expect(wrapper.props().countAdults).toBe(1);
   });
-
   test('should decrease adults on click', () => {
     wrapper.setProps({ countAdults: 2 });
     wrapper.find('.decrementAdults').simulate('click');
     expect(wrapper.props().countAdults).toBe(1);
   });
+
   test('should increase children on click', () => {
     wrapper.find('.incrementChildren').simulate('click');
     expect(wrapper.props().countChildren).toBe(1);
   });
-
   test('should decrease children on click', () => {
     wrapper.setProps({ countChildren: 2 });
     wrapper.find('.decrementChildren').simulate('click');
     expect(wrapper.props().countChildren).toBe(1);
+  });
+
+  test('should increase infants on click', () => {
+    wrapper.find('.incrementInfants').simulate('click');
+    expect(wrapper.props().countInfants).toBe(1);
+  });
+  test('should decrease infants on click', () => {
+    wrapper.setProps({ countInfants: 2 });
+    wrapper.find('.decrementInfants').simulate('click');
+    expect(wrapper.props().countInfants).toBe(1);
   });
 });
