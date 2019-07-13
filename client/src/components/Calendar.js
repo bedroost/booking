@@ -52,11 +52,11 @@ const Calendar = ({
   }
 
   return (
-    <div className={isCalendarToggled ? 'CalendarModal Show' : 'CalendarModal Hide'}>
-      <div className="Calendar">
-        <div className="CalendarMonth">
+    <div className={isCalendarToggled ? [styles.CalendarModal, styles.Show].join(' ') : [styles.CalendarModal, styles.Hide].join(' ')}>
+      <div className={styles.Calendar}>
+        <div className={styles.CalendarMonth}>
           <button
-            className="CalendarMonthBackward"
+            className={styles.CalendarMonthBackward}
             type="button"
             onClick={lastMonth}
           >
@@ -65,7 +65,7 @@ const Calendar = ({
             </svg>
           </button>
           <button
-            className="CalendarMonthForward"
+            className={styles.CalendarMonthForward}
             type="button"
             onClick={nextMonth}
           >
@@ -73,18 +73,18 @@ const Calendar = ({
               <path d="M694 242l249 250c12 11 12 21 1 32L694 773c-5 5-10 7-16 7s-11-2-16-7c-11-11-11-21 0-32l210-210H68c-13 0-23-10-23-23s10-23 23-23h806L662 275c-21-22 11-54 32-33z" />
             </svg>
           </button>
-          <div className="CalendarHeaderDays">
-            <div className="CalendarHeaderDay">Su</div>
-            <div className="CalendarHeaderDay">Mo</div>
-            <div className="CalendarHeaderDay">Tu</div>
-            <div className="CalendarHeaderDay">We</div>
-            <div className="CalendarHeaderDay">Th</div>
-            <div className="CalendarHeaderDay">Fr</div>
-            <div className="CalendarHeaderDay">Sa</div>
+          <div className={styles.CalendarHeaderDays}>
+            <div className={styles.CalendarHeaderDay}>Su</div>
+            <div className={styles.CalendarHeaderDay}>Mo</div>
+            <div className={styles.CalendarHeaderDay}>Tu</div>
+            <div className={styles.CalendarHeaderDay}>We</div>
+            <div className={styles.CalendarHeaderDay}>Th</div>
+            <div className={styles.CalendarHeaderDay}>Fr</div>
+            <div className={styles.CalendarHeaderDay}>Sa</div>
           </div>
         </div>
-        <div className="CalendarHeader">
-          <div className="CalendarHeaderMonth">
+        <div className={styles.CalendarHeader}>
+          <div className={styles.CalendarHeaderMonth}>
             <strong>
               {momentUpdatedMonth.format('MMMM YYYY')}
             </strong>
@@ -93,7 +93,7 @@ const Calendar = ({
         <table>
           <tbody>
             {calendarMonth.map((calendarWeek, calendarRow) => (
-              <tr className="CalenderWeek" key={calendarWeek}>
+              <tr className={styles.CalenderWeek} key={calendarWeek}>
                 {calendarWeek.map((calendarDay, calendarCol) => (
                   <CalendarDay
                     key={calendarDay}
@@ -121,13 +121,13 @@ const Calendar = ({
           </tbody>
         </table>
       </div>
-      <div className="CalendarFooter">
-        <div className="UpdatedToday">Updated today</div>
-        <div className="CalenderWeek ClearDates">
+      <div className={styles.CalendarFooter}>
+        <div className={styles.UpdatedToday}>Updated today</div>
+        <div className={`${styles.CalenderWeek} ${styles.ClearDates}`}>
           <input type="button" onClick={() => onClearDates()} value="Clear dates" />
         </div>
       </div>
-      <button className="KeyboardShortcuts">
+      <button className={styles.KeyboardShortcuts}>
         <span>?</span>
       </button>
     </div>
