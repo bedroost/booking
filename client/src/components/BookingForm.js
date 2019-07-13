@@ -173,11 +173,11 @@ class BookingForm extends React.Component {
                       $
                       {listingInfo.basePrice}
                       {' x '}
-                      {moment(checkoutDate).diff(moment(checkinDate), 'days') || 0}
+                      {checkoutDate ? moment(checkoutDate).diff(moment(checkinDate), 'days') : 0}
                       {moment(checkoutDate).diff(moment(checkinDate), 'days') === 1 ? ' night' : ' nights'}
                     </span>
                     <span className={styles.DetailsPrice}>
-                      {listingInfo.basePrice * (moment(checkoutDate).diff(moment(checkinDate), 'days') || 0)}
+                      {checkoutDate ? listingInfo.basePrice * moment(checkoutDate).diff(moment(checkinDate), 'days') : 0}
                     </span>
                     <span className={styles.DetailsItem}>
                       Cleaning fee
@@ -218,10 +218,13 @@ class BookingForm extends React.Component {
                       Total:
                     </span>
                     <span className={styles.DetailsTotalPrice}>
-                      {listingInfo.basePrice * (moment(checkoutDate).diff(moment(checkinDate), 'days') || 0)
+                      {checkoutDate
+                        ? listingInfo.basePrice * (moment(checkoutDate).diff(moment(checkinDate), 'days'))
                         + listingInfo.cleaningFee
                         + listingInfo.serviceFee
-                        + listingInfo.taxes}
+                        + listingInfo.taxes
+                        : 0
+                      }
                     </span>
                   </div>
                   <div className={styles.BookingFormButtonDiv}>
