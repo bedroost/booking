@@ -39,13 +39,21 @@ const Calendar = ({
     // set last available calendar date to be last possible check out date
     const sortedBookedDatesArr = Object.keys(changedBookedDates).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
 
+    let bookedDateFound = false;
+
     // find next booked date and make it available
     for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
       if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
         lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
         changedBookedDates[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
+        bookedDateFound = true;
         break;
       }
+    }
+
+    // if no booked date was found, add one day to last available date
+    if (!bookedDateFound) {
+      lastAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD').add(1, 'day');
     }
   }
 

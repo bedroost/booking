@@ -75,11 +75,13 @@ const CalendarDay = ({
           }
         }}
         onClick={() => {
-          if (checkinDate) {
-            onCheckout(calendarDate);
-            onToggleCalendar();
-          } else {
-            onCheckin(calendarDate);
+          if (calendarDayClassName === 'CalendarDay Available' || calendarDayClassName === 'CalendarDay AvailableForCheckout') {
+            if (checkinDate) {
+              onCheckout(calendarDate);
+              onToggleCalendar();
+            } else {
+              onCheckin(calendarDate);
+            }
           }
         }}
         value={calendarDay}
