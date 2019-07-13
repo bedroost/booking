@@ -28,24 +28,23 @@ const Calendar = ({
     }
   }
 
-  // console.log('firstDayofTheWeek', firstDayofTheWeek);
-  // console.log('lastDay', lastDay);
-  // console.log('calendarMonth', calendarMonth);
-  // console.log(bookedDatesObj);
-
   let firstAvailableCalendarDate = moment();
   let lastAvailableCalendarDate = listingInfo.lastAvailableDate;
   let sortedBookedDatesArr = null;
+  // create a copy of booked dates object
+  const changedBookedDates = { ...bookedDatesObj };
+  console.log('copy of booked dates', changedBookedDates);
   if (checkinDate) {
     // set first available calendar date to be checkindate
     firstAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD');
     // set last available calendar date to be last possible check out date
-    sortedBookedDatesArr = Object.keys(bookedDatesObj).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
+    sortedBookedDatesArr = Object.keys(changedBookedDates).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
     // console.log(sortedBookedDatesArr);
     for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
       if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
         lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
-        bookedDatesObj[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
+        // make booked date available
+        changedBookedDates[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
         break;
       }
     }
@@ -98,7 +97,7 @@ const Calendar = ({
                   <CalendarDay
                     key={calendarDay}
                     onToggleCalendar={onToggleCalendar}
-                    bookedDatesObj={bookedDatesObj}
+                    changedBookedDates={changedBookedDates}
                     calendarRow={calendarRow}
                     calendarCol={calendarCol}
                     calendarMonth={calendarMonth}
