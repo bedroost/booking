@@ -14,7 +14,7 @@ const CalendarDay = ({
   checkinDate,
   checkoutDate,
   hoveredDate,
-  bookedDatesObj,
+  changedBookedDates,
   momentUpdatedMonth,
   firstAvailableCalendarDate,
   lastAvailableCalendarDate,
@@ -36,11 +36,11 @@ const CalendarDay = ({
   if (calendarDay < 1 || calendarDay > lastDay) {
     calendarDayClassName = `${styles.CalendarDay} ${styles.Empty}`;
 
-  } else if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
-
-  // check booked dates which are before today, after last available date, or in booked dates obj
+  } else if (
+    // check booked dates which are before today, after last available date, or in booked dates obj
+    momentCalendarDate.isAfter(lastAvailableCalendarDate)
     || momentCalendarDate.isBefore(firstAvailableCalendarDate)
-    || bookedDatesObj[calendarDate]) {
+    || changedBookedDates[calendarDate]) {
 
     calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
 
@@ -61,7 +61,6 @@ const CalendarDay = ({
       calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
     }
   } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
-    // console.log('hovered', hoveredDate);
     calendarDayClassName = `${styles.CalendarDay} ${styles.AvailableForCheckout}`;
   } else {
     calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
@@ -70,7 +69,7 @@ const CalendarDay = ({
   return (
     <td>
       <input
-        className={styles.CalendarDay}
+        className={calendarDayClassName}
         type="button"
         onMouseEnter={() => {
           if (checkinDate && !checkoutDate) {
@@ -86,7 +85,6 @@ const CalendarDay = ({
         }}
         onClick={() => {
           if (checkinDate) {
-            // console.log('checkout');
             onCheckout(calendarDate);
             onToggleCalendar();
           } else {
