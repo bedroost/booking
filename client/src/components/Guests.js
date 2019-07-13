@@ -27,26 +27,26 @@ const Guests = (props) => {
   const allowIncrementInfants = countInfants === 5;
 
   return (
-    <div className={isGuestsToggled ? 'GuestModal Show' : 'GuestModal Hide'}>
-      <div className="GuestRow">
-        <div className="textAdults">Adults</div>
+    <div className={isGuestsToggled ? [styles.GuestModal, styles.Show].join(' ') : [styles.GuestModal, styles.Hide].join(' ')}>
+      <div className={styles.GuestRow}>
+        <div className={styles.textAdults}>Adults</div>
         <input
           type="button"
-          className="decrementAdults"
+          className={styles.decrementAdults}
           onClick={decrementAdults}
           disabled={allowDecrementAdults}
           value="&#8211;"
         />
-        <span className="countAdults">{countAdults}</span>
+        <span className={styles.countAdults}>{countAdults}</span>
         <input
           type="button"
-          className="incrementAdults"
+          className={styles.incrementAdults}
           onClick={incrementAdults}
           disabled={allowIncrementAdults}
           value="+"
         />
       </div>
-      <div className="GuestRow">
+      <div className={styles.GuestRow}>
         <div className="textChildren">
           <span>Children</span>
           <br />
@@ -59,47 +59,47 @@ const Guests = (props) => {
           disabled={allowDecrementChildren}
           value="&#8211;"
         />
-        <span className="countChildren">{countChildren}</span>
+        <span className={styles.countChildren}>{countChildren}</span>
         <input
           type="button"
-          className="incrementChildren"
+          className={styles.incrementChildren}
           onClick={incrementChildren}
           disabled={allowIncrementChildren}
           value="+"
         />
       </div>
-      <div className="GuestRow">
-        <div className="textInfants">
+      <div className={styles.GuestRow}>
+        <div className={styles.textInfants}>
           <span>Infants</span>
           <br />
-          <span className="age">Ages 0–2</span>
+          <span className={styles.age}>Ages 0–2</span>
         </div>
         <input
           type="button"
-          className="decrementInfants"
+          className={styles.decrementInfants}
           onClick={decrementInfants}
           disabled={allowDecrementInfants}
           value="&#8211;"
         />
-        <span className="countInfants">{countInfants}</span>
+        <span className={styles.countInfants}>{countInfants}</span>
         <input
           type="button"
-          className="incrementInfants"
+          className={styles.incrementInfants}
           onClick={incrementInfants}
           disabled={allowIncrementInfants}
           value="+"
         />
       </div>
-      <div className="MaxGuestsTextRow">
-        <span className="MaxGuestsText">
+      <div className={styles.MaxGuestsTextRow}>
+        <span className={styles.MaxGuestsText}>
           {`${listingInfo.maxGuests} `}
           guests maximum. Infants don’t count toward the number of guests.
         </span>
       </div>
-      <div className="CloseButtonRow">
+      <div className={styles.CloseButtonRow}>
         <input
           type="button"
-          className="CloseButton"
+          className={styles.CloseButton}
           value="Close"
           onClick={() => onToggleGuests()}
         />

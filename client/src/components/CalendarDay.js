@@ -34,7 +34,7 @@ const CalendarDay = ({
 
   // if calendar day does not exist, calendar day classname should be empty
   if (calendarDay < 1 || calendarDay > lastDay) {
-    calendarDayClassName = 'CalendarDay Empty';
+    calendarDayClassName = `${styles.CalendarDay} ${styles.Empty}`;
 
   } else if (momentCalendarDate.isAfter(lastAvailableCalendarDate)
 
@@ -42,7 +42,7 @@ const CalendarDay = ({
     || momentCalendarDate.isBefore(firstAvailableCalendarDate)
     || bookedDatesObj[calendarDate]) {
 
-    calendarDayClassName = 'CalendarDay Booked';
+    calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
 
     // mark booked dates with x
     bookedCalendarMonth[calendarRow][calendarCol] = 'x';
@@ -51,27 +51,26 @@ const CalendarDay = ({
   } else if (calendarDate === checkinDate) {
 
     // make calendar day background green
-    calendarDayClassName = 'CalendarDay Checkin';
+    calendarDayClassName = `${styles.CalendarDay} ${styles.Checkin}`;
 
   // if checkout date exists
   } else if (checkoutDate) {
     if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
-      calendarDayClassName = 'CalendarDay Checkin';
+      calendarDayClassName = `${styles.CalendarDay} ${styles.Checkin}`;
     } else {
-      calendarDayClassName = 'CalendarDay Available';
+      calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
     }
   } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
     // console.log('hovered', hoveredDate);
-    calendarDayClassName = 'CalendarDay AvailableForCheckout';
+    calendarDayClassName = `${styles.CalendarDay} ${styles.AvailableForCheckout}`;
   } else {
-    calendarDayClassName = 'CalendarDay Available';
+    calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
   }
-
 
   return (
     <td>
       <input
-        className={calendarDayClassName}
+        className={styles.CalendarDay}
         type="button"
         onMouseEnter={() => {
           if (checkinDate && !checkoutDate) {
