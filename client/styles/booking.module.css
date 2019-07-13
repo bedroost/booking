@@ -278,6 +278,7 @@ button:focus {
   grid-column: 1;
   line-height: 35px;
   border-bottom: 1px solid #e4e4e4;
+  position: relative;
 }
 
 .DetailsPrice {
@@ -285,6 +286,10 @@ button:focus {
   grid-column: 2;
   line-height: 35px;
   border-bottom: 1px solid #e4e4e4;
+}
+
+.DetailsPrice:before, .DetailsTotalPrice:before {
+  content:'$';
 }
 
 .DetailsTotal {
@@ -298,3 +303,44 @@ button:focus {
   line-height: 35px;
 }
 
+.CleaningFee, .ServiceFee {
+  z-index: 1;
+  height: 15px;
+  width: 15px;
+  fill: rgb(72, 72, 72);
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.CleaningFee > * {
+  pointer-events: none;
+}
+.ServiceFee > * {
+  pointer-events: none;
+}
+
+.CleaningFee:hover, .ServiceFee:hover {
+  fill: rgb(0, 132, 137);
+}
+
+.DetailsInfo {
+  position: absolute;
+  right: 44px;
+  line-height: 1.2857142857142858em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px;
+  border: 1px solid rgb(235, 235, 235);
+  width: 240px;
+  padding: 24px;
+  display: block;
+  font-size: 14px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.ShowItem {
+  visibility: show;
+}
+
+.HideItem {
+  visibility: hidden;
+}
