@@ -76,9 +76,9 @@ class BookingForm extends React.Component {
           tabIndex="0"
           role="button"
           name="bookingForm"
-          onClick={() => {
+          onClick={(e) => {
             if (isCalendarToggled || isGuestsToggled || isServiceFeeToggled || isTaxesToggled || isCleaningFeeToggled) {
-              onToggleOff('bookingForm');
+              onToggleOff(e);
             }
           }}
         >

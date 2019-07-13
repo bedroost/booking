@@ -10,40 +10,42 @@ const bookingFormReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'TOGGLE_CALENDAR':
       return {
-        ...state,
+        ...initialState,
         isCalendarToggled: !state.isCalendarToggled,
       };
     case 'TOGGLE_GUESTS':
       return {
-        ...state,
+        ...initialState,
         isGuestsToggled: !state.isGuestsToggled,
       };
     case 'TOGGLE_INFO':
-      console.log(action.payload);
       if (action.payload === 'cleaningFee') {
         return {
-          ...state,
+          ...initialState,
           isCleaningFeeToggled: !state.isCleaningFeeToggled,
         };
       }
       if (action.payload === 'serviceFee') {
         return {
-          ...state,
+          ...initialState,
           isServiceFeeToggled: !state.isServiceFeeToggled,
         };
       }
       if (action.payload === 'taxes') {
         return {
-          ...state,
+          ...initialState,
           isTaxesToggled: !state.isTaxesToggled,
         };
       }
       break;
     case 'TOGGLE_OFF':
-      if (action.payload === 'bookingForm') {
-        return initialState;
+      if (action.payload === 'serviceFee'
+        || action.payload === 'taxes'
+        || action.payload === 'cleaningFee'
+        || action.payload === 'Checkin') {
+        return { ...state };
       }
-      break;
+      return initialState;
     default:
       return state;
   }
