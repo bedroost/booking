@@ -4,9 +4,6 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 
 const CalendarDay = ({
-  calendarRow,
-  calendarCol,
-  calendarMonth,
   calendarDay,
   onCheckin,
   onCheckout,
@@ -20,9 +17,6 @@ const CalendarDay = ({
   lastAvailableCalendarDate,
   onToggleCalendar,
 }) => {
-
-  // keep track of booked dates
-  const bookedCalendarMonth = [...calendarMonth];
 
   let calendarDayClassName = null;
   let calendarDate = null;
@@ -43,9 +37,6 @@ const CalendarDay = ({
     || changedBookedDates[calendarDate]) {
 
     calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
-
-    // mark booked dates with x
-    bookedCalendarMonth[calendarRow][calendarCol] = 'x';
 
   // if calendar day matches checkin day
   } else if (calendarDate === checkinDate) {
