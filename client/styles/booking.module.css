@@ -303,7 +303,7 @@ button:focus {
   line-height: 35px;
 }
 
-.CleaningFee, .ServiceFee {
+.CleaningFee, .ServiceFee, .Taxes {
   z-index: 1;
   height: 15px;
   width: 15px;
@@ -318,8 +318,11 @@ button:focus {
 .ServiceFee > * {
   pointer-events: none;
 }
+.Taxes > * {
+  pointer-events: none;
+}
 
-.CleaningFee:hover, .ServiceFee:hover {
+.CleaningFee:hover, .ServiceFee:hover, .Taxes:hover {
   fill: rgb(0, 132, 137);
 }
 
