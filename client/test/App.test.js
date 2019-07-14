@@ -35,6 +35,12 @@ describe('<BookingForm />', () => {
           isGuestsToggled: !wrapper.instance().props.isGuestsToggled,
         });
       }}
+      onToggleOff={() => {
+        wrapper.setProps({
+          isGuestsToggled: false,
+          isCalendarToggled: false,
+        });
+      }}
       isCalendarToggled={false}
       isGuestsToggled={false}
       countAdults={1}
