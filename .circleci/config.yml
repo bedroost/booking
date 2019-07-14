@@ -38,4 +38,3 @@ jobs:
       - run: npm test
 workflows:
   version: 2
-    jobs:
