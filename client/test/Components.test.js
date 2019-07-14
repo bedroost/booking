@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
@@ -33,6 +32,12 @@ describe('<BookingForm />', () => {
         // console.log('toggle guests');
         wrapper.setProps({
           isGuestsToggled: !wrapper.instance().props.isGuestsToggled,
+        });
+      }}
+      onToggleOff={() => {
+        wrapper.setProps({
+          isGuestsToggled: false,
+          isCalendarToggled: false,
         });
       }}
       isCalendarToggled={false}
