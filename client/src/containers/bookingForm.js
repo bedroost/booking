@@ -5,7 +5,7 @@ import {
   onToggleCalendar,
   onToggleGuests,
   onToggleInfo,
-  onToggleOff
+  onToggleOff,
 } from '../actions/bookingForm';
 
 const mapStateToProps = state => ({
