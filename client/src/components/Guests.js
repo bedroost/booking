@@ -3,7 +3,6 @@ import styles from '../../styles/guests.module.css';
 
 const Guests = (props) => {
   const {
-    bookedDates,
     listingInfo,
     countAdults,
     incrementAdults,

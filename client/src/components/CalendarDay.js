@@ -4,9 +4,6 @@ import moment from 'moment';
 import styles from '../../styles/calendar.module.css';
 
 const CalendarDay = ({
-  calendarRow,
-  calendarCol,
-  calendarMonth,
   calendarDay,
   onCheckin,
   onCheckout,
@@ -20,9 +17,6 @@ const CalendarDay = ({
   lastAvailableCalendarDate,
   onToggleCalendar,
 }) => {
-
-  // keep track of booked dates
-  const bookedCalendarMonth = [...calendarMonth];
 
   let calendarDayClassName = null;
   let calendarDate = null;
@@ -44,9 +38,6 @@ const CalendarDay = ({
 
     calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
 
-    // mark booked dates with x
-    bookedCalendarMonth[calendarRow][calendarCol] = 'x';
-
   // if calendar day matches checkin day
   } else if (calendarDate === checkinDate) {
 
@@ -58,7 +49,7 @@ const CalendarDay = ({
     if (momentCalendarDate.isSameOrBefore(moment(checkoutDate, 'YYYY-MM-DD'))) {
       calendarDayClassName = `${styles.CalendarDay} ${styles.Checkin}`;
     } else {
-      calendarDayClassName = `${styles.CalendarDay} ${styles.Available}`;
+      calendarDayClassName = `${styles.CalendarDay} ${styles.Booked}`;
     }
   } else if (checkinDate && momentCalendarDate.isSameOrBefore(moment(hoveredDate, 'YYYY-MM-DD'))) {
     calendarDayClassName = `${styles.CalendarDay} ${styles.AvailableForCheckout}`;
@@ -84,11 +75,13 @@ const CalendarDay = ({
           }
         }}
         onClick={() => {
-          if (checkinDate) {
-            onCheckout(calendarDate);
-            onToggleCalendar();
-          } else {
-            onCheckin(calendarDate);
+          if (calendarDayClassName === 'CalendarDay Available' || calendarDayClassName === 'CalendarDay AvailableForCheckout') {
+            if (checkinDate) {
+              onCheckout(calendarDate);
+              onToggleCalendar();
+            } else {
+              onCheckin(calendarDate);
+            }
           }
         }}
         value={calendarDay}

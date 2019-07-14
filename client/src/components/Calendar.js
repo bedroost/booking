@@ -30,23 +30,30 @@ const Calendar = ({
 
   let firstAvailableCalendarDate = moment();
   let lastAvailableCalendarDate = listingInfo.lastAvailableDate;
-  let sortedBookedDatesArr = null;
-  // create a copy of booked dates object
   const changedBookedDates = { ...bookedDatesObj };
-  console.log('copy of booked dates', changedBookedDates);
+
   if (checkinDate) {
     // set first available calendar date to be checkindate
     firstAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD');
+
     // set last available calendar date to be last possible check out date
-    sortedBookedDatesArr = Object.keys(changedBookedDates).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
-    // console.log(sortedBookedDatesArr);
+    const sortedBookedDatesArr = Object.keys(changedBookedDates).sort((a, b) => moment(a, 'YYYY-MM-DD') - moment(b, 'YYYY-MM-DD'));
+
+    let bookedDateFound = false;
+
+    // find next booked date and make it available
     for (let i = 0; i < sortedBookedDatesArr.length; i += 1) {
       if (moment(sortedBookedDatesArr[i], 'YYYY-MM-DD') > moment(checkinDate, 'YYYY-MM-DD')) {
         lastAvailableCalendarDate = moment(sortedBookedDatesArr[i], 'YYYY-MM-DD');
-        // make booked date available
         changedBookedDates[moment(lastAvailableCalendarDate).format('YYYY-MM-DD')] = false;
+        bookedDateFound = true;
         break;
       }
+    }
+
+    // if no booked date was found, add one day to last available date
+    if (!bookedDateFound) {
+      lastAvailableCalendarDate = moment(checkinDate, 'YYYY-MM-DD').add(1, 'day');
     }
   }
 
@@ -91,16 +98,11 @@ const Calendar = ({
         </div>
         <table>
           <tbody>
-            {calendarMonth.map((calendarWeek, calendarRow) => (
+            {calendarMonth.map(calendarWeek => (
               <tr className={styles.CalenderWeek} key={calendarWeek}>
-                {calendarWeek.map((calendarDay, calendarCol) => (
+                {calendarWeek.map(calendarDay => (
                   <CalendarDay
                     key={calendarDay}
-                    onToggleCalendar={onToggleCalendar}
-                    changedBookedDates={changedBookedDates}
-                    calendarRow={calendarRow}
-                    calendarCol={calendarCol}
-                    calendarMonth={calendarMonth}
                     calendarDay={calendarDay}
                     onCheckin={onCheckin}
                     onCheckout={onCheckout}
@@ -108,11 +110,11 @@ const Calendar = ({
                     checkinDate={checkinDate}
                     checkoutDate={checkoutDate}
                     hoveredDate={hoveredDate}
-                    listingInfo={listingInfo}
-                    addMonth={addMonth}
+                    changedBookedDates={changedBookedDates}
                     momentUpdatedMonth={momentUpdatedMonth}
                     firstAvailableCalendarDate={firstAvailableCalendarDate}
                     lastAvailableCalendarDate={lastAvailableCalendarDate}
+                    onToggleCalendar={onToggleCalendar}
                   />
                 ))}
               </tr>
@@ -126,7 +128,7 @@ const Calendar = ({
           <input type="button" onClick={() => onClearDates()} value="Clear dates" />
         </div>
       </div>
-      <button className={styles.KeyboardShortcuts}>
+      <button type="button" className={styles.KeyboardShortcuts}>
         <span>?</span>
       </button>
     </div>
