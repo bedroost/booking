@@ -17,7 +17,7 @@ class BookingForm extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/${window.location.pathname.split('/')[2]}/booking`)
+    axios.get(`http://localhost:3001/api/${window.location.pathname.split('/')[2]}/booking`)
       .then(({ data }) => {
         const { bookedDates, listingInfo } = data;
         const bookedDatesObj = {};
