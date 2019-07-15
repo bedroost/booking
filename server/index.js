@@ -5,7 +5,7 @@ const db = require('./db');
 const models = require('./models');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(morgan('dev'));
 app.use('/rooms/:listingid', express.static(path.resolve('client')));
