@@ -1,13 +1,19 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 const db = require('./db');
 const models = require('./models');
 
 const app = express();
 const port = 3001;
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 app.use(morgan('dev'));
+app.use(cors(corsOptions));
 app.use('/rooms/:listingid', express.static(path.resolve('client')));
 app.use(express.json());
 
