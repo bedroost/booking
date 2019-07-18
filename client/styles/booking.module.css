@@ -19,8 +19,7 @@ button:focus {
 .BookingForm {
   outline:0;
   position: relative;
-  width: 100vw;
-  height: calc(100vh - 20px);
+  /* height: calc(100vh - 20px); */
 }
 
 .BookingFormOutline {
@@ -31,7 +30,7 @@ button:focus {
   top: 0;
   left:0;
   right:0;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .BookingFormCloseButton {
