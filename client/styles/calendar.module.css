@@ -9,9 +9,9 @@
   z-index: 1;
   position: absolute;
   top: 170px;
-  left:0;
+  left:22.5px;
   right:0;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 input, button {

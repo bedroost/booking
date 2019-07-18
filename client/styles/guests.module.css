@@ -12,7 +12,8 @@
   top: 234px;
   left:0;
   right:0;
-  margin: 0 auto;
+  left:22.5px;
+  /* margin: 0 auto; */
   border-top: 2px solid rgb(0, 132, 137) !important;
 }
 
