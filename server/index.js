@@ -18,7 +18,6 @@ app.use('/rooms/:listingid', express.static(path.resolve('client')));
 app.use(express.json());
 
 app.get('/api/:listingid/booking', async (req, res) => {
-  console.log(req.params);
   const listingInfo = await models.getListingInfo(req.params.listingid);
   const bookedDates = await models.getBookedDates(req.params.listingid);
   res.send({ listingInfo, bookedDates });
