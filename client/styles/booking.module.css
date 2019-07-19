@@ -16,9 +16,18 @@ button:focus {
   outline:0;
 }
 
-.BookingForm {
-  outline:0;
+.Booking {
+  padding-left: 8px;
   position: relative;
+  min-height: 1px;
+}
+
+.BookingForm {
+  position: absolute;
+  left: 40px;
+  top: 24px;
+  outline:0;
+  /* position: relative; */
   /* height: calc(100vh - 20px); */
 }
 

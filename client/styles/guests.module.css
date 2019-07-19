@@ -9,10 +9,10 @@
   font-size: 16px;
   z-index: 1;
   position: absolute;
-  top: 234px;
+  top: 258px;
   left:0;
   right:0;
-  left:22.5px;
+  left:62.5px;
   /* margin: 0 auto; */
   border-top: 2px solid rgb(0, 132, 137) !important;
 }
