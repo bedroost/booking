@@ -20,11 +20,7 @@ app.use(express.json());
 app.get('/api/:listingid/booking', async (req, res) => {
   const listingInfo = await models.getListingInfo(req.params.listingid);
   const bookedDates = await models.getBookedDates(req.params.listingid);
-  const bookedDatesObj = {};
-  bookedDates.forEach((el) => {
-    bookedDatesObj[el.bookedDate] = true;
-  });
-  res.send({ listingInfo, bookedDatesObj });
+  res.send({ listingInfo, bookedDates });
 });
 
 app.listen(port, () => {
