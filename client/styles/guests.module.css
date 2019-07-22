@@ -10,11 +10,16 @@
   z-index: 1;
   position: absolute;
   top: 258px;
-  left:0;
+  left:30px;
   right:0;
-  left:63.5px;
   /* margin: 0 auto; */
   border-top: 2px solid rgb(0, 132, 137) !important;
+}
+
+@media (min-width: 768px) {
+  .GuestModal {
+    left:63.5px;
+  }
 }
 
 .Show {

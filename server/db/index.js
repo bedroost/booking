@@ -4,6 +4,7 @@ const chalk = require('chalk');
 // Option 1: Passing parameters separately
 const sequelize = new Sequelize('booking', 'root', '', {
   host: '172.17.0.2',
+  // host: 'localhost',
   dialect: 'mysql',
 });
 

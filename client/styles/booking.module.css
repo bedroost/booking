@@ -24,11 +24,17 @@ button:focus {
 
 .BookingForm {
   position: absolute;
-  left: 40px;
+  /* left: 40px; */
   top: 24px;
   outline:0;
   /* position: relative; */
   /* height: calc(100vh - 20px); */
+}
+
+@media (min-width: 768px) {
+  .BookingForm {
+    left: 40px;
+  }
 }
 
 .BookingFormOutline {
