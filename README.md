@@ -6,6 +6,7 @@ Calendar booking module for a home sharing app. It is built in service-oriented 
 <div>
     <img src="https://media.giphy.com/media/Ur1yPoYYqpP4YiPTlK/giphy.gif" align="left" height="400px" />
 </div>
+<br />
 
 ## Table of Contents
 
