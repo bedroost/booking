@@ -2,7 +2,7 @@
 
 Calendar booking module for a home sharing app. It is built in service-oriented architecture.
 
-![bedroost gif](https://media.giphy.com/media/Ur1yPoYYqpP4YiPTlK/giphy.gif)
+![bedroost gif](https://media.giphy.com/media/gKxi7Q2l04fHocMt4O/giphy.gif)
 
 ## Table of Contents
 
