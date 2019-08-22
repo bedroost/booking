@@ -17,7 +17,7 @@ Front-end: JavaScript, React, Redux, Webpack
 <br />
 Back-end: Node.js, Express
 <br />
-Database: PostgreSQL
+Database: MySQL
 <br />
 Testing: Jest, Enzyme, CirceCI
 
