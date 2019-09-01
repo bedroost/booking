@@ -40,7 +40,6 @@ $ npm run build
 
 # run the app!
 $ npm start
-$ localhost:3001/rooms/1
 ```
 
 ## Requirements
@@ -51,6 +50,7 @@ $ localhost:3001/rooms/1
 
 ## RESTful API routes
 ### GET Rooms and Booking Information
+
 Endpoint: ```/api/rooms/:listingid```
 
 **Success Response**:
