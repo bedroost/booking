@@ -9,6 +9,7 @@ Calendar booking module for a home sharing app built in service-oriented archite
 1. [Tech Stack](#tech-stack)
 1. [Usage](#usage)
 1. [Requirements](#requirements)
+1. [RESTful API routes](#restful-api-routes)
 1. [Related Projects](#related-projects)
 
 ## Tech Stack
@@ -28,7 +29,6 @@ Testing: Jest, Enzyme, CirceCI
 $ git clone https://github.com/bedroost/booking.git
 
 # install dependencies
-$ npm install webpack
 $ npm install
 
 # seed mysql database
@@ -47,6 +47,63 @@ $ npm start
 - Nvm
 - Node
 - Git
+
+## RESTful API routes
+### GET Rooms and Booking Information
+Endpoint: ```/api/rooms/:id```
+**Success Response**:
+  * An array of objects containing basic room and booking information with param ```id```
+  * Response Code: 200
+  * Expected Content:
+
+```
+{
+  listingInfo:
+  {
+    baseGuests: 2
+    basePrice: 327
+    cleaningFee: 285
+    createdAt: "2019-09-01T03:20:27.000Z"
+    extraGuests: 0
+    guestFee: 173
+    id: 1
+    lastAvailableDate: "2020-04-13"
+    maxGuests: 2
+    maxNights: 108
+    minNights: 1
+    reviews: 450
+    serviceFee: 39
+    taxes: 26
+    updatedAt: "2019-09-01T03:20:27.000Z"
+    views: 746
+  },
+  bookedDates: {
+    0: {
+      id: 1, bookedDate: "2019-11-03", createdAt: 
+      "2019-09-01T03:20:27.000Z", updatedAt: 
+      "2019-09-01T03:20:27.000Z", listingId: 1
+    },
+    1: {
+      id: 2, bookedDate: "2019-07-02", createdAt: 
+      "2019-09-01T03:20:27.000Z", updatedAt: 
+      "2019-09-01T03:20:27.000Z", listingId: 1
+    },
+    2: {
+      id: 3, bookedDate: "2019-12-23", createdAt: 
+      "2019-09-01T03:20:27.000Z", updatedAt: 
+      "2019-09-01T03:20:27.000Z", listingId: 1
+    },
+    3: {
+      id: 4, bookedDate: "2019-06-04", createdAt: 
+      "2019-09-01T03:20:27.000Z", updatedAt: 
+      "2019-09-01T03:20:27.000Z", listingId: 1
+    }
+  }
+}
+```
+
+**Error Response**: 
+  * Response Code: 404
 
 ## Related Projects
 
