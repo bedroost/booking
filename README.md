@@ -40,6 +40,7 @@ $ npm run build
 
 # run the app!
 $ npm start
+$ localhost:3001/rooms/1
 ```
 
 ## Requirements
@@ -50,9 +51,10 @@ $ npm start
 
 ## RESTful API routes
 ### GET Rooms and Booking Information
-Endpoint: ```/api/rooms/:id```
+Endpoint: ```/api/rooms/:listingid```
+
 **Success Response**:
-  * An array of objects containing basic room and booking information with param ```id```
+  * An array of objects containing basic room and booking information with param ```listingid```
   * Response Code: 200
   * Expected Content:
 
