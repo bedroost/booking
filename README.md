@@ -5,6 +5,9 @@ Calendar booking module for a home sharing app built in service-oriented archite
 ###
 
 ![bedroost png](https://i.ibb.co/k1C0h41/bedroost.png)
+
+## Demo
+
 ![bedroost gif](https://media.giphy.com/media/gKxi7Q2l04fHocMt4O/giphy.gif)
 
 ## Table of Contents
