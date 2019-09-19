@@ -6,13 +6,10 @@ Calendar booking module for a home sharing app built in service-oriented archite
 
 ![bedroost png](https://i.ibb.co/k1C0h41/bedroost.png)
 
-## Demo
-
-![bedroost gif](https://media.giphy.com/media/gKxi7Q2l04fHocMt4O/giphy.gif)
-
 ## Table of Contents
 
 1. [Tech Stack](#tech-stack)
+1. [Demo](#demo)
 1. [Usage](#usage)
 1. [Requirements](#requirements)
 1. [RESTful API routes](#restful-api-routes)
@@ -27,6 +24,10 @@ Back-end: Node.js, Express
 Database: MySQL
 <br />
 Testing: Jest, Enzyme, CirceCI
+
+## Demo
+
+![bedroost gif](https://media.giphy.com/media/gKxi7Q2l04fHocMt4O/giphy.gif)
 
 ## Usage
 
