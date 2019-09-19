@@ -1,7 +1,7 @@
 # Bedroost
 
 Calendar booking module for a home sharing app built in service-oriented architecture.
-<img src="https://i.ibb.co/Wn1VWGY/1280x640-copy.png" width="200" height="400" />
+<img src="https://i.ibb.co/Wn1VWGY/1280x640-copy.png" width="1280" height="580" />
 ![bedroost gif](https://media.giphy.com/media/gKxi7Q2l04fHocMt4O/giphy.gif)
 
 ## Table of Contents
